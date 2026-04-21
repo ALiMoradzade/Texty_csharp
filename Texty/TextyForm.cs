@@ -190,5 +190,13 @@ namespace Texty
         {
             statusStrip1.Visible = (sender as ToolStripMenuItem).Checked;
         }
+
+        private void richTextBox1_SelectionChanged(object sender, EventArgs e)
+        {
+            int lineCount = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
+            int charCount = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(lineCount);
+            textLineChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
+            textLen.Text = $"Length {richTextBox1.Text.Length}";
+        }
     }
 }
