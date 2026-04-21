@@ -14,9 +14,15 @@ namespace Texty
 {
     public partial class TextyForm : Form
     {
+        float zoom = 0.1f;
         public TextyForm()
         {
             InitializeComponent();
+        }
+
+        public void SetTextZoomFactorStatus()
+        {
+            textZoomFactor.Text = $"{richTextBox1.ZoomFactor * 100}%";
         }
 
         public string GetOpenedFileAddress()
@@ -197,6 +203,25 @@ namespace Texty
             int charCount = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(lineCount);
             textLineChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
             textLen.Text = $"Length {richTextBox1.Text.Length}";
+        }
+
+        private void restoreDeafaultZoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor = 1;
+            SetTextZoomFactorStatus();
+        }
+
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor += zoom;
+            SetTextZoomFactorStatus();
+
+        }
+
+        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor -= zoom;
+            SetTextZoomFactorStatus();
         }
     }
 }

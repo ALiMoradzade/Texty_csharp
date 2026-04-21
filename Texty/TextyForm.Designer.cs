@@ -58,6 +58,7 @@ namespace Texty
             this.textEncoding = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.textZoomFactor = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -197,7 +198,7 @@ namespace Texty
             this.zoomOutToolStripMenuItem,
             this.restoreDeafaultZoomToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
@@ -205,18 +206,21 @@ namespace Texty
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
             this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.zoomInToolStripMenuItem.Text = "Zoom in";
+            this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
             // 
             // zoomOutToolStripMenuItem
             // 
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
             this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.zoomOutToolStripMenuItem.Text = "Zoom out";
+            this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
             // 
             // restoreDeafaultZoomToolStripMenuItem
             // 
             this.restoreDeafaultZoomToolStripMenuItem.Name = "restoreDeafaultZoomToolStripMenuItem";
             this.restoreDeafaultZoomToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.restoreDeafaultZoomToolStripMenuItem.Text = "Restore deafault zoom";
+            this.restoreDeafaultZoomToolStripMenuItem.Click += new System.EventHandler(this.restoreDeafaultZoomToolStripMenuItem_Click);
             // 
             // statusBarToolStripMenuItem
             // 
@@ -224,7 +228,7 @@ namespace Texty
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.statusBarToolStripMenuItem.Text = "Status bar";
             this.statusBarToolStripMenuItem.CheckedChanged += new System.EventHandler(this.statusBarToolStripMenuItem_CheckedChanged);
             // 
@@ -248,6 +252,7 @@ namespace Texty
             this.textLineChar,
             this.textLen,
             this.toolStripStatusLabel3,
+            this.textZoomFactor,
             this.textEncoding});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
@@ -258,28 +263,28 @@ namespace Texty
             // textLineChar
             // 
             this.textLineChar.Name = "textLineChar";
-            this.textLineChar.Size = new System.Drawing.Size(188, 17);
+            this.textLineChar.Size = new System.Drawing.Size(179, 17);
             this.textLineChar.Spring = true;
             this.textLineChar.Text = "Ln 0, Char 0";
             // 
             // textLen
             // 
             this.textLen.Name = "textLen";
-            this.textLen.Size = new System.Drawing.Size(188, 17);
+            this.textLen.Size = new System.Drawing.Size(179, 17);
             this.textLen.Spring = true;
             this.textLen.Text = "Length 0";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(188, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(179, 17);
             this.toolStripStatusLabel3.Spring = true;
             this.toolStripStatusLabel3.Text = "Plain Text";
             // 
             // textEncoding
             // 
             this.textEncoding.Name = "textEncoding";
-            this.textEncoding.Size = new System.Drawing.Size(188, 17);
+            this.textEncoding.Size = new System.Drawing.Size(179, 17);
             this.textEncoding.Spring = true;
             this.textEncoding.Text = "UTF-8";
             // 
@@ -292,6 +297,12 @@ namespace Texty
             // 
             this.saveFileDialog1.Filter = "Text Files|*.txt|JSON File|*.json";
             this.saveFileDialog1.Title = "Hit save and make it stay!";
+            // 
+            // textZoomFactor
+            // 
+            this.textZoomFactor.Name = "textZoomFactor";
+            this.textZoomFactor.Size = new System.Drawing.Size(35, 17);
+            this.textZoomFactor.Text = "100%";
             // 
             // TextyForm
             // 
@@ -346,5 +357,6 @@ namespace Texty
         private System.Windows.Forms.ToolStripMenuItem textySourceCodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeOpenedFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripStatusLabel textZoomFactor;
     }
 }
