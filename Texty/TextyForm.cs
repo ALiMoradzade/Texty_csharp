@@ -30,6 +30,8 @@ namespace Texty
 
             if (!RegWindowState.IsExisted) RegWindowState.Write();
             WindowState = RegWindowState.Read();
+
+            
         }
 
         public void SetTextZoomFactorStatus()
@@ -271,6 +273,14 @@ namespace Texty
                 RegSize.Write(Size);
             }
             RegWindowState.Write(WindowState);
+            RegLocation.Write(Location);
+        }
+
+        private void TextyForm_Load(object sender, EventArgs e)
+        {
+            if (!RegLocation.IsExisted) RegLocation.Write();
+            Location = RegLocation.Read();
+
         }
     }
 }

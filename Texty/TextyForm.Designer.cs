@@ -336,6 +336,7 @@ namespace Texty
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TextyForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TextyForm_FormClosed);
+            this.Load += new System.EventHandler(this.TextyForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
