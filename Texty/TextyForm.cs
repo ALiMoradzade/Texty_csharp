@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using Microsoft.Win32;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Texty.Registery;
 
 namespace Texty
 {
@@ -26,6 +27,9 @@ namespace Texty
 
             if (!RegFont.IsExisted) RegFont.Write();
             Size = RegSize.Read();
+
+            if (!RegWindowState.IsExisted) RegWindowState.Write();
+            WindowState = RegWindowState.Read();
         }
 
         public void SetTextZoomFactorStatus()
@@ -263,6 +267,7 @@ namespace Texty
         private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             RegSize.Write(Size);
+            RegWindowState.Write(WindowState);
         }
     }
 }
