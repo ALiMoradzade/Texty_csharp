@@ -20,6 +20,7 @@ namespace Texty
         public TextyForm()
         {
             InitializeComponent();
+
             if (!RegFont.IsExisted) RegFont.Write();
             richTextBox1.Font = fontDialog1.Font = RegFont.Read();
 
