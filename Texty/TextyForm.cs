@@ -23,6 +23,7 @@ namespace Texty
             Font font = RegFont.Read();
             fontDialog1.Font = font;
             richTextBox1.Font = font;
+            Size = RegSize.Read();
         }
 
         public void SetTextZoomFactorStatus()
@@ -255,6 +256,11 @@ namespace Texty
                 richTextBox1.Font = fontDialog1.Font;
                 RegFont.Write(fontDialog1.Font);
             }
+        }
+
+        private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            RegSize.Write(Size);
         }
     }
 }

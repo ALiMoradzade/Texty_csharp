@@ -18,6 +18,7 @@ namespace Texty
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (!RegFont.IsExisted) RegFont.Write();
+            if (!RegFont.IsExisted) RegFont.Write();
             Application.Run(new TextyForm());
         }
     }

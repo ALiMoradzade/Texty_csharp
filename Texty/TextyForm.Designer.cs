@@ -281,35 +281,35 @@ namespace Texty
             // textLineChar
             // 
             this.textLineChar.Name = "textLineChar";
-            this.textLineChar.Size = new System.Drawing.Size(150, 17);
+            this.textLineChar.Size = new System.Drawing.Size(157, 17);
             this.textLineChar.Spring = true;
             this.textLineChar.Text = "Ln 0, Char 0";
             // 
             // textLen
             // 
             this.textLen.Name = "textLen";
-            this.textLen.Size = new System.Drawing.Size(150, 17);
+            this.textLen.Size = new System.Drawing.Size(157, 17);
             this.textLen.Spring = true;
             this.textLen.Text = "Length 0";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(150, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(157, 17);
             this.toolStripStatusLabel3.Spring = true;
             this.toolStripStatusLabel3.Text = "Plain Text";
             // 
             // textZoomFactor
             // 
             this.textZoomFactor.Name = "textZoomFactor";
-            this.textZoomFactor.Size = new System.Drawing.Size(150, 17);
+            this.textZoomFactor.Size = new System.Drawing.Size(157, 17);
             this.textZoomFactor.Spring = true;
             this.textZoomFactor.Text = "100%";
             // 
             // textEncoding
             // 
             this.textEncoding.Name = "textEncoding";
-            this.textEncoding.Size = new System.Drawing.Size(150, 17);
+            this.textEncoding.Size = new System.Drawing.Size(157, 17);
             this.textEncoding.Spring = true;
             this.textEncoding.Text = "UTF-8";
             // 
@@ -335,6 +335,7 @@ namespace Texty
             this.Name = "TextyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TextyForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TextyForm_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
