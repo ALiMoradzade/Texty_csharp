@@ -21,17 +21,6 @@ namespace Texty
         public TextyForm()
         {
             InitializeComponent();
-
-            if (!RegFont.IsExisted) RegFont.Write();
-            richTextBox1.Font = fontDialog1.Font = RegFont.Read();
-
-            if (!RegFont.IsExisted) RegFont.Write();
-            Size = RegSize.Read();
-
-            if (!RegWindowState.IsExisted) RegWindowState.Write();
-            WindowState = RegWindowState.Read();
-
-            
         }
 
         public void SetTextZoomFactorStatus()
@@ -278,6 +267,15 @@ namespace Texty
 
         private void TextyForm_Load(object sender, EventArgs e)
         {
+            if (!RegFont.IsExisted) RegFont.Write();
+            richTextBox1.Font = fontDialog1.Font = RegFont.Read();
+
+            if (!RegFont.IsExisted) RegFont.Write();
+            Size = RegSize.Read();
+
+            if (!RegWindowState.IsExisted) RegWindowState.Write();
+            WindowState = RegWindowState.Read();
+
             if (!RegLocation.IsExisted) RegLocation.Write();
             Location = RegLocation.Read();
 
