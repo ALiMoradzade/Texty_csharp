@@ -12,7 +12,7 @@ namespace Texty.Registery
     internal class RegLocation
     {
         private static string RegAddress = $"Software\\{Application.ProductName}\\Settings\\Location";
-        private static Point defaultLocation = new Point(475, 182);
+        private static Point defaultLocation = new Point(442, 163);
 
         public static bool IsExisted
         {
