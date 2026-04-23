@@ -260,12 +260,12 @@ namespace Texty
             if (fontDialog1.ShowDialog() == DialogResult.OK)
             {
                 richTextBox1.Font = fontDialog1.Font;
-                RegFont.Write(fontDialog1.Font);
             }
         }
 
         private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            RegFont.Write(fontDialog1.Font);
             RegSize.Write(Size);
             RegWindowState.Write(WindowState);
         }
