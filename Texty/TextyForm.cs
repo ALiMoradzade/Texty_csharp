@@ -23,72 +23,21 @@ namespace Texty
             InitializeComponent();
         }
 
-        public void SetTextZoomFactorStatus()
+        #region Form
+        private void TextyForm_Load(object sender, EventArgs e)
         {
-            textZoomFactor.Text = $"{richTextBox1.ZoomFactor * 100}%";
-        }
+            if (!RegFont.IsExisted) RegFont.Write();
+            richTextBox1.Font = fontDialog1.Font = RegFont.Read();
 
-        public string GetOpenedFileAddress()
-        {
-            return openFileDialog1.FileName;
-        }
+            if (!RegFont.IsExisted) RegFont.Write();
+            Size = RegSize.Read();
 
-        public void SetOpenedFileAddress(string fileAddress)
-        {
-            openFileDialog1.FileName = fileAddress;
-        }
+            if (!RegWindowState.IsExisted) RegWindowState.Write();
+            WindowState = RegWindowState.Read();
 
-        public string GetNewFileAddress()
-        {
-            return saveFileDialog1.FileName;
-        }
+            if (!RegLocation.IsExisted) RegLocation.Write();
+            Location = RegLocation.Read();
 
-        public string GetFileName()
-        {
-            return openFileDialog1.SafeFileName;
-        }
-
-        public string GetNewFileName()
-        {
-            return Path.GetFileName(saveFileDialog1.FileName);
-        }
-
-        public bool IsFileOpened()
-        {
-            return closeOpenedFileToolStripMenuItem.Visible;
-        }
-
-        public void IsFileOpened(bool status, string fileName="")
-        {
-            closeOpenedFileToolStripMenuItem.Visible = status;
-            toolStripSeparator1.Visible = status;
-            Text = fileName;
-            if (!status)
-            {
-                richTextBox1.Clear();
-            }
-        }
-
-        public bool IsFileEdited()
-        {
-            return Text.Contains('*');
-        }
-
-        public void IsFileEdited(bool status)
-        {
-            if (status)
-            {
-                Text += '*';
-            }
-            else
-            {
-                Text = Text.Replace("*", "");
-            }
-        }
-
-        public bool IsTextEmpty()
-        {
-            return richTextBox1.Text.All(character => char.IsWhiteSpace(character));
         }
 
         private void TextyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -112,6 +61,93 @@ namespace Texty
             }
         }
 
+        private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            RegFont.Write(fontDialog1.Font);
+            RegSize.Write(Size);
+            if (WindowState == FormWindowState.Normal)
+            {
+                RegSize.Write(Size);
+                RegWindowState.Write(WindowState);
+                RegLocation.Write(Location);
+            }
+        }
+        #endregion
+
+        #region Set Methods
+        public void IsFileEdited(bool status)
+        {
+            if (status)
+            {
+                Text += '*';
+            }
+            else
+            {
+                Text = Text.Replace("*", "");
+            }
+        }
+
+        public void IsFileOpened(bool status, string fileName = "")
+        {
+            closeOpenedFileToolStripMenuItem.Visible = status;
+            toolStripSeparator1.Visible = status;
+            Text = fileName;
+            if (!status)
+            {
+                richTextBox1.Clear();
+            }
+        }
+
+        public void SetOpenedFileAddress(string fileAddress)
+        {
+            openFileDialog1.FileName = fileAddress;
+        }
+
+        public void SetTextZoomFactorStatus()
+        {
+            textZoomFactor.Text = $"{richTextBox1.ZoomFactor * 100}%";
+        }
+        #endregion
+
+        #region Get Methods
+        public bool IsTextEmpty()
+        {
+            return richTextBox1.Text.All(character => char.IsWhiteSpace(character));
+        }
+
+        public bool IsFileOpened()
+        {
+            return closeOpenedFileToolStripMenuItem.Visible;
+        }
+
+        public bool IsFileEdited()
+        {
+            return Text.Contains('*');
+        }
+
+        public string GetOpenedFileAddress()
+        {
+            return openFileDialog1.FileName;
+        }
+
+        public string GetNewFileAddress()
+        {
+            return saveFileDialog1.FileName;
+        }
+
+        public string GetFileName()
+        {
+            return openFileDialog1.SafeFileName;
+        }
+
+        public string GetNewFileName()
+        {
+            return Path.GetFileName(saveFileDialog1.FileName);
+        }
+        #endregion
+
+
+        #region File Tab
         private async void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!IsTextEmpty())
@@ -135,49 +171,6 @@ namespace Texty
                 IsFileOpened(true, GetFileName());
             }
         }
-        
-
-        private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (IsFileOpened() && IsFileEdited())
-            {
-                using (StreamWriter streamWriter = new StreamWriter(GetOpenedFileAddress()))
-                {
-                    await streamWriter.WriteLineAsync(richTextBox1.Text);
-                    IsFileEdited(false);
-                }
-            }
-            else if (!IsFileOpened() && IsFileEdited())
-            {
-                saveAsToolStripMenuItem_Click(sender, e);
-            }
-        }
-
-        private async void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                using (StreamWriter streamWriter = new StreamWriter(GetNewFileAddress()))
-                {
-                    SetOpenedFileAddress(GetNewFileAddress());
-                    IsFileOpened(true, GetNewFileName());
-                    await streamWriter.WriteLineAsync(richTextBox1.Text);
-                }
-            }
-        }
-
-        private void closeToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-           Close();
-        }
-
-        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (!IsFileEdited())
-            {
-                IsFileEdited(true);
-            }
-        }
 
         private void closeOpenedFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -195,38 +188,41 @@ namespace Texty
             IsFileOpened(false);
         }
 
-        private void statusBarToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            statusStrip1.Visible = (sender as ToolStripMenuItem).Checked;
+            if (IsFileOpened() && IsFileEdited())
+            {
+                using (StreamWriter streamWriter = new StreamWriter(GetOpenedFileAddress()))
+                {
+                    await streamWriter.WriteLineAsync(richTextBox1.Text);
+                    IsFileEdited(false);
+                }
+            }
+            else if (!IsFileOpened() && IsFileEdited())
+            {
+                saveAsToolStripMenuItem_Click(sender, e);
+            }
+        }
+        private async void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter streamWriter = new StreamWriter(GetNewFileAddress()))
+                {
+                    SetOpenedFileAddress(GetNewFileAddress());
+                    IsFileOpened(true, GetNewFileName());
+                    await streamWriter.WriteLineAsync(richTextBox1.Text);
+                }
+            }
         }
 
-        private void richTextBox1_SelectionChanged(object sender, EventArgs e)
+        private void closeToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            int lineCount = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
-            int charCount = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(lineCount);
-            textLineChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
-            textLen.Text = $"Length {richTextBox1.Text.Length}";
+           Close();
         }
+        #endregion
 
-        private void restoreDeafaultZoomToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.ZoomFactor = 1;
-            SetTextZoomFactorStatus();
-        }
-
-        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.ZoomFactor += zoom;
-            SetTextZoomFactorStatus();
-
-        }
-
-        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.ZoomFactor -= zoom;
-            SetTextZoomFactorStatus();
-        }
-
+        #region Edit Tab
         private void timeDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateTime systemDateTime = DateTime.Now;
@@ -240,8 +236,8 @@ namespace Texty
             string gregorianDate = $"{systemDateTime.Year:0000}/{systemDateTime.Month:00}/{systemDateTime.Day:00}";
 
             string value = $"\r\n{solarHijriDate}\r\n{gregorianDate}";
-            int selectionLen = richTextBox1.SelectionStart + value.Replace("\r\n","x").Length;
-            
+            int selectionLen = richTextBox1.SelectionStart + value.Replace("\r\n", "x").Length;
+
             richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, value);
             richTextBox1.SelectionStart = selectionLen;
         }
@@ -253,33 +249,51 @@ namespace Texty
                 richTextBox1.Font = fontDialog1.Font;
             }
         }
+        #endregion
 
-        private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
+        #region View Tab
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegFont.Write(fontDialog1.Font);
-            RegSize.Write(Size);
-            if (WindowState == FormWindowState.Normal)
+            richTextBox1.ZoomFactor += zoom;
+            SetTextZoomFactorStatus();
+
+        }
+
+        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor -= zoom;
+            SetTextZoomFactorStatus();
+        }
+
+        private void restoreDeafaultZoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ZoomFactor = 1;
+            SetTextZoomFactorStatus();
+        }
+
+        private void statusBarToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            statusStrip1.Visible = (sender as ToolStripMenuItem).Checked;
+        }
+        #endregion
+
+
+        #region richTextBox
+        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (!IsFileEdited())
             {
-                RegSize.Write(Size);
-                RegWindowState.Write(WindowState);
-                RegLocation.Write(Location);
+                IsFileEdited(true);
             }
         }
 
-        private void TextyForm_Load(object sender, EventArgs e)
+        private void richTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-            if (!RegFont.IsExisted) RegFont.Write();
-            richTextBox1.Font = fontDialog1.Font = RegFont.Read();
-
-            if (!RegFont.IsExisted) RegFont.Write();
-            Size = RegSize.Read();
-
-            if (!RegWindowState.IsExisted) RegWindowState.Write();
-            WindowState = RegWindowState.Read();
-
-            if (!RegLocation.IsExisted) RegLocation.Write();
-            Location = RegLocation.Read();
-
+            int lineCount = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
+            int charCount = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(lineCount);
+            textLineChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
+            textLen.Text = $"Length {richTextBox1.Text.Length}";
         }
+        #endregion
     }
 }
