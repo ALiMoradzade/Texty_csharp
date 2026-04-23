@@ -64,7 +64,6 @@ namespace Texty
         private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             RegFont.Write(fontDialog1.Font);
-            RegSize.Write(Size);
             if (WindowState == FormWindowState.Normal)
             {
                 RegSize.Write(Size);
