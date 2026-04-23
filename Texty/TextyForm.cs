@@ -20,9 +20,10 @@ namespace Texty
         public TextyForm()
         {
             InitializeComponent();
-            Font font = RegFont.Read();
-            fontDialog1.Font = font;
-            richTextBox1.Font = font;
+            if (!RegFont.IsExisted) RegFont.Write();
+            richTextBox1.Font = fontDialog1.Font = RegFont.Read();
+
+            if (!RegFont.IsExisted) RegFont.Write();
             Size = RegSize.Read();
         }
 
