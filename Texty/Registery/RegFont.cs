@@ -37,7 +37,7 @@ namespace Texty
             {
                 key.SetValue("Name", font.Name, RegistryValueKind.String);
                 key.SetValue("Size", font.Size, RegistryValueKind.DWord);
-                key.SetValue("Style", font.Style, RegistryValueKind.String);
+                key.SetValue("Style", (int)font.Style, RegistryValueKind.DWord);
             }
         }
 
@@ -49,7 +49,7 @@ namespace Texty
                 {
                     string fontName = key.GetValue("Name").ToString();
                     int fontSize = (int)key.GetValue("Size");
-                    FontStyle fontStyle = (FontStyle)Enum.Parse(typeof(FontStyle), (string)key.GetValue("Style"));
+                    FontStyle fontStyle = (FontStyle)key.GetValue("Style");
 
                     Font font = new Font(fontName, fontSize, fontStyle);
                     return font;

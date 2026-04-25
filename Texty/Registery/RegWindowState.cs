@@ -35,7 +35,7 @@ namespace Texty.Registery
         {
             using (RegistryKey key = Registry.CurrentUser.CreateSubKey(RegAddress))
             {
-                key.SetValue("State", state.ToString(), RegistryValueKind.String);
+                key.SetValue("State", (int)state, RegistryValueKind.DWord);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Texty.Registery
             {
                 if (key != null)
                 {
-                    FormWindowState state = (FormWindowState)Enum.Parse(typeof(FormWindowState), (string)key.GetValue("State"));
+                    FormWindowState state = (FormWindowState)key.GetValue("State");
                     return state;
                 }
             }
