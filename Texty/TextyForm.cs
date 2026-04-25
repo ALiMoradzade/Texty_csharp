@@ -294,5 +294,52 @@ namespace Texty
             textLen.Text = $"Length {richTextBox1.Text.Length}";
         }
         #endregion
+
+        #region Right Click
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Undo();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Cut();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Copy();
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Paste();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+                int temp = richTextBox1.SelectionStart;
+                richTextBox1.Text = richTextBox1.Text.Remove(temp, richTextBox1.SelectionLength);
+                richTextBox1.SelectionStart = temp;
+            }
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectAll();
+        }
+
+        private void rightToLeftToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int rightToLeftState = (int)richTextBox1.RightToLeft;
+            rightToLeftState = -1 * ~(-1 * rightToLeftState);
+
+            richTextBox1.RightToLeft = (RightToLeft)rightToLeftState;
+            rightToLeftToolStripMenuItem.Checked = Convert.ToBoolean(rightToLeftState);
+            contextMenuStrip1.RightToLeft = RightToLeft.No;
+        }
+        #endregion
     }
 }
