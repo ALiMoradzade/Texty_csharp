@@ -90,6 +90,7 @@ namespace Texty
             this.richTextBox1.Text = "";
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // contextMenuStrip1
             // 
@@ -195,6 +196,7 @@ namespace Texty
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+O";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -202,7 +204,8 @@ namespace Texty
             // closeOpenedFileToolStripMenuItem
             // 
             this.closeOpenedFileToolStripMenuItem.Name = "closeOpenedFileToolStripMenuItem";
-            this.closeOpenedFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeOpenedFileToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
+            this.closeOpenedFileToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.closeOpenedFileToolStripMenuItem.Text = "Close Opened File";
             this.closeOpenedFileToolStripMenuItem.Visible = false;
             this.closeOpenedFileToolStripMenuItem.Click += new System.EventHandler(this.closeOpenedFileToolStripMenuItem_Click);
@@ -216,14 +219,16 @@ namespace Texty
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+S";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Shift+S";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -235,7 +240,8 @@ namespace Texty
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+E";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -255,13 +261,15 @@ namespace Texty
             // findToolStripMenuItem
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.findToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+F";
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.findToolStripMenuItem.Text = "Find";
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.replaceToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+H";
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.replaceToolStripMenuItem.Text = "Replace";
             // 
             // toolStripSeparator3
@@ -272,7 +280,8 @@ namespace Texty
             // dateToolStripMenuItem
             // 
             this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
-            this.dateToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.dateToolStripMenuItem.ShortcutKeyDisplayString = "F5";
+            this.dateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dateToolStripMenuItem.Text = "Date";
             this.dateToolStripMenuItem.Click += new System.EventHandler(this.timeDateToolStripMenuItem_Click);
             // 
@@ -304,27 +313,30 @@ namespace Texty
             this.zoomOutToolStripMenuItem,
             this.restoreDeafaultZoomToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
             // 
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.zoomInToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Plus";
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.zoomInToolStripMenuItem.Text = "Zoom in";
             this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
             // 
             // zoomOutToolStripMenuItem
             // 
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.zoomOutToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Minus";
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.zoomOutToolStripMenuItem.Text = "Zoom out";
             this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
             // 
             // restoreDeafaultZoomToolStripMenuItem
             // 
             this.restoreDeafaultZoomToolStripMenuItem.Name = "restoreDeafaultZoomToolStripMenuItem";
-            this.restoreDeafaultZoomToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.restoreDeafaultZoomToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+0";
+            this.restoreDeafaultZoomToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.restoreDeafaultZoomToolStripMenuItem.Text = "Restore deafault zoom";
             this.restoreDeafaultZoomToolStripMenuItem.Click += new System.EventHandler(this.restoreDeafaultZoomToolStripMenuItem_Click);
             // 

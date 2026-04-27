@@ -349,5 +349,61 @@ namespace Texty
         }
         #endregion
 
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control)
+            {
+                #region File
+                if (e.KeyCode == Keys.O) // Open
+                {
+                    openToolStripMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.C) // Close Opened File
+                {
+                    closeOpenedFileToolStripMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.S) // Save
+                {
+                    saveToolStripMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.E) // Exit
+                {
+                    exitToolStripMenuItem.PerformClick();
+                }
+                #endregion
+
+                #region View
+                else if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus) // Zoom In
+                {
+                    zoomInToolStripMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.Subtract || e.KeyCode == Keys.OemMinus) // Zoom Out
+                {
+                    zoomOutToolStripMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0) // Restore Default Zoom
+                {
+                    restoreDeafaultZoomToolStripMenuItem.PerformClick();
+                }
+                #endregion
+
+            }
+            else if (e.Modifiers == Keys.None)
+            {
+                if (e.KeyCode == Keys.F5) // Edit > Date
+                {
+                    dateToolStripMenuItem.PerformClick();
+                }
+            }
+            else if (e.Modifiers == (Keys.Shift | Keys.Control))
+            {
+                if (e.KeyCode == Keys.S) // File > Save as
+                {
+                    saveAsToolStripMenuItem.PerformClick();
+                }
+            }
+
+
+        }
     }
 }
