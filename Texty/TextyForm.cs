@@ -74,6 +74,41 @@ namespace Texty
         #endregion
 
         #region Set Methods
+        public void Undo()
+        {
+            richTextBox1.Undo();
+        }
+
+        public void Cut()
+        {
+            richTextBox1.Cut();
+        }
+
+        public void Copy()
+        {
+            richTextBox1.Copy();
+        }
+
+        public void Paste()
+        {
+            richTextBox1.Paste();
+        }
+
+        public void Delete()
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+                int temp = richTextBox1.SelectionStart;
+                richTextBox1.Text = richTextBox1.Text.Remove(temp, richTextBox1.SelectionLength);
+                richTextBox1.SelectionStart = temp;
+            }
+        }
+
+        public void SelectAll()
+        {
+            richTextBox1.SelectAll();
+        }
+
         public void IsFileEdited(bool status)
         {
             if (status)
@@ -218,7 +253,7 @@ namespace Texty
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           Close();
+            Close();
         }
         #endregion
 
@@ -237,7 +272,7 @@ namespace Texty
             }
 
             DateTime systemDateTime = DateTime.Now;
-            
+
             string gregorianDate = $"{systemDateTime.Year:0000}/{systemDateTime.Month:00}/{systemDateTime.Day:00}";
             string solarHijriDate = GetPersianDate(systemDateTime);
 
@@ -327,23 +362,23 @@ namespace Texty
                 #region Edit
                 else if (e.KeyCode == Keys.Z) // Undo
                 {
-                    undoToolStripMenuItem.PerformClick();
+                    Undo();
                 }
                 else if (e.KeyCode == Keys.X) // Cut
                 {
-                    cutToolStripMenuItem.PerformClick();
+                    Cut();
                 }
                 else if (e.KeyCode == Keys.C) // Copy
                 {
-                    copyToolStripMenuItem.PerformClick();
+                    Copy();
                 }
                 else if (e.KeyCode == Keys.V) // Paste
                 {
-                    pasteToolStripMenuItem.PerformClick();
+                    Paste();
                 }
                 else if (e.KeyCode == Keys.A) // Select All
                 {
-                    selectAllToolStripMenuItem.PerformClick();
+                    SelectAll();
                 }
                 else if (e.KeyCode == Keys.F) // Find
                 {
@@ -379,7 +414,7 @@ namespace Texty
                 }
                 else if (e.KeyCode == Keys.Delete) // Edit > Delete
                 {
-                    deleteToolStripMenuItem.PerformClick();
+                    Delete();
                 }
             }
             else if (e.Modifiers == (Keys.Shift | Keys.Control))
@@ -395,37 +430,32 @@ namespace Texty
         #region Right Click
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Undo();
+            Undo();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Cut();
+            Cut();
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Copy();
+            Copy();
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Paste();
+            Paste();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionLength > 0)
-            {
-                int temp = richTextBox1.SelectionStart;
-                richTextBox1.Text = richTextBox1.Text.Remove(temp, richTextBox1.SelectionLength);
-                richTextBox1.SelectionStart = temp;
-            }
+            Delete();
         }
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectAll();
+            SelectAll();
         }
 
         private void rightToLeftToolStripMenuItem_Click(object sender, EventArgs e)
