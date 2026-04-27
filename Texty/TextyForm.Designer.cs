@@ -320,24 +320,24 @@ namespace Texty
             // 
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
             this.zoomInToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Plus";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.zoomInToolStripMenuItem.Text = "Zoom in";
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.zoomInToolStripMenuItem.Text = "Zoom In";
             this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
             // 
             // zoomOutToolStripMenuItem
             // 
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Minus";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.zoomOutToolStripMenuItem.Text = "Zoom out";
+            this.zoomOutToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Negative";
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.zoomOutToolStripMenuItem.Text = "Zoom Out";
             this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
             // 
             // restoreDeafaultZoomToolStripMenuItem
             // 
             this.restoreDeafaultZoomToolStripMenuItem.Name = "restoreDeafaultZoomToolStripMenuItem";
             this.restoreDeafaultZoomToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+0";
-            this.restoreDeafaultZoomToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.restoreDeafaultZoomToolStripMenuItem.Text = "Restore deafault zoom";
+            this.restoreDeafaultZoomToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.restoreDeafaultZoomToolStripMenuItem.Text = "Restore Deafault Zoom";
             this.restoreDeafaultZoomToolStripMenuItem.Click += new System.EventHandler(this.restoreDeafaultZoomToolStripMenuItem_Click);
             // 
             // statusBarToolStripMenuItem
