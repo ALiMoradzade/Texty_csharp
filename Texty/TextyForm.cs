@@ -88,9 +88,9 @@ namespace Texty
 
         public void IsFileOpened(bool status, string fileName = "")
         {
+            Text = fileName;
             closeOpenedFileToolStripMenuItem.Visible = status;
             toolStripSeparator1.Visible = status;
-            Text = fileName;
             if (!status)
             {
                 richTextBox1.Clear();
@@ -116,7 +116,7 @@ namespace Texty
 
         public bool IsFileOpened()
         {
-            return closeOpenedFileToolStripMenuItem.Visible;
+            return string.IsNullOrEmpty(Text.Replace("*", ""));
         }
 
         public bool IsFileEdited()
