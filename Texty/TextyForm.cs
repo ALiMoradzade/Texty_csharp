@@ -116,7 +116,7 @@ namespace Texty
 
         public bool IsFileOpened()
         {
-            return string.IsNullOrEmpty(Text.Replace("*", ""));
+            return !string.IsNullOrEmpty(Text.Replace("*", ""));
         }
 
         public bool IsFileEdited()
@@ -278,7 +278,7 @@ namespace Texty
 
 
         #region richTextBox
-        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             if (!IsFileEdited())
             {
@@ -341,5 +341,7 @@ namespace Texty
             contextMenuStrip1.RightToLeft = RightToLeft.No;
         }
         #endregion
+
+        
     }
 }
