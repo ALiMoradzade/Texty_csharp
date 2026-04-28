@@ -18,6 +18,7 @@ namespace Texty
     public partial class TextyForm : Form
     {
         float zoom = 0.1f;
+        bool flagOpenFile = false;
         public TextyForm()
         {
             InitializeComponent();
@@ -128,7 +129,9 @@ namespace Texty
             toolStripSeparator1.Visible = status;
             if (!status)
             {
+                flagOpenFile = true;
                 richTextBox1.Clear();
+                flagOpenFile = false;
             }
         }
 
@@ -146,7 +149,9 @@ namespace Texty
         {
             using (StreamReader sr = new StreamReader(address))
             {
+                flagOpenFile = true;
                 richTextBox1.Text = await sr.ReadToEndAsync();
+                flagOpenFile = false;
             }
         }
 
@@ -327,11 +332,9 @@ namespace Texty
 
 
         #region richTextBox
-        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            // Not TextChanged , because it conflocts with IsFileOpend > richTextBox.Clear
-            // Then activates TextChanged which has IsFileEdited in it.
-            if (!IsFileEdited())
+            if (!flagOpenFile && !IsFileEdited())
             {
                 IsFileEdited(true);
             }
@@ -478,5 +481,6 @@ namespace Texty
         }
         #endregion
 
+       
     }
 }
