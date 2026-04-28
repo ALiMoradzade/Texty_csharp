@@ -141,6 +141,22 @@ namespace Texty
         {
             textZoomFactor.Text = $"{richTextBox1.ZoomFactor * 100}%";
         }
+
+        public async Task ReadFile(string address)
+        {
+            using (StreamReader sr = new StreamReader(address))
+            {
+                richTextBox1.Text = await sr.ReadToEndAsync();
+            }
+        }
+
+        public async Task WriteFile(string address)
+        {
+            using (StreamWriter streamWriter = new StreamWriter(address))
+            {
+                await streamWriter.WriteLineAsync(richTextBox1.Text);
+            }
+        }
         #endregion
 
         #region Get Methods
@@ -197,11 +213,8 @@ namespace Texty
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                using (StreamReader sr = new StreamReader(GetOpenedFileAddress()))
-                {
-                    richTextBox1.Text = await sr.ReadToEndAsync();
-                    richTextBox1.SelectionStart = richTextBox1.Text.Length;
-                }
+                await ReadFile(GetOpenedFileAddress());
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 IsFileOpened(true, GetFileName());
             }
         }
@@ -226,11 +239,8 @@ namespace Texty
         {
             if (IsFileOpened() && IsFileEdited())
             {
-                using (StreamWriter streamWriter = new StreamWriter(GetOpenedFileAddress()))
-                {
-                    await streamWriter.WriteLineAsync(richTextBox1.Text);
-                    IsFileEdited(false);
-                }
+                await WriteFile(GetOpenedFileAddress());
+                IsFileEdited(false);
             }
             else if (!IsFileOpened() && IsFileEdited())
             {
@@ -242,12 +252,9 @@ namespace Texty
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                using (StreamWriter streamWriter = new StreamWriter(GetNewFileAddress()))
-                {
-                    SetOpenedFileAddress(GetNewFileAddress());
-                    IsFileOpened(true, GetNewFileName());
-                    await streamWriter.WriteLineAsync(richTextBox1.Text);
-                }
+                await WriteFile(GetNewFileAddress());
+                SetOpenedFileAddress(GetNewFileAddress());
+                IsFileOpened(true, GetNewFileName());
             }
         }
 
