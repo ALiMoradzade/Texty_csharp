@@ -320,8 +320,10 @@ namespace Texty
 
 
         #region richTextBox
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
         {
+            // Not TextChanged , because it conflocts with IsFileOpend > richTextBox.Clear
+            // Then activates TextChanged which has IsFileEdited in it.
             if (!IsFileEdited())
             {
                 IsFileEdited(true);
@@ -344,10 +346,6 @@ namespace Texty
                 if (e.KeyCode == Keys.O) // Open
                 {
                     openToolStripMenuItem.PerformClick();
-                }
-                else if (e.KeyCode == Keys.C) // Close Opened File
-                {
-                    closeOpenedFileToolStripMenuItem.PerformClick();
                 }
                 else if (e.KeyCode == Keys.S) // Save
                 {
@@ -422,6 +420,10 @@ namespace Texty
                 if (e.KeyCode == Keys.S) // File > Save as
                 {
                     saveAsToolStripMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.C) // File > Close Opened File
+                {
+                    closeOpenedFileToolStripMenuItem.PerformClick();
                 }
             }
         }
