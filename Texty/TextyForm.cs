@@ -147,14 +147,35 @@ namespace Texty
             textZoomFactor.Text = $"{richTextBox1.ZoomFactor * 100}%";
         }
 
-        public async Task ReadFile(string address)
+        public async Task<string> ReadFile(string address)
         {
+            string text;
             using (StreamReader sr = new StreamReader(address))
             {
-                flagEnableTextChange = false;
-                richTextBox1.Text = await sr.ReadToEndAsync();
-                flagEnableTextChange = true;
+                text = await sr.ReadToEndAsync();
             }
+            return text;
+        }
+
+        public DialogResult OpenFileMessageBox()
+        {
+            var r = MessageBox.Show("Overwrite text file over your text?",
+                                  "Text Mix-Up! 😵‍💫",
+                                  MessageBoxButtons.YesNo,
+                                  MessageBoxIcon.Exclamation,
+                                  MessageBoxDefaultButton.Button2);
+
+            return r;
+        }
+
+        public async void OpenFile(string fileAddress, string fileName)
+        {
+            flagEnableTextChange = false;
+            richTextBox1.Text = await ReadFile(fileAddress);
+            flagEnableTextChange = true;
+
+            richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            IsFileOpened(true, fileName);
         }
 
         public async Task WriteFile(string address)
@@ -205,24 +226,17 @@ namespace Texty
 
 
         #region File Tab
-        private async void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!IsTextEmpty())
             {
-                var r = MessageBox.Show("Overwrite text file over your text?",
-                                      "Text Mix-Up! 😵‍💫",
-                                      MessageBoxButtons.YesNo,
-                                      MessageBoxIcon.Exclamation,
-                                      MessageBoxDefaultButton.Button2);
-
+                var r = OpenFileMessageBox();
                 if (r == DialogResult.No) return;
             }
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                await ReadFile(GetOpenedFileAddress());
-                richTextBox1.SelectionStart = richTextBox1.Text.Length;
-                IsFileOpened(true, GetFileName());
+                OpenFile(GetOpenedFileAddress(), GetFileName());
             }
         }
 
@@ -484,11 +498,38 @@ namespace Texty
 
         #endregion
 
+        int richTextBoxSelection;
         private async void richTextBox1_DragDrop(object sender, DragEventArgs e)
         {
             string[] filesAddresses = (string[])e.Data.GetData(DataFormats.FileDrop);
             string fileAddress = filesAddresses[0];
-            await ReadFile(fileAddress);
+            var r = MessageBox.Show("Would you like to open the file?",
+                                     "Incoming file detected...",
+                                     MessageBoxButtons.YesNo,
+                                     MessageBoxIcon.Question,
+                                     MessageBoxDefaultButton.Button2);
+
+            string text = await ReadFile(fileAddress);
+
+            if (r == DialogResult.Yes)
+            {
+                if (!IsTextEmpty())
+                {
+                    r = OpenFileMessageBox();
+                    if (r == DialogResult.No) return;
+                }
+
+                OpenFile(fileAddress, Path.GetFileName(fileAddress));
+                return;
+            }
+
+            richTextBox1.Text += text;
+            richTextBox1.SelectionStart = richTextBoxSelection;
+        }
+
+        private void richTextBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            richTextBoxSelection = richTextBox1.SelectionStart;
         }
     }
 }
