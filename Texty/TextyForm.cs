@@ -431,7 +431,7 @@ namespace Texty
                 {
                     saveAsToolStripMenuItem.PerformClick();
                 }
-                else if (e.KeyCode == Keys.C) // File > Close Opened File
+                else if (e.KeyCode == Keys.O) // File > Close Opened File
                 {
                     closeOpenedFileToolStripMenuItem.PerformClick();
                 }
