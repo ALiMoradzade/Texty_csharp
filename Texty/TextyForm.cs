@@ -1,17 +1,18 @@
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
-using Microsoft.Win32;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Texty.Registery;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Texty
 {
@@ -22,6 +23,7 @@ namespace Texty
         public TextyForm()
         {
             InitializeComponent();
+            richTextBox1.AllowDrop = true;
         }
 
         #region Form
@@ -479,8 +481,14 @@ namespace Texty
             rightToLeftToolStripMenuItem.Checked = Convert.ToBoolean(rightToLeftState);
             contextMenuStrip1.RightToLeft = RightToLeft.No;
         }
+
         #endregion
 
-       
+        private async void richTextBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] filesAddresses = (string[])e.Data.GetData(DataFormats.FileDrop);
+            string fileAddress = filesAddresses[0];
+            await ReadFile(fileAddress);
+        }
     }
 }

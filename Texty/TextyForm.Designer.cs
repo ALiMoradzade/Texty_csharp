@@ -99,6 +99,7 @@ namespace Texty
             this.richTextBox1.Size = new System.Drawing.Size(700, 462);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragDrop);
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
