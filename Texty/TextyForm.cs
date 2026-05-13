@@ -290,6 +290,36 @@ namespace Texty
         #endregion
 
         #region Edit Tab
+        private void undoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Undo();
+        }
+
+        private void cutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cut();
+        }
+
+        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Copy();
+        }
+
+        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Paste();
+        }
+
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Delete();
+        }
+
+        private void selectAllToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SelectAll();
+        }
+
         private void timeDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string GetPersianDate(DateTime dateTime)
@@ -329,7 +359,6 @@ namespace Texty
         {
             richTextBox1.ZoomFactor += zoom;
             SetTextZoomFactorStatus();
-
         }
 
         private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -418,26 +447,6 @@ namespace Texty
                 #endregion
 
                 #region Edit
-                else if (e.KeyCode == Keys.Z) // Undo
-                {
-                    Undo();
-                }
-                else if (e.KeyCode == Keys.X) // Cut
-                {
-                    Cut();
-                }
-                else if (e.KeyCode == Keys.C) // Copy
-                {
-                    Copy();
-                }
-                else if (e.KeyCode == Keys.V) // Paste
-                {
-                    Paste();
-                }
-                else if (e.KeyCode == Keys.A) // Select All
-                {
-                    SelectAll();
-                }
                 else if (e.KeyCode == Keys.F) // Find
                 {
                     // coming soon
@@ -469,10 +478,6 @@ namespace Texty
                 if (e.KeyCode == Keys.F5) // Edit > Date
                 {
                     dateToolStripMenuItem.PerformClick();
-                }
-                else if (e.KeyCode == Keys.Delete) // Edit > Delete
-                {
-                    Delete();
                 }
             }
             else if (e.Modifiers == (Keys.Shift | Keys.Control))
