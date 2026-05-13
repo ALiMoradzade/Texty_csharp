@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Texty.Registery;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Texty
@@ -421,8 +422,9 @@ namespace Texty
 
         private void richTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-            int lineCount = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
-            int charCount = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(lineCount);
+            int currentTextCursorIndex = richTextBox1.SelectionStart;
+            int lineCount = richTextBox1.GetLineFromCharIndex(currentTextCursorIndex);
+            int charCount = currentTextCursorIndex - richTextBox1.GetFirstCharIndexFromLine(lineCount);
             textLineChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
             textLen.Text = $"Length {richTextBox1.Text.Length}";
         }
