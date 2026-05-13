@@ -86,9 +86,22 @@ namespace Texty
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelBinary = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelOctal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDecimal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelHexaDecimal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip3 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelUTF8 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelUTF16 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip4 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelUTF32 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
+            this.statusStrip3.SuspendLayout();
+            this.statusStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -98,7 +111,7 @@ namespace Texty
             this.richTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(0, 24);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(700, 440);
+            this.richTextBox1.Size = new System.Drawing.Size(700, 396);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragDrop);
@@ -123,25 +136,25 @@ namespace Texty
             this.toolStripSeparator11,
             this.normalizeDigitsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 226);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 204);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(158, 6);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Enabled = false;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -149,14 +162,14 @@ namespace Texty
             // 
             this.copyToolStripMenuItem.Enabled = false;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -164,43 +177,43 @@ namespace Texty
             // 
             this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(158, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(158, 6);
             // 
             // rightToLeftToolStripMenuItem
             // 
             this.rightToLeftToolStripMenuItem.Name = "rightToLeftToolStripMenuItem";
-            this.rightToLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rightToLeftToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.rightToLeftToolStripMenuItem.Text = "Right To Left";
             this.rightToLeftToolStripMenuItem.Click += new System.EventHandler(this.rightToLeftToolStripMenuItem_Click);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(158, 6);
             // 
             // normalizeDigitsToolStripMenuItem
             // 
             this.normalizeDigitsToolStripMenuItem.Name = "normalizeDigitsToolStripMenuItem";
-            this.normalizeDigitsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normalizeDigitsToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.normalizeDigitsToolStripMenuItem.Text = "Normalize Digits";
             this.normalizeDigitsToolStripMenuItem.Click += new System.EventHandler(this.normalizeDigitsToolStripMenuItem_Click);
             // 
@@ -426,7 +439,7 @@ namespace Texty
             this.zoomOutToolStripMenuItem,
             this.restoreDeafaultZoomToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
@@ -459,7 +472,7 @@ namespace Texty
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.statusBarToolStripMenuItem.Text = "Status bar";
             this.statusBarToolStripMenuItem.CheckedChanged += new System.EventHandler(this.statusBarToolStripMenuItem_CheckedChanged);
             // 
@@ -474,7 +487,7 @@ namespace Texty
             // textySourceCodeToolStripMenuItem
             // 
             this.textySourceCodeToolStripMenuItem.Name = "textySourceCodeToolStripMenuItem";
-            this.textySourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textySourceCodeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.textySourceCodeToolStripMenuItem.Text = "Texty Source Code";
             // 
             // statusStrip1
@@ -536,12 +549,98 @@ namespace Texty
             this.saveFileDialog1.Filter = "Text Files|*.txt|JSON Files|*.json|Batch Files|*.bat|All Files|*.*";
             this.saveFileDialog1.Title = "Hit save and make it stay!";
             // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelBinary,
+            this.toolStripStatusLabelOctal,
+            this.toolStripStatusLabelDecimal,
+            this.toolStripStatusLabelHexaDecimal});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 442);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(700, 22);
+            this.statusStrip2.TabIndex = 3;
+            this.statusStrip2.Text = "statusStrip2";
+            // 
+            // toolStripStatusLabelBinary
+            // 
+            this.toolStripStatusLabelBinary.Name = "toolStripStatusLabelBinary";
+            this.toolStripStatusLabelBinary.Size = new System.Drawing.Size(171, 17);
+            this.toolStripStatusLabelBinary.Spring = true;
+            this.toolStripStatusLabelBinary.Text = "Binary: 0";
+            // 
+            // toolStripStatusLabelOctal
+            // 
+            this.toolStripStatusLabelOctal.Name = "toolStripStatusLabelOctal";
+            this.toolStripStatusLabelOctal.Size = new System.Drawing.Size(171, 17);
+            this.toolStripStatusLabelOctal.Spring = true;
+            this.toolStripStatusLabelOctal.Text = "Octal: 0";
+            // 
+            // toolStripStatusLabelDecimal
+            // 
+            this.toolStripStatusLabelDecimal.Name = "toolStripStatusLabelDecimal";
+            this.toolStripStatusLabelDecimal.Size = new System.Drawing.Size(171, 17);
+            this.toolStripStatusLabelDecimal.Spring = true;
+            this.toolStripStatusLabelDecimal.Text = "Decimal: 0";
+            // 
+            // toolStripStatusLabelHexaDecimal
+            // 
+            this.toolStripStatusLabelHexaDecimal.Name = "toolStripStatusLabelHexaDecimal";
+            this.toolStripStatusLabelHexaDecimal.Size = new System.Drawing.Size(171, 17);
+            this.toolStripStatusLabelHexaDecimal.Spring = true;
+            this.toolStripStatusLabelHexaDecimal.Text = "Hexadecimal: 0";
+            // 
+            // statusStrip3
+            // 
+            this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelUTF8,
+            this.toolStripStatusLabelUTF16});
+            this.statusStrip3.Location = new System.Drawing.Point(0, 420);
+            this.statusStrip3.Name = "statusStrip3";
+            this.statusStrip3.Size = new System.Drawing.Size(700, 22);
+            this.statusStrip3.TabIndex = 4;
+            this.statusStrip3.Text = "statusStrip3";
+            // 
+            // toolStripStatusLabelUTF8
+            // 
+            this.toolStripStatusLabelUTF8.Name = "toolStripStatusLabelUTF8";
+            this.toolStripStatusLabelUTF8.Size = new System.Drawing.Size(342, 17);
+            this.toolStripStatusLabelUTF8.Spring = true;
+            this.toolStripStatusLabelUTF8.Text = "UTF-8: 0x00";
+            // 
+            // toolStripStatusLabelUTF16
+            // 
+            this.toolStripStatusLabelUTF16.Name = "toolStripStatusLabelUTF16";
+            this.toolStripStatusLabelUTF16.Size = new System.Drawing.Size(342, 17);
+            this.toolStripStatusLabelUTF16.Spring = true;
+            this.toolStripStatusLabelUTF16.Text = "UTF-16: 0x0000";
+            // 
+            // statusStrip4
+            // 
+            this.statusStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelUTF32});
+            this.statusStrip4.Location = new System.Drawing.Point(0, 398);
+            this.statusStrip4.Name = "statusStrip4";
+            this.statusStrip4.Size = new System.Drawing.Size(700, 22);
+            this.statusStrip4.TabIndex = 5;
+            this.statusStrip4.Text = "statusStrip4";
+            // 
+            // toolStripStatusLabelUTF32
+            // 
+            this.toolStripStatusLabelUTF32.Name = "toolStripStatusLabelUTF32";
+            this.toolStripStatusLabelUTF32.Size = new System.Drawing.Size(654, 17);
+            this.toolStripStatusLabelUTF32.Spring = true;
+            this.toolStripStatusLabelUTF32.Text = "UTF-32: 0x00000000";
+            // 
             // TextyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 486);
+            this.Controls.Add(this.statusStrip4);
             this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.statusStrip3);
+            this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -557,6 +656,12 @@ namespace Texty
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
+            this.statusStrip3.ResumeLayout(false);
+            this.statusStrip3.PerformLayout();
+            this.statusStrip4.ResumeLayout(false);
+            this.statusStrip4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -620,5 +725,15 @@ namespace Texty
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem normalizeDigitsToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelBinary;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelOctal;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDecimal;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelHexaDecimal;
+        private System.Windows.Forms.StatusStrip statusStrip3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelUTF8;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelUTF16;
+        private System.Windows.Forms.StatusStrip statusStrip4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelUTF32;
     }
 }

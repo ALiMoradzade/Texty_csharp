@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Texty.Encoding;
 using Texty.Registery;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -163,6 +164,17 @@ namespace Texty
             cutToolStripMenuItem.Enabled = state;
             copyToolStripMenuItem.Enabled = state;
             deleteToolStripMenuItem.Enabled = state;
+        }
+
+        public void EnableSingleCharEncoding(bool stateSingleChar)
+        {
+           statusStrip2.Visible = stateSingleChar;
+        }
+
+        public void EnableMultipleCharEncoding(bool stateMultipleChar)
+        {
+            statusStrip3.Visible = stateMultipleChar;
+            statusStrip4.Visible = stateMultipleChar;
         }
         #endregion
 
@@ -441,8 +453,33 @@ namespace Texty
             textLineChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
             textLen.Text = $"Length {richTextBox1.Text.Length}";
 
-            if (richTextBox1.SelectionLength > 0) EnableContextualEditing(true);
-            else EnableContextualEditing(false);
+            if (richTextBox1.SelectionLength > 0)
+            {
+                EnableContextualEditing(true);
+
+                if (richTextBox1.SelectionLength == 1)
+                {
+                    EnableSingleCharEncoding(true);
+                    EnableMultipleCharEncoding(true);
+
+                }
+                else if (richTextBox1.SelectionLength > 1 && richTextBox1.SelectionLength <= 19)
+                {
+                    EnableSingleCharEncoding(false);
+                    EnableMultipleCharEncoding(true);
+                    TextEncoding encode = new TextEncoding();
+                    encode.Encode(richTextBox1.SelectedText);
+                    toolStripStatusLabelUTF8.Text = $"UTF-8: {encode.UTF8}";
+                    toolStripStatusLabelUTF16.Text = $"UTF-16: {encode.UTF16}";
+                    toolStripStatusLabelUTF32.Text = $"UTF-32: {encode.UTF32}";
+                }
+            }
+            else
+            {
+                EnableContextualEditing(false);
+                EnableSingleCharEncoding(false);
+                EnableMultipleCharEncoding(false);
+            }
         }
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
