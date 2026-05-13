@@ -218,7 +218,7 @@ namespace Texty
             }
         }
 
-       
+
 
         public async void OpenFile(string fileAddress, string fileName)
         {
@@ -230,7 +230,7 @@ namespace Texty
             IsFileOpened(true, fileName);
         }
 
-       
+
 
         #endregion
 
@@ -530,6 +530,30 @@ namespace Texty
             contextMenuStrip1.RightToLeft = RightToLeft.No;
         }
 
+        private void normalizeDigitsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string input = richTextBox1.SelectedText;
+            if (richTextBox1.SelectionLength == 0 ||
+                !input.All(character => character != '\0' && char.IsDigit(character))) return;
+
+            StringBuilder result = new StringBuilder(0, input.Length);
+            foreach (char c in input)
+            {
+                if (c >= '۰' && c <= '۹')      // Persian digits 1776-1785
+                {
+                    result.Append((char)('0' + (c - '۰')));
+                }
+                else if (c >= '٠' && c <= '٩') // Arabic-Indic digits 1632-1641
+                {
+                    result.Append((char)('0' + (c - '٠')));
+                }
+                else                           // ASCII digits 48-57
+                {
+                    result.Append(c);
+                }
+            }
+            richTextBox1.SelectedText = result.ToString();
+        }
         #endregion
 
     }
