@@ -26,7 +26,10 @@ namespace Texty
         public TextyForm()
         {
             InitializeComponent();
+
             richTextBox1.AllowDrop = true;
+            
+            // no need to Enable methods because richTextBox.SelectionLength Event invokes them
         }
 
         #region Form Events
