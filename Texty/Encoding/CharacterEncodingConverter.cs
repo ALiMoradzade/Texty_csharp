@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -44,7 +45,7 @@ namespace Texty.Encoding
             int decimalCode = character;
             binaryCode = ConvertToBinaryCode(character);
             octalCode = ConvertToOctalCode(character);
-            this.decimalCode = Split(decimalCode.ToString(), 3, ",", true);
+            this.decimalCode = Split(decimalCode.ToString(), 3, ',', true);
             hexadecimalCode = ConvertToHexadecimalCode(character);
         }
 
@@ -58,14 +59,14 @@ namespace Texty.Encoding
         {
             string decimalToBinary = Convert.ToString(decimalCode, 2);
             string binaryPadLeft = Padding(decimalToBinary, 4, '0', false);
-            string fixFormat = Split(binaryPadLeft, 4, " ", true);
+            string fixFormat = Split(binaryPadLeft, 4, ' ', true);
             return fixFormat;
         }
 
         private static string ConvertToOctalCode(int decimalCode)
         {
             string decimalToOctal = Convert.ToString(decimalCode, 8);
-            string fixFormat = Split(decimalToOctal, 3, " ", true);
+            string fixFormat = Split(decimalToOctal, 3, ' ', true);
             return fixFormat;
         }
 
@@ -93,20 +94,22 @@ namespace Texty.Encoding
             return paddedString;
         }
 
-        private static string Split(string text, int separateCount, string separator, bool fromRight)
+        private static string Split(string text, int separateCount, char separator, bool fromRight)
         {
             string pattern = ".{" + separateCount + "}";
-
+            
             string splitedString;
             if (fromRight)
             {
                 string reversed = string.Concat(text.Reverse());
                 splitedString = Regex.Replace(reversed, pattern, "$0" + separator);
+                if (splitedString.Last() == separator) splitedString = splitedString.Remove(splitedString.Length - 1);
                 return string.Concat(splitedString.Reverse());
             }
             else
             {
                 splitedString = Regex.Replace(text, pattern, "$0" + separator);
+                if (splitedString.Last() == separator) splitedString = splitedString.Remove(splitedString.Length - 1);
             }
             return splitedString;
         }
