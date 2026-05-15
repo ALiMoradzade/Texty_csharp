@@ -465,12 +465,12 @@ namespace Texty
                     EnableSingleCharEncoding(true);
                     EnableMultipleCharEncoding(false);
 
-                    CharEncoding ce = new CharEncoding();
-                    ce.Encode(richTextBox1.SelectedText[0]);
-                    toolStripStatusLabelBinary.Text = $"Binary: {ce.Binary}";
-                    toolStripStatusLabelOctal.Text = $"Octal: {ce.Octal}";
-                    toolStripStatusLabelDecimal.Text = $"Decimal: {ce.Decimal}";
-                    toolStripStatusLabelHexadecimal.Text = $"Hexadecimal: {ce.Hexadecimal}";
+                    CharacterEncodingConverter converter = new CharacterEncodingConverter();
+                    converter.EncodeChar(richTextBox1.SelectedText[0]);
+                    toolStripStatusLabelBinary.Text = $"Binary: {converter.BinaryCode}";
+                    toolStripStatusLabelOctal.Text = $"Octal: {converter.OctalCode}";
+                    toolStripStatusLabelDecimal.Text = $"Decimal: {converter.DecimalCode}";
+                    toolStripStatusLabelHexadecimal.Text = $"Hexadecimal: {converter.HexadecimalCode}";
                 }
                 else if (richTextBox1.SelectionLength > 1 && richTextBox1.SelectionLength <= 19)
                 {

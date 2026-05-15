@@ -10,78 +10,72 @@ using System.Threading.Tasks;
 
 namespace Texty.Encoding
 {
-    internal class CharEncoding
+    internal class CharacterEncodingConverter
     {
         private char character;
-        private string binary;
-        private string octal;
-        private string @decimal;
-        private string hexadecimal;
+        private string binaryCode;
+        private string octalCode;
+        private string decimalCode;
+        private string hexadecimalCode;
 
         public char Character
         {
             get => character;
         }
-        public string Binary
+        public string BinaryCode
         {
-            get => binary;
+            get => binaryCode;
         }
-        public string Octal
+        public string OctalCode
         {
-            get => octal;
+            get => octalCode;
         }
-        public string Decimal
+        public string DecimalCode
         {
-            get => @decimal;
+            get => decimalCode;
         }
-        public string Hexadecimal
+        public string HexadecimalCode
         {
-            get => hexadecimal;
-
-        }
-
-        public void Encode(char character)
-        {
-            binary = EncodeToBinary(character);
-            octal = EncodeToOctal(character);
-            @decimal = EncodeToDecimal(character);
-            hexadecimal = EncodeToHexadecimal(character);
+            get => hexadecimalCode;
         }
 
-        public void Decode(int @decimal)
+        public void EncodeChar(char character)
         {
-            character = (char)@decimal;
+            int decimalCode = character;
+            binaryCode = ConvertToBinaryCode(character);
+            octalCode = ConvertToOctalCode(character);
+            this.decimalCode = Split(decimalCode.ToString(), 3, ",", true);
+            hexadecimalCode = ConvertToHexadecimalCode(character);
+        }
+
+        public void DecodeCode(int decimalCode)
+        {
+            character = (char)decimalCode;
         }
 
         #region Encoder
-        private static string EncodeToBinary(char character)
+        private static string ConvertToBinaryCode(int decimalCode)
         {
-            int deci = character;
-            string decimalToBinary = Convert.ToString(deci, 2);
+            string decimalToBinary = Convert.ToString(decimalCode, 2);
             string binaryPadLeft = Padding(decimalToBinary, 4, '0', false);
             string fixFormat = Split(binaryPadLeft, 4, " ", true);
             return fixFormat;
         }
 
-        private static string EncodeToOctal(char character)
+        private static string ConvertToOctalCode(int decimalCode)
         {
-            int deci = character;
-            string decimalToOctal = Convert.ToString(deci, 8);
+            string decimalToOctal = Convert.ToString(decimalCode, 8);
             string fixFormat = Split(decimalToOctal, 3, " ", true);
             return fixFormat;
         }
 
-        private static string EncodeToDecimal(char character)
+        private static string ConvertToHexadecimalCode(int decimalCode)
         {
-            int deci = character;
-            string fixFormat = Split(deci.ToString(), 3, ",", true);
-            return fixFormat;
-        }
+            string decimalToHexadecimal = decimalCode.ToString("X2");  // X (uppercase), x (lowercase)
+            if (decimalToHexadecimal.Length == 2) return $"0x{decimalToHexadecimal}";
 
-        private static string EncodeToHexadecimal(char character)
-        {
-            int deci = character;
-            return $"0x{deci:X}"; // X (uppercase), x (lowercase)
+            string hexadecimalPadLeft = Padding(decimalToHexadecimal, 4, '0', false);
+            return $"0x{hexadecimalPadLeft}";
         }
         #endregion
 

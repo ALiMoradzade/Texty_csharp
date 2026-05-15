@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Encoding\CharEncoding.cs" />
+    <Compile Include="Encoding\CharEncodingConverter.cs" />
+    <Compile Include="Encoding\CharacterEncodingConverter.cs" />
     <Compile Include="Encoding\TextEncoding.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
