@@ -633,6 +633,32 @@ namespace Texty
         }
         #endregion
 
+        #region Right Click Status bar
+        private ToolStripStatusLabel clickedStatusLabel;
+        private void toolStripStatusLabelUTF32_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                clickedStatusLabel = sender as ToolStripStatusLabel;
+                contextMenuStrip2.Show(Cursor.Position);
+            }
+        }
         
+        private void copyToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            string prefix = ": ";
+            string text = clickedStatusLabel.Text;
+            string filteredText = text.Substring(text.IndexOf(prefix) + prefix.Length);
+
+            try
+            {
+                Clipboard.SetText(filteredText);
+            }
+            catch (Exception)
+            {
+                Clipboard.SetText("Texy failed to copy!");
+            }
+        }
+        #endregion
     }
 }

@@ -100,12 +100,15 @@ namespace Texty
             this.toolStripStatusLabelUTF16 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip4 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelUTF32 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.statusStrip3.SuspendLayout();
             this.statusStrip4.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -503,6 +506,7 @@ namespace Texty
             this.textToolStripMenuItem.Name = "textToolStripMenuItem";
             this.textToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.textToolStripMenuItem.Text = "Text";
+            this.textToolStripMenuItem.Click += new System.EventHandler(this.textToolStripMenuItem_Click);
             // 
             // characterToolStripMenuItem
             // 
@@ -603,6 +607,7 @@ namespace Texty
             this.toolStripStatusLabelBinary.Size = new System.Drawing.Size(171, 17);
             this.toolStripStatusLabelBinary.Spring = true;
             this.toolStripStatusLabelBinary.Text = "Binary: 0";
+            this.toolStripStatusLabelBinary.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);
             // 
             // toolStripStatusLabelOctal
             // 
@@ -610,6 +615,7 @@ namespace Texty
             this.toolStripStatusLabelOctal.Size = new System.Drawing.Size(171, 17);
             this.toolStripStatusLabelOctal.Spring = true;
             this.toolStripStatusLabelOctal.Text = "Octal: 0";
+            this.toolStripStatusLabelOctal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);
             // 
             // toolStripStatusLabelDecimal
             // 
@@ -617,6 +623,7 @@ namespace Texty
             this.toolStripStatusLabelDecimal.Size = new System.Drawing.Size(171, 17);
             this.toolStripStatusLabelDecimal.Spring = true;
             this.toolStripStatusLabelDecimal.Text = "Decimal: 0";
+            this.toolStripStatusLabelDecimal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);
             // 
             // toolStripStatusLabelHexadecimal
             // 
@@ -624,6 +631,7 @@ namespace Texty
             this.toolStripStatusLabelHexadecimal.Size = new System.Drawing.Size(171, 17);
             this.toolStripStatusLabelHexadecimal.Spring = true;
             this.toolStripStatusLabelHexadecimal.Text = "Hexadecimal: 0x00";
+            this.toolStripStatusLabelHexadecimal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);
             // 
             // statusStrip3
             // 
@@ -642,6 +650,7 @@ namespace Texty
             this.toolStripStatusLabelUTF8.Size = new System.Drawing.Size(342, 17);
             this.toolStripStatusLabelUTF8.Spring = true;
             this.toolStripStatusLabelUTF8.Text = "UTF-8: 0x00";
+            this.toolStripStatusLabelUTF8.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);
             // 
             // toolStripStatusLabelUTF16
             // 
@@ -649,6 +658,7 @@ namespace Texty
             this.toolStripStatusLabelUTF16.Size = new System.Drawing.Size(342, 17);
             this.toolStripStatusLabelUTF16.Spring = true;
             this.toolStripStatusLabelUTF16.Text = "UTF-16: 0x0000";
+            this.toolStripStatusLabelUTF16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);
             // 
             // statusStrip4
             // 
@@ -663,9 +673,24 @@ namespace Texty
             // toolStripStatusLabelUTF32
             // 
             this.toolStripStatusLabelUTF32.Name = "toolStripStatusLabelUTF32";
-            this.toolStripStatusLabelUTF32.Size = new System.Drawing.Size(685, 17);
+            this.toolStripStatusLabelUTF32.Size = new System.Drawing.Size(654, 17);
             this.toolStripStatusLabelUTF32.Spring = true;
             this.toolStripStatusLabelUTF32.Text = "UTF-32: 0x00000000";
+            this.toolStripStatusLabelUTF32.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem2});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(103, 26);
+            // 
+            // copyToolStripMenuItem2
+            // 
+            this.copyToolStripMenuItem2.Name = "copyToolStripMenuItem2";
+            this.copyToolStripMenuItem2.Size = new System.Drawing.Size(102, 22);
+            this.copyToolStripMenuItem2.Text = "Copy";
+            this.copyToolStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
             // 
             // TextyForm
             // 
@@ -697,6 +722,7 @@ namespace Texty
             this.statusStrip3.PerformLayout();
             this.statusStrip4.ResumeLayout(false);
             this.statusStrip4.PerformLayout();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -774,5 +800,7 @@ namespace Texty
         private System.Windows.Forms.ToolStripMenuItem decodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem characterToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem2;
     }
 }
