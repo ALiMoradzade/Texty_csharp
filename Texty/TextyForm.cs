@@ -408,6 +408,13 @@ namespace Texty
         }
         #endregion
 
+        #region Tools
+        private void characterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CharacterDecoderForm form = new CharacterDecoderForm();
+            form.Show();
+        }
+        #endregion
 
         #region richTextBox
 
@@ -465,8 +472,8 @@ namespace Texty
                     EnableSingleCharEncoding(true);
                     EnableMultipleCharEncoding(false);
 
-                    CharacterEncodingConverter converter = new CharacterEncodingConverter();
-                    converter.EncodeChar(richTextBox1.SelectedText[0]);
+                    char c = richTextBox1.SelectedText[0];
+                    CharacterEncodingConverter converter = new CharacterEncodingConverter(c);
                     toolStripStatusLabelBinary.Text = $"Binary: {converter.BinaryCode}";
                     toolStripStatusLabelOctal.Text = $"Octal: {converter.OctalCode}";
                     toolStripStatusLabelDecimal.Text = $"Decimal: {converter.DecimalCode}";
@@ -626,5 +633,6 @@ namespace Texty
         }
         #endregion
 
+        
     }
 }

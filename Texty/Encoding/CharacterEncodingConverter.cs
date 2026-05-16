@@ -13,6 +13,8 @@ namespace Texty.Encoding
 {
     internal class CharacterEncodingConverter
     {
+     
+
         private char character;
         private string binaryCode;
         private string octalCode;
@@ -40,8 +42,10 @@ namespace Texty.Encoding
             get => hexadecimalCode;
         }
 
-        public void EncodeChar(char character)
+        public CharacterEncodingConverter(char character)
         {
+            this.character = character;
+
             int decimalCode = character;
             binaryCode = ConvertToBinaryCode(character);
             octalCode = ConvertToOctalCode(character);
@@ -49,9 +53,9 @@ namespace Texty.Encoding
             hexadecimalCode = ConvertToHexadecimalCode(character);
         }
 
-        public void DecodeCode(int decimalCode)
+        public CharacterEncodingConverter(int decimalCide) : this(Convert.ToChar(decimalCide))
         {
-            character = (char)decimalCode;
+           
         }
 
         #region Encoder
@@ -113,5 +117,6 @@ namespace Texty.Encoding
             }
             return splitedString;
         }
+
     }
 }

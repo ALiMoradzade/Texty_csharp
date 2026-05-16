@@ -49,8 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encoding\CharEncoding.cs" />
-    <Compile Include="Encoding\CharEncodingConverter.cs" />
+    <Compile Include="Encoding\CharacterDecoderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Encoding\CharacterDecoderForm.Designer.cs">
+      <DependentUpon>CharacterDecoderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Encoding\CharacterEncodingConverter.cs" />
     <Compile Include="Encoding\TextEncoding.cs" />
     <Compile Include="Program.cs" />
@@ -65,6 +69,9 @@
     <Compile Include="TextyForm.Designer.cs">
       <DependentUpon>TextyForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Encoding\CharacterDecoderForm.resx">
+      <DependentUpon>CharacterDecoderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
