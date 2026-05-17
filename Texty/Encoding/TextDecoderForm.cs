@@ -46,7 +46,7 @@ namespace Texty.Encoding
             }
             else if (!TextEncodingConverter.IsCodeLengthCorrect(code, codeEncoding))
             {
-                textBox1.Text = "The value is outside the range (0 – 0x0010FFFF)";
+                textBox1.Text = "The value is out of range (0 – 0x0010FFFF)";
                 return;
             }
 

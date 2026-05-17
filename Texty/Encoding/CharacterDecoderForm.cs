@@ -41,12 +41,12 @@ namespace Texty.Encoding
 
             if (!CharacterEncodingConverter.IsCodeBaseCorrect(code, codeBase))
             {
-                textBoxCharacter.Text = "Please, select a valid code or base";
+                textBoxCharacter.Text = "Please, enter a valid code or base";
                 return;
             }
             else if (!CharacterEncodingConverter.IsCodeLengthCorrect(code, codeBase))
             {
-                textBoxCharacter.Text = "The value is outside the range (0 – 65535)";
+                textBoxCharacter.Text = "The value is out of range (0 – 0xFFFF)";
                 return;
             }
 
