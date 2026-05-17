@@ -414,6 +414,12 @@ namespace Texty
             CharacterDecoderForm form = new CharacterDecoderForm();
             form.Show();
         }
+
+        private void textToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextDecoderForm form = new TextDecoderForm();
+            form.Show();
+        }
         #endregion
 
         #region richTextBox
@@ -484,7 +490,7 @@ namespace Texty
                     EnableSingleCharEncoding(false);
                     EnableMultipleCharEncoding(true);
 
-                    TextEncoding encode = new TextEncoding();
+                    TextEncodingConverter encode = new TextEncodingConverter();
                     encode.Encode(richTextBox1.SelectedText);
                     toolStripStatusLabelUTF8.Text = $"UTF-8: {encode.UTF8}";
                     toolStripStatusLabelUTF16.Text = $"UTF-16: {encode.UTF16}";
@@ -643,7 +649,7 @@ namespace Texty
                 contextMenuStrip2.Show(Cursor.Position);
             }
         }
-        
+
         private void copyToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             string prefix = ": ";
