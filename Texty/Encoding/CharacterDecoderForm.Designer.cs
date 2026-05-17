@@ -50,6 +50,7 @@ namespace Texty.Encoding
             this.textBoxCode.Size = new System.Drawing.Size(124, 22);
             this.textBoxCode.TabIndex = 0;
             this.textBoxCode.TextChanged += new System.EventHandler(this.textBoxEncode_TextChanged);
+            this.textBoxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCode_KeyPress);
             // 
             // contextMenuStrip1
             // 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Texty.Encoding;
@@ -60,6 +61,14 @@ namespace Texty.Encoding
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textBoxCode.Paste();
+        }
+
+        private void textBoxCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.IsMatch(e.KeyChar.ToString(),"[0-9a-fA-F]{1}"))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
