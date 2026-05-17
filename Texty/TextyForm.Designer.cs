@@ -498,20 +498,20 @@ namespace Texty
             this.textToolStripMenuItem,
             this.characterToolStripMenuItem});
             this.decodeToolStripMenuItem.Name = "decodeToolStripMenuItem";
-            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.decodeToolStripMenuItem.Text = "Decode";
             // 
             // textToolStripMenuItem
             // 
             this.textToolStripMenuItem.Name = "textToolStripMenuItem";
-            this.textToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.textToolStripMenuItem.Text = "Text";
             this.textToolStripMenuItem.Click += new System.EventHandler(this.textToolStripMenuItem_Click);
             // 
             // characterToolStripMenuItem
             // 
             this.characterToolStripMenuItem.Name = "characterToolStripMenuItem";
-            this.characterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.characterToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.characterToolStripMenuItem.Text = "Character";
             this.characterToolStripMenuItem.Click += new System.EventHandler(this.characterToolStripMenuItem_Click);
             // 
@@ -526,8 +526,9 @@ namespace Texty
             // textySourceCodeToolStripMenuItem
             // 
             this.textySourceCodeToolStripMenuItem.Name = "textySourceCodeToolStripMenuItem";
-            this.textySourceCodeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.textySourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.textySourceCodeToolStripMenuItem.Text = "Texty Source Code";
+            this.textySourceCodeToolStripMenuItem.Click += new System.EventHandler(this.textySourceCodeToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -673,7 +674,7 @@ namespace Texty
             // toolStripStatusLabelUTF32
             // 
             this.toolStripStatusLabelUTF32.Name = "toolStripStatusLabelUTF32";
-            this.toolStripStatusLabelUTF32.Size = new System.Drawing.Size(654, 17);
+            this.toolStripStatusLabelUTF32.Size = new System.Drawing.Size(685, 17);
             this.toolStripStatusLabelUTF32.Spring = true;
             this.toolStripStatusLabelUTF32.Text = "UTF-32: 0x00000000";
             this.toolStripStatusLabelUTF32.MouseUp += new System.Windows.Forms.MouseEventHandler(this.toolStripStatusLabelUTF32_MouseUp);

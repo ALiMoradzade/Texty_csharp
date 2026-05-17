@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -408,7 +409,7 @@ namespace Texty
         }
         #endregion
 
-        #region Tools
+        #region Tools Tab
         private void characterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CharacterDecoderForm form = new CharacterDecoderForm();
@@ -419,6 +420,14 @@ namespace Texty
         {
             TextDecoderForm form = new TextDecoderForm();
             form.Show();
+        }
+        #endregion
+
+        #region Help Tab
+        private void textySourceCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string link = @"https://github.com/ALiMoradzade/Texty";
+            Process.Start(link);
         }
         #endregion
 
@@ -668,5 +677,6 @@ namespace Texty
             }
         }
         #endregion
+
     }
 }
