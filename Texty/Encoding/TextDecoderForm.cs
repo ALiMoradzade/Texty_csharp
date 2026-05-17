@@ -21,26 +21,34 @@ namespace Texty.Encoding
             comboBox1.SelectedIndex = -1;
         }
 
-        public bool isCodeEmpty()
-        {
-            return textBoxCode.Text.All(character => char.IsWhiteSpace(character));
-        }
-
-        public bool isEncodingSelected()
-        {
-            return comboBox1.SelectedIndex != -1;
-        }
-
         private void textBoxCode_TextChanged(object sender, EventArgs e)
         {
-            if (isCodeEmpty()) return;
-            else if (!isEncodingSelected())
+            string code;
+            TextEncodingConverter.Encoding codeEncoding;
+
+            if (textBoxCode.Text.All(character => char.IsWhiteSpace(character)))
+            {
+                return;
+            }
+            else if (comboBox1.SelectedItem == null)
             {
                 textBox1.Text = "Please, select an encoding";
                 return;
             }
-            
-            var codeEncoding = (TextEncodingConverter.Encoding)comboBox1.SelectedItem;
+
+            code = textBoxCode.Text;
+            codeEncoding = (TextEncodingConverter.Encoding)comboBox1.SelectedItem;
+
+            if (!TextEncodingConverter.IsCodeBaseCorrect(code, codeEncoding))
+            {
+                textBox1.Text = "Please, enter a valid code or encoding";
+                return;
+            }
+            else if (!TextEncodingConverter.IsCodeLengthCorrect(code, codeEncoding))
+            {
+                textBox1.Text = "The value is outside the range (0 – 0x0010FFFF)";
+                return;
+            }
 
             TextEncodingConverter converter = new TextEncodingConverter();
             converter.Decode(textBoxCode.Text, codeEncoding);
@@ -51,6 +59,5 @@ namespace Texty.Encoding
         {
             textBoxCode.Paste();
         }
-
     }
 }
