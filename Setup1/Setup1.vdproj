@@ -15,7 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_464F0A19ED5E494BADD51E2397196D22"
+        "MsmKey" = "8:_526144FDFC70464FA3041304F4C45EFE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_610D5A32779A48E3A7FC122095CFAFD5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -28,7 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_464F0A19ED5E494BADD51E2397196D22"
+        "OwnerKey" = "8:_526144FDFC70464FA3041304F4C45EFE"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -49,6 +55,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -110,6 +124,57 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_526144FDFC70464FA3041304F4C45EFE"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Texty, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_526144FDFC70464FA3041304F4C45EFE"
+                    {
+                    "Name" = "8:Texty.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Texty\\bin\\Release\\Texty.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F500CF08EE304E818ADF8F54E74A3E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_610D5A32779A48E3A7FC122095CFAFD5"
+            {
+            "SourcePath" = "8:..\\Texty\\bin\\Release\\Texty.exe.config"
+            "TargetName" = "8:Texty.exe.config"
+            "Tag" = "8:"
+            "Folder" = "8:_F500CF08EE304E818ADF8F54E74A3E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_618C26C920F74B108D0EA8168987E076"
             {
             "SourcePath" = "8:..\\Texty\\Picture2 icon128.ico"
@@ -187,7 +252,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Texty"
         "ProductCode" = "8:{F0AF63F4-45BD-4923-B032-D8D928B1B512}"
-        "PackageCode" = "8:{D1D9B2B6-13AE-4180-B150-BB37362EB63F}"
+        "PackageCode" = "8:{72B1D071-7B0F-4BE9-8E32-473E191C9875}"
         "UpgradeCode" = "8:{81BADC88-63F4-452B-81E4-CEA740C2BBE8}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -307,7 +372,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0187BF1EE4C34DFD8F4FD22E5FCB2911"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_16DA45B86555455C91B7D52CE4BF794A"
             {
             "Name" = "8:Texty"
             "Arguments" = "8:"
@@ -315,13 +380,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_464F0A19ED5E494BADD51E2397196D22"
+            "Target" = "8:_526144FDFC70464FA3041304F4C45EFE"
             "Folder" = "8:_770046911EF5464BA49AB21DC93680BF"
             "WorkingFolder" = "8:_F500CF08EE304E818ADF8F54E74A3E24"
             "Icon" = "8:_618C26C920F74B108D0EA8168987E076"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_690D4C8ED57D444380E9573F20A419BF"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7400D11A7AAE44B9911BFF6431AC0CF6"
             {
             "Name" = "8:Texty"
             "Arguments" = "8:"
@@ -329,7 +394,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_464F0A19ED5E494BADD51E2397196D22"
+            "Target" = "8:_526144FDFC70464FA3041304F4C45EFE"
             "Folder" = "8:_F971F228271E4B399F51F5522418BD05"
             "WorkingFolder" = "8:_F500CF08EE304E818ADF8F54E74A3E24"
             "Icon" = "8:_618C26C920F74B108D0EA8168987E076"
@@ -734,34 +799,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_464F0A19ED5E494BADD51E2397196D22"
-            {
-            "SourcePath" = "8:..\\Texty\\obj\\Release\\Texty.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F500CF08EE304E818ADF8F54E74A3E24"
-            "Condition" = "8:"
-            "Transitive" = "11:TRUE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:TRUE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|Any CPU"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{7E44FBFC-7066-4A7B-9800-C22AA9D49F7E}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
         }
     }
 }
