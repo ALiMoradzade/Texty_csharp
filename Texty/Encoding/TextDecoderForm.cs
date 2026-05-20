@@ -63,10 +63,18 @@ namespace Texty.Encoding
 
         private void textBoxCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Regex.IsMatch(e.KeyChar.ToString(), "[0-9a-fA-F]{1}"))
+            if (e.KeyChar == ' ') return;
+            else if (e.KeyChar == '\b') return;
+            else if (e.KeyChar == 'x') return;
+            else if (!Regex.IsMatch(e.KeyChar.ToString(), "[0-9a-fA-F]{1}"))
             {
                 e.Handled = true;
             }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Copy();
         }
     }
 }

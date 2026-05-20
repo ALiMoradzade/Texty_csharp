@@ -630,8 +630,7 @@ namespace Texty
         private void normalizeDigitsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string input = richTextBox1.SelectedText;
-            if (richTextBox1.SelectionLength == 0 ||
-                !input.All(character => character != '\0' && char.IsDigit(character))) return;
+            if (richTextBox1.SelectionLength == 0) return;
 
             StringBuilder result = new StringBuilder(0, input.Length);
             foreach (char c in input)
