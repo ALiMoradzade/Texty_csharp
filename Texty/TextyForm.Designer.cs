@@ -102,6 +102,7 @@ namespace Texty
             this.toolStripStatusLabelUTF32 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.directoryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -487,7 +488,8 @@ namespace Texty
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.decodeToolStripMenuItem});
+            this.decodeToolStripMenuItem,
+            this.directoryManagerToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -498,7 +500,7 @@ namespace Texty
             this.textToolStripMenuItem,
             this.characterToolStripMenuItem});
             this.decodeToolStripMenuItem.Name = "decodeToolStripMenuItem";
-            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.decodeToolStripMenuItem.Text = "Decode";
             // 
             // textToolStripMenuItem
@@ -526,7 +528,7 @@ namespace Texty
             // textySourceCodeToolStripMenuItem
             // 
             this.textySourceCodeToolStripMenuItem.Name = "textySourceCodeToolStripMenuItem";
-            this.textySourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textySourceCodeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.textySourceCodeToolStripMenuItem.Text = "Texty Source Code";
             this.textySourceCodeToolStripMenuItem.Click += new System.EventHandler(this.textySourceCodeToolStripMenuItem_Click);
             // 
@@ -693,6 +695,13 @@ namespace Texty
             this.copyToolStripMenuItem2.Text = "Copy";
             this.copyToolStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
             // 
+            // directoryManagerToolStripMenuItem
+            // 
+            this.directoryManagerToolStripMenuItem.Name = "directoryManagerToolStripMenuItem";
+            this.directoryManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.directoryManagerToolStripMenuItem.Text = "Directory Manager";
+            this.directoryManagerToolStripMenuItem.Click += new System.EventHandler(this.directoryManagerToolStripMenuItem_Click);
+            // 
             // TextyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -803,5 +812,6 @@ namespace Texty
         private System.Windows.Forms.ToolStripMenuItem characterToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem directoryManagerToolStripMenuItem;
     }
 }

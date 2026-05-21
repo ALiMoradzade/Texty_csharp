@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Texty.Encoding;
+using Texty.Directory_Manager;
 using Texty.Registery;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -424,6 +425,12 @@ namespace Texty
             TextDecoderForm form = new TextDecoderForm();
             form.Show();
         }
+
+        private void directoryManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DirectoryManagerForm form = new DirectoryManagerForm();
+            form.Show();
+        }
         #endregion
 
         #region Help Tab
@@ -680,5 +687,6 @@ namespace Texty
         }
         #endregion
 
+        
     }
 }
