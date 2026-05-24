@@ -13,9 +13,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Texty.Tools.Encoding;
-using Texty.Tools.Directory_Manager;
 using Texty.Registery;
+using Texty.Tools.Directory_Manager;
+using Texty.Tools.Encoding;
+using Texty.Utilities.StringCaseConvertor;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -36,6 +37,21 @@ namespace Texty
 
             EnableSingleCharEncoding(false);
             EnableMultipleCharEncoding(false);
+        }
+
+        public void EnableContextualEditing(bool state)
+        {
+            // Menu item
+            cutToolStripMenuItem1.Enabled = state;
+            copyToolStripMenuItem1.Enabled = state;
+            deleteToolStripMenuItem1.Enabled = state;
+
+            // Context menu strip
+            cutToolStripMenuItem.Enabled = state;
+            copyToolStripMenuItem.Enabled = state;
+            deleteToolStripMenuItem.Enabled = state;
+            normalizeDigitsToolStripMenuItem.Enabled = state;
+            convertCaseToToolStripMenuItem.Enabled = state;
         }
 
         #region Form Events
@@ -160,19 +176,6 @@ namespace Texty
         public void SelectAll()
         {
             richTextBox1.SelectAll();
-        }
-
-        public void EnableContextualEditing(bool state)
-        {
-            // Menu item
-            cutToolStripMenuItem1.Enabled = state;
-            copyToolStripMenuItem1.Enabled = state;
-            deleteToolStripMenuItem1.Enabled = state;
-
-            // Context menu strip
-            cutToolStripMenuItem.Enabled = state;
-            copyToolStripMenuItem.Enabled = state;
-            deleteToolStripMenuItem.Enabled = state;
         }
 
         public void EnableSingleCharEncoding(bool stateSingleChar)
@@ -638,7 +641,6 @@ namespace Texty
         private void normalizeDigitsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string input = richTextBox1.SelectedText;
-            if (richTextBox1.SelectionLength == 0) return;
 
             StringBuilder result = new StringBuilder(0, input.Length);
             foreach (char c in input)
@@ -658,6 +660,261 @@ namespace Texty
             }
             richTextBox1.SelectedText = result.ToString();
         }
+
+        #region Convert Case To
+        private void lazecaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("lazy");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToLazyCase(oldText);
+        }
+
+        private void kebabcaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("kebab");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToKebabCase(oldText);
+        }
+
+        private void snakecaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("snake");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToSnakeCase(oldText);
+        }
+
+        private void dotcaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("dot");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToDotCase(oldText);
+        }
+
+        private void spaceCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("space");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToSpaceCase(oldText);
+        }
+
+        private void camelCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("camel");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToCamelCase(oldText);
+        }
+
+        private void camelKebabCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("camel kebab");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToCamelKebabCase(oldText);
+        }
+
+        private void camelSnakeCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("camel snake");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToCamelSnakeCase(oldText);
+        }
+
+        private void camelDotCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("camel dot");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToCamelDotCase(oldText);
+        }
+
+        private void sentenceCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("sentence");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToSentenceCase(oldText);
+        }
+
+        private void pascalCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("pascal");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToPascalCase(oldText);
+        }
+
+        private void trainCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("train");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToTrainCase(oldText);
+        }
+
+        private void pascalSnakeCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("pascal snake");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToPascalSnakeCase(oldText);
+        }
+
+        private void pascalDotCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("pascal dot");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToPascalDotCase(oldText);
+        }
+
+        private void titleCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("title");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToTitleCase(oldText);
+        }
+
+        private void sCREAMINGCASEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("screaming");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToScreamingCase(oldText);
+        }
+
+        private void cOBOLCASEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("cobol");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToCobolCase(oldText);
+        }
+
+        private void sCREAMINGSNAKECASEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("screming snake");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToScreamingSnakeCase(oldText);
+        }
+
+        private void sCREAMINGDOTCASEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("screaming dot");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToScreamingDotCase(oldText);
+        }
+
+        private void uPPERSPACECASEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("upper space");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToUpperSpaceCase(oldText);
+        }
+
+        private void iNVERTCASEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string oldText = richTextBox1.SelectedText;
+            if (!StringCaseConvertor.IsSplitable(oldText))
+            {
+                StringCaseConvertor.MessageBoxWrongFormat("invert");
+                return;
+            }
+
+            richTextBox1.SelectedText = StringCaseConvertor.ToInvertCase(oldText);
+        }
+        #endregion
+
         #endregion
 
         #region Right Click Status bar
