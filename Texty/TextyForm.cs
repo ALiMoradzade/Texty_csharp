@@ -930,7 +930,10 @@ namespace Texty
             }
             catch (Exception)
             {
-                Clipboard.SetText("Texy failed to copy!");
+                MessageBox.Show("Something went wrong",
+                                "Texty failed to copy the selected text to the clipboard",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 

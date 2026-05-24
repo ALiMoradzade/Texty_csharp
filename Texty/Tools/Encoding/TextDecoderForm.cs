@@ -73,7 +73,17 @@ namespace Texty.Tools.Encoding
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox1.Copy();
+            try
+            {
+                Clipboard.SetText(textBox1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong",
+                                "Texty failed to copy the selected text to the clipboard",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
         }
     }
 }
