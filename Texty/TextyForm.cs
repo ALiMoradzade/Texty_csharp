@@ -26,7 +26,6 @@ namespace Texty
 {
     public partial class TextyForm : Form
     {
-        float zoom = 0.1f;
         bool flagEnableTextChange = true;
 
         public TextyForm()
@@ -395,6 +394,9 @@ namespace Texty
         #endregion
 
         #region View Tab
+
+        float zoom = 0.1f;
+
         private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.ZoomFactor += zoom;
