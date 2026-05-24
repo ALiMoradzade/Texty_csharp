@@ -674,12 +674,6 @@ namespace Texty
         private void lazecaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string oldText = richTextBox1.SelectedText;
-            if (!StringCaseConvertor.IsSplitable(oldText))
-            {
-                StringCaseConvertor.MessageBoxWrongFormat("lazy");
-                return;
-            }
-
             richTextBox1.SelectedText = StringCaseConvertor.ToLazyCase(oldText);
         }
 
@@ -854,12 +848,6 @@ namespace Texty
         private void sCREAMINGCASEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string oldText = richTextBox1.SelectedText;
-            if (!StringCaseConvertor.IsSplitable(oldText))
-            {
-                StringCaseConvertor.MessageBoxWrongFormat("screaming");
-                return;
-            }
-
             richTextBox1.SelectedText = StringCaseConvertor.ToScreamingCase(oldText);
         }
 
@@ -914,12 +902,6 @@ namespace Texty
         private void iNVERTCASEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string oldText = richTextBox1.SelectedText;
-            if (!StringCaseConvertor.IsSplitable(oldText))
-            {
-                StringCaseConvertor.MessageBoxWrongFormat("invert");
-                return;
-            }
-
             richTextBox1.SelectedText = StringCaseConvertor.ToInvertCase(oldText);
         }
         #endregion

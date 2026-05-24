@@ -49,6 +49,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -65,6 +73,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -170,15 +186,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Texty Installer"
-        "ProductCode" = "8:{31815FAB-D4BA-4129-B546-9E4E55F55136}"
-        "PackageCode" = "8:{A22F8B98-AA18-4E1C-8D4C-B047F567902C}"
-        "UpgradeCode" = "8:{47943190-A253-4209-A4B6-B2814ABDC3F9}"
+        "ProductCode" = "8:{7E7FA73F-F4E4-4F61-AD9C-4FF9E5519C1D}"
+        "PackageCode" = "8:{3ECC1B26-64CB-482B-BDAC-8A6C228747EE}"
+        "UpgradeCode" = "8:{299ABB2B-A545-477E-A04B-01612D3B0959}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.4.2"
         "Manufacturer" = "8:ALi Moradzadeh"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/ALiMoradzade/Texty"

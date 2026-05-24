@@ -100,20 +100,6 @@ namespace Texty.Utilities.StringCaseConvertor
         }
 
         /// <summary>
-        /// Invert Case = Toggle Case
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public static string ToInvertCase(string text)
-        {
-            string separatorRemovedText = RemoveSeparator(text);
-            var toggleCase = string.Concat(
-                                            separatorRemovedText.Select(c => char.IsUpper(c) ? char.ToLower(c) : char.ToUpper(c))
-                                          );
-            return toggleCase;
-        }
-
-        /// <summary>
         /// Laze Case = Lower Flat Case
         /// </summary>
         /// <param name="text"></param>
@@ -274,10 +260,9 @@ namespace Texty.Utilities.StringCaseConvertor
         /// <returns></returns>
         public static string ToScreamingCase(string text)
         {
-            string[] words = SplitAuto(text);
-            string[] upperedWords = UpperAllWords(words);
-            string newText = string.Concat(upperedWords);
-            return newText;
+            string separatorRemovedText = RemoveSeparator(text);
+            string screamingCase = separatorRemovedText.ToUpper();
+            return screamingCase;
         }
 
         /// <summary>
@@ -315,6 +300,21 @@ namespace Texty.Utilities.StringCaseConvertor
             string[] upperedWords = UpperAllWords(words);
             string addSeparator = string.Join(" ", upperedWords);
             return addSeparator;
+        }
+
+
+        /// <summary>
+        /// Invert Case = Toggle Case
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string ToInvertCase(string text)
+        {
+            string separatorRemovedText = RemoveSeparator(text);
+            var toggleCase = string.Concat(
+                                            separatorRemovedText.Select(c => char.IsUpper(c) ? char.ToLower(c) : char.ToUpper(c))
+                                          );
+            return toggleCase;
         }
     }
 }

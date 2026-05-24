@@ -46,12 +46,6 @@ namespace Texty.Tools.Directory_Manager
         private void lazecaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string oldText = textBoxOldName.Text;
-            if (!StringCaseConvertor.IsSplitable(oldText))
-            {
-                StringCaseConvertor.MessageBoxWrongFormat("lazy");
-                return;
-            }
-
             textBoxNewName.Text = StringCaseConvertor.ToLazyCase(oldText);
         }
 
@@ -226,12 +220,6 @@ namespace Texty.Tools.Directory_Manager
         private void sCREAMINGCASEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string oldText = textBoxOldName.Text;
-            if (!StringCaseConvertor.IsSplitable(oldText))
-            {
-                StringCaseConvertor.MessageBoxWrongFormat("screaming");
-                return;
-            }
-
             textBoxNewName.Text = StringCaseConvertor.ToScreamingCase(oldText);
         }
 
@@ -286,12 +274,6 @@ namespace Texty.Tools.Directory_Manager
         private void iNVERTCASEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string oldText = textBoxOldName.Text;
-            if (!StringCaseConvertor.IsSplitable(oldText))
-            {
-                StringCaseConvertor.MessageBoxWrongFormat("invert");
-                return;
-            }
-
             textBoxNewName.Text = StringCaseConvertor.ToInvertCase(oldText);
         }
         #endregion
