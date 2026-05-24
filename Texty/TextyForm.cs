@@ -497,10 +497,26 @@ namespace Texty
             int currentTextCursorIndex = richTextBox1.SelectionStart;
             int lineCount = richTextBox1.GetLineFromCharIndex(currentTextCursorIndex);
             int charCount = currentTextCursorIndex - richTextBox1.GetFirstCharIndexFromLine(lineCount);
-            textLineChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
-            textLen.Text = $"Length {richTextBox1.Text.Length}";
+            textCurrentLineAndChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
 
+            // Length status bar
             if (richTextBox1.SelectionLength > 0)
+            {
+                textLengthOrCursorLength.Text = $"Length {richTextBox1.SelectionLength}";
+            }
+            else
+            {
+                textLengthOrCursorLength.Text = $"Length {richTextBox1.Text.Length}";
+            }
+
+            // UTF-8, UTF-16, UTF-32 status bar
+            if (richTextBox1.SelectionLength > 31 || richTextBox1.SelectionLength == 0)
+            {
+                EnableContextualEditing(false);
+                EnableSingleCharEncoding(false);
+                EnableMultipleCharEncoding(false);
+            }
+            else
             {
                 EnableContextualEditing(true);
 
@@ -518,7 +534,7 @@ namespace Texty
                     toolStripStatusLabelDecimal.Text = $"Decimal: {converter.DecimalCode}";
                     toolStripStatusLabelHexadecimal.Text = $"Hexadecimal: {converter.HexadecimalCode}";
                 }
-                else if (richTextBox1.SelectionLength > 1 && richTextBox1.SelectionLength <= 19)
+                else if (richTextBox1.SelectionLength > 1)
                 {
                     EnableSingleCharEncoding(false);
                     EnableMultipleCharEncoding(true);
@@ -529,12 +545,6 @@ namespace Texty
                     toolStripStatusLabelUTF16.Text = $"UTF-16: {encode.UTF16}";
                     toolStripStatusLabelUTF32.Text = $"UTF-32: {encode.UTF32}";
                 }
-            }
-            else
-            {
-                EnableContextualEditing(false);
-                EnableSingleCharEncoding(false);
-                EnableMultipleCharEncoding(false);
             }
         }
 

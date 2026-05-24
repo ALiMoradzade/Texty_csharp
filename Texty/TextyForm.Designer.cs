@@ -109,14 +109,15 @@ namespace Texty
             this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clipboardWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textySourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.textLineChar = new System.Windows.Forms.ToolStripStatusLabel();
-            this.textLen = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textCurrentLineAndChar = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textLengthOrCursorLength = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.textZoomFactor = new System.Windows.Forms.ToolStripStatusLabel();
-            this.textEncoding = new System.Windows.Forms.ToolStripStatusLabel();
+            this.fileTextEncoding = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
@@ -132,7 +133,6 @@ namespace Texty
             this.toolStripStatusLabelUTF32 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.clipboardWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -754,7 +754,7 @@ namespace Texty
             this.textToolStripMenuItem,
             this.characterToolStripMenuItem});
             this.decodeToolStripMenuItem.Name = "decodeToolStripMenuItem";
-            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.decodeToolStripMenuItem.Text = "Decode";
             // 
             // textToolStripMenuItem
@@ -774,9 +774,16 @@ namespace Texty
             // directoryManagerToolStripMenuItem
             // 
             this.directoryManagerToolStripMenuItem.Name = "directoryManagerToolStripMenuItem";
-            this.directoryManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.directoryManagerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.directoryManagerToolStripMenuItem.Text = "Directory Manager";
             this.directoryManagerToolStripMenuItem.Click += new System.EventHandler(this.directoryManagerToolStripMenuItem_Click);
+            // 
+            // clipboardWatcherToolStripMenuItem
+            // 
+            this.clipboardWatcherToolStripMenuItem.Name = "clipboardWatcherToolStripMenuItem";
+            this.clipboardWatcherToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.clipboardWatcherToolStripMenuItem.Text = "Clipboard Watcher";
+            this.clipboardWatcherToolStripMenuItem.Click += new System.EventHandler(this.clipboardWatcherToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -796,51 +803,51 @@ namespace Texty
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.textLineChar,
-            this.textLen,
+            this.textCurrentLineAndChar,
+            this.textLengthOrCursorLength,
             this.toolStripStatusLabel3,
             this.textZoomFactor,
-            this.textEncoding});
+            this.fileTextEncoding});
             this.statusStrip1.Location = new System.Drawing.Point(0, 464);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(700, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // textLineChar
+            // textCurrentLineAndChar
             // 
-            this.textLineChar.Name = "textLineChar";
-            this.textLineChar.Size = new System.Drawing.Size(137, 17);
-            this.textLineChar.Spring = true;
-            this.textLineChar.Text = "Ln 0, Char 0";
+            this.textCurrentLineAndChar.Name = "textCurrentLineAndChar";
+            this.textCurrentLineAndChar.Size = new System.Drawing.Size(130, 17);
+            this.textCurrentLineAndChar.Spring = true;
+            this.textCurrentLineAndChar.Text = "Ln 0, Char 0";
             // 
-            // textLen
+            // textLengthOrCursorLength
             // 
-            this.textLen.Name = "textLen";
-            this.textLen.Size = new System.Drawing.Size(137, 17);
-            this.textLen.Spring = true;
-            this.textLen.Text = "Length 0";
+            this.textLengthOrCursorLength.Name = "textLengthOrCursorLength";
+            this.textLengthOrCursorLength.Size = new System.Drawing.Size(130, 17);
+            this.textLengthOrCursorLength.Spring = true;
+            this.textLengthOrCursorLength.Text = "Length 0";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(137, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(130, 17);
             this.toolStripStatusLabel3.Spring = true;
             this.toolStripStatusLabel3.Text = "Plain Text";
             // 
             // textZoomFactor
             // 
             this.textZoomFactor.Name = "textZoomFactor";
-            this.textZoomFactor.Size = new System.Drawing.Size(137, 17);
+            this.textZoomFactor.Size = new System.Drawing.Size(130, 17);
             this.textZoomFactor.Spring = true;
             this.textZoomFactor.Text = "100%";
             // 
-            // textEncoding
+            // fileTextEncoding
             // 
-            this.textEncoding.Name = "textEncoding";
-            this.textEncoding.Size = new System.Drawing.Size(137, 17);
-            this.textEncoding.Spring = true;
-            this.textEncoding.Text = "UTF-8";
+            this.fileTextEncoding.Name = "fileTextEncoding";
+            this.fileTextEncoding.Size = new System.Drawing.Size(130, 17);
+            this.fileTextEncoding.Spring = true;
+            this.fileTextEncoding.Text = "UTF-8";
             // 
             // openFileDialog1
             // 
@@ -956,13 +963,6 @@ namespace Texty
             this.copyToolStripMenuItem2.Text = "Copy";
             this.copyToolStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
             // 
-            // clipboardWatcherToolStripMenuItem
-            // 
-            this.clipboardWatcherToolStripMenuItem.Name = "clipboardWatcherToolStripMenuItem";
-            this.clipboardWatcherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clipboardWatcherToolStripMenuItem.Text = "Clipboard Watcher";
-            this.clipboardWatcherToolStripMenuItem.Click += new System.EventHandler(this.clipboardWatcherToolStripMenuItem_Click);
-            // 
             // TextyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1009,10 +1009,10 @@ namespace Texty
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel textLineChar;
-        private System.Windows.Forms.ToolStripStatusLabel textLen;
+        private System.Windows.Forms.ToolStripStatusLabel textCurrentLineAndChar;
+        private System.Windows.Forms.ToolStripStatusLabel textLengthOrCursorLength;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel textEncoding;
+        private System.Windows.Forms.ToolStripStatusLabel fileTextEncoding;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
