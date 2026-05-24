@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using Texty.Registery;
 using Texty.Tools.Directory_Manager;
 using Texty.Tools.Encoding;
+using Texty.Utilities.String_Normalizer;
 using Texty.Utilities.StringCaseConvertor;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -50,7 +51,7 @@ namespace Texty
             cutToolStripMenuItem.Enabled = state;
             copyToolStripMenuItem.Enabled = state;
             deleteToolStripMenuItem.Enabled = state;
-            normalizeDigitsToolStripMenuItem.Enabled = state;
+            normalizeToolStripMenuItem.Enabled = state;
             convertCaseToToolStripMenuItem.Enabled = state;
         }
 
@@ -638,27 +639,16 @@ namespace Texty
             contextMenuStrip1.RightToLeft = RightToLeft.No;
         }
 
-        private void normalizeDigitsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void convertDigitsToASCIIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string input = richTextBox1.SelectedText;
+            string digits = richTextBox1.SelectedText;
+            richTextBox1.SelectedText = StringNormalizer.ConvertToAsciiDigits(digits);
+        }
 
-            StringBuilder result = new StringBuilder(0, input.Length);
-            foreach (char c in input)
-            {
-                if (c >= '۰' && c <= '۹')      // Persian digits 1776-1785
-                {
-                    result.Append((char)('0' + (c - '۰')));
-                }
-                else if (c >= '٠' && c <= '٩') // Arabic-Indic digits 1632-1641
-                {
-                    result.Append((char)('0' + (c - '٠')));
-                }
-                else                           // ASCII digits 48-57
-                {
-                    result.Append(c);
-                }
-            }
-            richTextBox1.SelectedText = result.ToString();
+        private void removeNonPersianLettersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = richTextBox1.SelectedText;
+            richTextBox1.SelectedText = StringNormalizer.RemoveNonPersianLetters(text);
         }
 
         #region Convert Case To
@@ -943,8 +933,10 @@ namespace Texty
                 Clipboard.SetText("Texy failed to copy!");
             }
         }
+
+
         #endregion
 
-        
+       
     }
 }

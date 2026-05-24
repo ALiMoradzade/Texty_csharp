@@ -95,6 +95,7 @@
     <Compile Include="TextyForm.Designer.cs">
       <DependentUpon>TextyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\String Normalizer\StringNormalizer.cs" />
     <EmbeddedResource Include="Tools\Encoding\CharacterDecoderForm.resx">
       <DependentUpon>CharacterDecoderForm.cs</DependentUpon>
     </EmbeddedResource>
