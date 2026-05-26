@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Texty.Tools.Clipboard_Manager;
+using Texty.Edit.Clipboard_Manager;
 
 namespace Texty.Tools.Encoding
 {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Texty.Tools.Clipboard_Manager
+namespace Texty.Edit.Clipboard_Manager
 {
     public partial class ClipboardWatcherForm : Form
     {

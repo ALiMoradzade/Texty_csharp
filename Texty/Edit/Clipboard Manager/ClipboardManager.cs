@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Texty.Tools.Clipboard_Manager
+namespace Texty.Edit.Clipboard_Manager
 {
     internal class ClipboardManager
     {

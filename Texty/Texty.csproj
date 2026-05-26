@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tools\Clipboard Manager\ClipboardManager.cs" />
-    <Compile Include="Tools\Clipboard Manager\ClipboardWatcherForm.cs">
+    <Compile Include="Edit\Clipboard Manager\ClipboardManager.cs" />
+    <Compile Include="Edit\Clipboard Manager\ClipboardWatcherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tools\Clipboard Manager\ClipboardWatcherForm.Designer.cs">
+    <Compile Include="Edit\Clipboard Manager\ClipboardWatcherForm.Designer.cs">
       <DependentUpon>ClipboardWatcherForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\String Case Convertor\StringCaseConvertor.cs" />
@@ -103,7 +103,7 @@
       <DependentUpon>TextyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\String Normalizer\StringNormalizer.cs" />
-    <EmbeddedResource Include="Tools\Clipboard Manager\ClipboardWatcherForm.resx">
+    <EmbeddedResource Include="Edit\Clipboard Manager\ClipboardWatcherForm.resx">
       <DependentUpon>ClipboardWatcherForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\Encoding\CharacterDecoderForm.resx">

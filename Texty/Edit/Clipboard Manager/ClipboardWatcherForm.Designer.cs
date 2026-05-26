@@ -1,4 +1,4 @@
-namespace Texty.Tools.Clipboard_Manager
+namespace Texty.Edit.Clipboard_Manager
 {
     partial class ClipboardWatcherForm
     {

@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Texty.Registery;
-using Texty.Tools.Clipboard_Manager;
+using Texty.Edit.Clipboard_Manager;
 using Texty.Tools.Directory_Manager;
 using Texty.Tools.Encoding;
 using Texty.Utilities.String_Normalizer;
