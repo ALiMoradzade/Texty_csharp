@@ -102,6 +102,16 @@ namespace Texty
         #endregion
 
         #region Message Boxes
+        public DialogResult MessageBoxMultipleSelectionFiles()
+        {
+            var r = MessageBox.Show("Can't drag and drop multiple files!",
+                         "Multiple files detected...",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Exclamation,
+                         MessageBoxDefaultButton.Button1);
+            return r;
+        }
+
         public DialogResult MessageBoxDragDrop()
         {
             var r = MessageBox.Show("Would you like to open the file?",
@@ -229,6 +239,12 @@ namespace Texty
         #endregion
 
         #region File I/O
+        private async void AppendTextFile(string fileAddress)
+        {
+            richTextBox1.Text += await FileManager.Read(fileAddress);
+            richTextBox1.SelectionStart = richTextBoxSelection;
+        }
+
         private async void LoadFile(string fileAddress, string fileName)
         {
             flagEnableTextChange = false;
@@ -508,27 +524,31 @@ namespace Texty
 
         int richTextBoxSelection;
 
-        private async void richTextBox1_DragDrop(object sender, DragEventArgs e)
+        private void richTextBox1_DragDrop(object sender, DragEventArgs e)
         {
             string[] filesAddresses = (string[])e.Data.GetData(DataFormats.FileDrop);
-            string fileAddress = filesAddresses[0];
-
-            if (MessageBoxDragDrop() == DialogResult.Yes)
+            if (filesAddresses.Length > 1)
             {
-                if (!IsTextEmpty())
-                {
-                    if (MessageBoxOpenFile() == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-
-                LoadFile(fileAddress, Path.GetFileName(fileAddress));
+                MessageBoxMultipleSelectionFiles();
                 return;
             }
-            string text = await FileManager.Read(fileAddress);
-            richTextBox1.Text += text;
-            richTextBox1.SelectionStart = richTextBoxSelection;
+
+            string fileAddress = filesAddresses[0];
+            if (MessageBoxDragDrop() == DialogResult.No)
+            {
+               return;
+            }
+
+            if (!IsTextEmpty())
+            {
+                if (MessageBoxOpenFile() == DialogResult.No)
+                {
+                    AppendTextFile(fileAddress);
+                    return;
+                }
+            }
+
+            LoadFile(fileAddress, Path.GetFileName(fileAddress));
         }
 
         private void richTextBox1_DragEnter(object sender, DragEventArgs e)
