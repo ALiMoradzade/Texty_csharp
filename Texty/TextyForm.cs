@@ -21,6 +21,7 @@ using Texty.Utilities.String_Normalizer;
 using Texty.Utilities.StringCaseConvertor;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Texty.File;
 
 namespace Texty
 {
@@ -74,7 +75,7 @@ namespace Texty
 
         private void TextyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if ((IsFileOpened() && IsFileEdited()) || (!IsFileOpened() && !IsTextEmpty()))
+            if ((IsFileLoaded() && IsFileEdited()) || (!IsFileLoaded() && !IsTextEmpty()))
             {
                 var r = MessageBoxSaveTextOrFile();
                 if (r == DialogResult.Yes)
@@ -202,7 +203,7 @@ namespace Texty
             return Text.Contains('*');
         }
 
-        public void IsFileEdited(bool status)
+        public void FileIsEditedState(bool status)
         {
             if (status)
             {
@@ -214,63 +215,61 @@ namespace Texty
             }
         }
 
-        public bool IsFileOpened()
+        public bool IsFileLoaded()
         {
             return !string.IsNullOrEmpty(Text.Replace("*", ""));
         }
 
-        public void IsFileOpened(bool status, string fileName = "")
+        public void FileIsLoadedState(bool status, string fileName)
         {
             Text = fileName;
             closeOpenedFileToolStripMenuItem.Visible = status;
             toolStripSeparator1.Visible = status;
-            if (!status)
-            {
-                flagEnableTextChange = false;
-                richTextBox1.Clear();
-                flagEnableTextChange = true;
-            }
-        }
-
-        public void SetTextZoomFactorStatus()
-        {
-            textZoomFactor.Text = $"{richTextBox1.ZoomFactor * 100}%";
         }
         #endregion
 
-        #region Open/Save Methods
-        private async Task<string> ReadFile(string address)
-        {
-            string text;
-            using (StreamReader sr = new StreamReader(address))
-            {
-                text = await sr.ReadToEndAsync();
-            }
-            return text;
-        }
-
-        private async Task WriteFile(string address)
-        {
-            using (StreamWriter streamWriter = new StreamWriter(address))
-            {
-                await streamWriter.WriteLineAsync(richTextBox1.Text);
-            }
-        }
-
-
-
-        public async void OpenFile(string fileAddress, string fileName)
+        #region File I/O
+        private async void LoadFile(string fileAddress, string fileName)
         {
             flagEnableTextChange = false;
-            richTextBox1.Text = await ReadFile(fileAddress);
+            richTextBox1.Text = await FileManager.Read(fileAddress);
             flagEnableTextChange = true;
 
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            IsFileOpened(true, fileName);
+            FileIsLoadedState(true, fileName);
         }
 
+        private void OpenFile()
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                LoadFile(openFileDialog1.FileName, openFileDialog1.SafeFileName);
+            }
+        }
 
+        private async void SaveFile()
+        {
+            await FileManager.Write(openFileDialog1.FileName, richTextBox1.Text);
+            FileIsEditedState(false);
+        }
 
+        private async void SaveAsFile()
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                await FileManager.Write(saveFileDialog1.FileName, richTextBox1.Text);
+                openFileDialog1.FileName = saveFileDialog1.FileName;
+                FileIsLoadedState(true, Path.GetFileName(saveFileDialog1.FileName));
+            }
+        }
+
+        private void CloseFile()
+        {
+            FileIsLoadedState(false, "");
+            flagEnableTextChange = false;
+            richTextBox1.Clear();
+            flagEnableTextChange = true;
+        }
         #endregion
 
         #region File Tab
@@ -278,14 +277,13 @@ namespace Texty
         {
             if (!IsTextEmpty())
             {
-                var r = MessageBoxOpenFile();
-                if (r == DialogResult.No) return;
+                if (MessageBoxOpenFile() == DialogResult.No)
+                {
+                    return;
+                }
             }
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                OpenFile(openFileDialog1.FileName, openFileDialog1.SafeFileName);
-            }
+            OpenFile();
         }
 
         private void closeOpenedFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -293,33 +291,30 @@ namespace Texty
             // When you came here, it means file is opened
             if (IsFileEdited())
             {
-                var r = MessageBoxDiscardChanges();
-                if (r == DialogResult.No) return;
+                if (MessageBoxDiscardChanges() == DialogResult.No)
+                {
+                    return;
+                }
             }
-            IsFileOpened(false);
+
+            CloseFile();
         }
 
-        private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (IsFileOpened() && IsFileEdited())
+            if (IsFileLoaded() && IsFileEdited())
             {
-                await WriteFile(openFileDialog1.FileName);
-                IsFileEdited(false);
+                SaveFile();
             }
-            else if (!IsFileOpened() && IsFileEdited())
+            else if (!IsFileLoaded() && IsFileEdited())
             {
-                saveAsToolStripMenuItem.PerformClick();
+                SaveAsFile();
             }
         }
 
-        private async void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                await WriteFile(saveFileDialog1.FileName);
-                openFileDialog1.FileName = saveFileDialog1.FileName;
-                IsFileOpened(true, Path.GetFileName(saveFileDialog1.FileName));
-            }
+            SaveAsFile();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -397,6 +392,11 @@ namespace Texty
 
         float zoom = 0.1f;
 
+        public void SetTextZoomFactorStatus()
+        {
+            textZoomFactor.Text = $"{richTextBox1.ZoomFactor * 100}%";
+        }
+
         private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.ZoomFactor += zoom;
@@ -464,19 +464,20 @@ namespace Texty
             string[] filesAddresses = (string[])e.Data.GetData(DataFormats.FileDrop);
             string fileAddress = filesAddresses[0];
 
-            var r = MessageBoxDragDrop();
-            if (r == DialogResult.Yes)
+            if (MessageBoxDragDrop() == DialogResult.Yes)
             {
                 if (!IsTextEmpty())
                 {
-                    r = MessageBoxOpenFile();
-                    if (r == DialogResult.No) return;
+                    if (MessageBoxOpenFile() == DialogResult.No)
+                    {
+                        return;
+                    }
                 }
 
-                OpenFile(fileAddress, Path.GetFileName(fileAddress));
+                LoadFile(fileAddress, Path.GetFileName(fileAddress));
                 return;
             }
-            string text = await ReadFile(fileAddress);
+            string text = await FileManager.Read(fileAddress);
             richTextBox1.Text += text;
             richTextBox1.SelectionStart = richTextBoxSelection;
         }
@@ -490,7 +491,7 @@ namespace Texty
         {
             if (flagEnableTextChange && !IsFileEdited())
             {
-                IsFileEdited(true);
+                FileIsEditedState(true);
             }
         }
 

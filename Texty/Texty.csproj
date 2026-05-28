@@ -55,6 +55,7 @@
     <Compile Include="Edit\Clipboard Manager\ClipboardWatcherForm.Designer.cs">
       <DependentUpon>ClipboardWatcherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="File\FileManager.cs" />
     <Compile Include="Utilities\String Case Convertor\StringCaseConvertor.cs" />
     <Compile Include="Tools\Encoding\CharacterDecoderForm.cs">
       <SubType>Form</SubType>
