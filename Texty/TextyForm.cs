@@ -455,6 +455,55 @@ namespace Texty
         }
         #endregion
 
+        #region Status Srip Methods
+        private int CurrentCursorLine()
+        {
+            return richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
+        }
+
+        private int CurrentCursorCharCount()
+        {
+            return richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(CurrentCursorLine());
+        }
+
+        private string CurrentCursorLength()
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+               return $"Length {richTextBox1.SelectionLength}";
+            }
+            else
+            {
+                return $"Length {richTextBox1.Text.Length}";
+            }
+        }
+
+        private void SetStatusStrip1()
+        {
+            textCurrentLineAndChar.Text = $"Ln {CurrentCursorLine() + 1}, Char {CurrentCursorCharCount() + 1}";
+            textLengthOrCursorLength.Text = CurrentCursorLength();
+        }
+
+        private void SetStatusStrip2()
+        {
+            CharacterEncodingConverter converter = new CharacterEncodingConverter();
+            converter.Encode(richTextBox1.SelectedText[0]);
+            toolStripStatusLabelBinary.Text = $"Binary: {converter.BinaryCode}";
+            toolStripStatusLabelOctal.Text = $"Octal: {converter.OctalCode}";
+            toolStripStatusLabelDecimal.Text = $"Decimal: {converter.DecimalCode}";
+            toolStripStatusLabelHexadecimal.Text = $"Hexadecimal: {converter.HexadecimalCode}";
+        }
+
+        private void SetStatusStrip34()
+        {
+            TextEncodingConverter encode = new TextEncodingConverter();
+            encode.Encode(richTextBox1.SelectedText);
+            toolStripStatusLabelUTF8.Text = $"UTF-8: {encode.UTF8}";
+            toolStripStatusLabelUTF16.Text = $"UTF-16: {encode.UTF16}";
+            toolStripStatusLabelUTF32.Text = $"UTF-32: {encode.UTF32}";
+        }
+        #endregion
+
         #region richTextBox
 
         int richTextBoxSelection;
@@ -497,20 +546,7 @@ namespace Texty
 
         private void richTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-            int currentTextCursorIndex = richTextBox1.SelectionStart;
-            int lineCount = richTextBox1.GetLineFromCharIndex(currentTextCursorIndex);
-            int charCount = currentTextCursorIndex - richTextBox1.GetFirstCharIndexFromLine(lineCount);
-            textCurrentLineAndChar.Text = $"Ln {lineCount + 1}, Char {charCount + 1}";
-
-            // Length status bar
-            if (richTextBox1.SelectionLength > 0)
-            {
-                textLengthOrCursorLength.Text = $"Length {richTextBox1.SelectionLength}";
-            }
-            else
-            {
-                textLengthOrCursorLength.Text = $"Length {richTextBox1.Text.Length}";
-            }
+            SetStatusStrip1();
 
             // UTF-8, UTF-16, UTF-32 status bar
             if (richTextBox1.SelectionLength > 31 || richTextBox1.SelectionLength == 0)
@@ -528,25 +564,14 @@ namespace Texty
                     EnableSingleCharEncoding(true);
                     EnableMultipleCharEncoding(false);
 
-                    char c = richTextBox1.SelectedText[0];
-
-                    CharacterEncodingConverter converter = new CharacterEncodingConverter();
-                    converter.Encode(c);
-                    toolStripStatusLabelBinary.Text = $"Binary: {converter.BinaryCode}";
-                    toolStripStatusLabelOctal.Text = $"Octal: {converter.OctalCode}";
-                    toolStripStatusLabelDecimal.Text = $"Decimal: {converter.DecimalCode}";
-                    toolStripStatusLabelHexadecimal.Text = $"Hexadecimal: {converter.HexadecimalCode}";
+                    SetStatusStrip2();
                 }
                 else if (richTextBox1.SelectionLength > 1)
                 {
                     EnableSingleCharEncoding(false);
                     EnableMultipleCharEncoding(true);
 
-                    TextEncodingConverter encode = new TextEncodingConverter();
-                    encode.Encode(richTextBox1.SelectedText);
-                    toolStripStatusLabelUTF8.Text = $"UTF-8: {encode.UTF8}";
-                    toolStripStatusLabelUTF16.Text = $"UTF-16: {encode.UTF16}";
-                    toolStripStatusLabelUTF32.Text = $"UTF-32: {encode.UTF32}";
+                    SetStatusStrip34();
                 }
             }
         }
