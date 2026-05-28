@@ -77,7 +77,7 @@ namespace Texty
         {
             if ((IsFileLoaded() && IsFileEdited()) || (!IsFileLoaded() && !IsTextEmpty()))
             {
-                var r = MessageBoxSaveTextOrFile();
+                var r = MessageBoxSaveChoice();
                 if (r == DialogResult.Yes)
                 {
                     saveToolStripMenuItem.PerformClick();
@@ -102,7 +102,7 @@ namespace Texty
         #endregion
 
         #region Message Boxes
-        public DialogResult MessageBoxMultipleSelectionFiles()
+        public DialogResult MessageBoxMultipleSelectionFilesError()
         {
             var r = MessageBox.Show("Can't drag and drop multiple files!",
                          "Multiple files detected...",
@@ -112,7 +112,7 @@ namespace Texty
             return r;
         }
 
-        public DialogResult MessageBoxDragDrop()
+        public DialogResult MessageBoxDragDropChoice()
         {
             var r = MessageBox.Show("Would you like to open the file?",
                          "Incoming file detected...",
@@ -122,7 +122,7 @@ namespace Texty
             return r;
         }
 
-        public DialogResult MessageBoxOpenFile()
+        public DialogResult MessageBoxOverWriteFileChoice()
         {
             var r = MessageBox.Show("Overwrite text file over your text?",
                                   "Text Mix-Up! 😵‍💫",
@@ -133,7 +133,7 @@ namespace Texty
             return r;
         }
 
-        public DialogResult MessageBoxDiscardChanges()
+        public DialogResult MessageBoxDiscardChangesChoice()
         {
             var r = MessageBox.Show("Do you want to discard the changes?",
                                       "We're about to close!",
@@ -143,7 +143,7 @@ namespace Texty
             return r;
         }
 
-        public DialogResult MessageBoxSaveTextOrFile()
+        public DialogResult MessageBoxSaveChoice()
         {
             var r = MessageBox.Show("Do you want to save?",
                                         "Magic is over!, Vanish✨ the form!",
@@ -293,7 +293,7 @@ namespace Texty
         {
             if (!IsTextEmpty())
             {
-                if (MessageBoxOpenFile() == DialogResult.No)
+                if (MessageBoxOverWriteFileChoice() == DialogResult.No)
                 {
                     return;
                 }
@@ -307,7 +307,7 @@ namespace Texty
             // When you came here, it means file is opened
             if (IsFileEdited())
             {
-                if (MessageBoxDiscardChanges() == DialogResult.No)
+                if (MessageBoxDiscardChangesChoice() == DialogResult.No)
                 {
                     return;
                 }
@@ -529,19 +529,19 @@ namespace Texty
             string[] filesAddresses = (string[])e.Data.GetData(DataFormats.FileDrop);
             if (filesAddresses.Length > 1)
             {
-                MessageBoxMultipleSelectionFiles();
+                MessageBoxMultipleSelectionFilesError();
                 return;
             }
 
             string fileAddress = filesAddresses[0];
-            if (MessageBoxDragDrop() == DialogResult.No)
+            if (MessageBoxDragDropChoice() == DialogResult.No)
             {
                return;
             }
 
             if (!IsTextEmpty())
             {
-                if (MessageBoxOpenFile() == DialogResult.No)
+                if (MessageBoxOverWriteFileChoice() == DialogResult.No)
                 {
                     AppendTextFile(fileAddress);
                     return;
