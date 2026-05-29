@@ -50,20 +50,8 @@ namespace Texty.Tools.Directory_Manager
         #region Message Boxes
         private DialogResult MessageBoxDirectoryAlreadyExists(IEnumerable<string> names)
         {
-            string text, caption;
-            if (names.Count() > 1)
-            {
-                text = $"{string.Join(", ", names)} directories already exist";
-                caption = "Can't create these folders";
-            }
-            else
-            {
-                text = $"{names.First()} directory already exists";
-                caption = "Can't create this folder";
-            }
-
-            var r = MessageBox.Show(text,
-                                    caption,
+            var r = MessageBox.Show(names.Count() > 1 ? $"{string.Join(", ", names)} directories already exist" : $"{names.First()} directory already exists",
+                                    names.Count() > 1 ? "Can't create these folders" : "Can't create this folder",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Exclamation);
             return r;
@@ -189,9 +177,8 @@ namespace Texty.Tools.Directory_Manager
         private void renameCurrentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RenameFolderForm form = new RenameFolderForm(listViewCurrentDirectories.SelectedItems[0].Text);
-            var r = form.ShowDialog();
 
-            if (r == DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 DirectoryRename directoryRename = new DirectoryRename();
                 directoryRename.OldName = listViewCurrentDirectories.SelectedItems[0].Text; ;
@@ -395,9 +382,7 @@ namespace Texty.Tools.Directory_Manager
             }
 
             NewFoldersForm form = new NewFoldersForm();
-            var r = form.ShowDialog();
-
-            if (r == DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 string[] directories = form.richTextBoxNewFolders.Lines;
                 
