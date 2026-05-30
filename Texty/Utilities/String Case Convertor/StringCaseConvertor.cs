@@ -43,9 +43,9 @@ namespace Texty.Utilities.StringCaseConvertor
             return text.Any(c => separator.Contains(c));
         }
 
-        public static string[] SplitByUpperCase(string text)
+        public static string[] SplitByAlphaNumeric(string text)
         {
-            string[] words = Regex.Matches(text, "[A-Z0-9][a-z0-9]*")
+            string[] words = Regex.Matches(text, @"\d+|[a-z]+|[A-Z]{1}[a-z]*")
                                   .Cast<Match>()
                                   .Select(match => match.Value)
                                   .Where(match => match.Length > 0)
@@ -53,22 +53,22 @@ namespace Texty.Utilities.StringCaseConvertor
             return words;
         }
 
-        public static bool IsSplitableByUpperCase(string text)
+        public static bool IsSplitableByAlphaNumeric(string text)
         {
-            return text.Any(c => char.IsUpper(c));
+            return text.Any(c => char.IsUpper(c) || char.IsDigit(c));
         }
 
         public static bool IsSplitable(string text)
         {
             if (IsSplitableBySeparator(text)) return true;
-            else if (IsSplitableByUpperCase(text)) return true;
+            else if (IsSplitableByAlphaNumeric(text)) return true;
             return false;
         }
 
         private static string[] SplitAuto(string text)
         {
             if (IsSplitableBySeparator(text)) return SplitBySeparator(text);
-            else if (IsSplitableByUpperCase(text)) return SplitByUpperCase(text);
+            else if (IsSplitableByAlphaNumeric(text)) return SplitByAlphaNumeric(text);
             else throw new FormatException("Invalid case conversion format");
         }
 
