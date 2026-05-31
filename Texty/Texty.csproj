@@ -56,6 +56,20 @@
       <DependentUpon>ClipboardWatcherForm.cs</DependentUpon>
     </Compile>
     <Compile Include="File\FileManager.cs" />
+    <Compile Include="Tools\Date Convertor\SolarHijriToGregorianForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Date Convertor\SolarHijriToGregorianForm.Designer.cs">
+      <DependentUpon>SolarHijriToGregorianForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Date Convertor\DateConvertor.cs" />
+    <Compile Include="Tools\Date Convertor\GregorianToSolarHijriForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Date Convertor\GregorianToSolarHijriForm.Designer.cs">
+      <DependentUpon>GregorianToSolarHijriForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Date Convertor\PersianDate.cs" />
     <Compile Include="Utilities\String Case Convertor\StringCaseConvertor.cs" />
     <Compile Include="Tools\Encoding\CharacterDecoderForm.cs">
       <SubType>Form</SubType>
@@ -106,6 +120,12 @@
     <Compile Include="Utilities\String Normalizer\StringNormalizer.cs" />
     <EmbeddedResource Include="Edit\Clipboard Manager\ClipboardWatcherForm.resx">
       <DependentUpon>ClipboardWatcherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Date Convertor\GregorianToSolarHijriForm.resx">
+      <DependentUpon>GregorianToSolarHijriForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\Date Convertor\SolarHijriToGregorianForm.resx">
+      <DependentUpon>SolarHijriToGregorianForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\Encoding\CharacterDecoderForm.resx">
       <DependentUpon>CharacterDecoderForm.cs</DependentUpon>

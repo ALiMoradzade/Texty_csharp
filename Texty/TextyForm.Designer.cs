@@ -133,6 +133,9 @@ namespace Texty
             this.toolStripStatusLabelUTF32 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateConvertorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gregorianToSolarHijriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.solarHijriToGregorianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -743,7 +746,8 @@ namespace Texty
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.decodeToolStripMenuItem,
             this.directoryManagerToolStripMenuItem,
-            this.clipboardWatcherToolStripMenuItem});
+            this.clipboardWatcherToolStripMenuItem,
+            this.dateConvertorToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -754,7 +758,7 @@ namespace Texty
             this.textToolStripMenuItem,
             this.characterToolStripMenuItem});
             this.decodeToolStripMenuItem.Name = "decodeToolStripMenuItem";
-            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.decodeToolStripMenuItem.Text = "Decode";
             // 
             // textToolStripMenuItem
@@ -774,14 +778,14 @@ namespace Texty
             // directoryManagerToolStripMenuItem
             // 
             this.directoryManagerToolStripMenuItem.Name = "directoryManagerToolStripMenuItem";
-            this.directoryManagerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.directoryManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.directoryManagerToolStripMenuItem.Text = "Directory Manager";
             this.directoryManagerToolStripMenuItem.Click += new System.EventHandler(this.directoryManagerToolStripMenuItem_Click);
             // 
             // clipboardWatcherToolStripMenuItem
             // 
             this.clipboardWatcherToolStripMenuItem.Name = "clipboardWatcherToolStripMenuItem";
-            this.clipboardWatcherToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.clipboardWatcherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clipboardWatcherToolStripMenuItem.Text = "Clipboard Watcher";
             this.clipboardWatcherToolStripMenuItem.Click += new System.EventHandler(this.clipboardWatcherToolStripMenuItem_Click);
             // 
@@ -817,35 +821,35 @@ namespace Texty
             // textCurrentLineAndChar
             // 
             this.textCurrentLineAndChar.Name = "textCurrentLineAndChar";
-            this.textCurrentLineAndChar.Size = new System.Drawing.Size(130, 17);
+            this.textCurrentLineAndChar.Size = new System.Drawing.Size(137, 17);
             this.textCurrentLineAndChar.Spring = true;
             this.textCurrentLineAndChar.Text = "Ln 0, Char 0";
             // 
             // textLengthOrCursorLength
             // 
             this.textLengthOrCursorLength.Name = "textLengthOrCursorLength";
-            this.textLengthOrCursorLength.Size = new System.Drawing.Size(130, 17);
+            this.textLengthOrCursorLength.Size = new System.Drawing.Size(137, 17);
             this.textLengthOrCursorLength.Spring = true;
             this.textLengthOrCursorLength.Text = "Length 0";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(130, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(137, 17);
             this.toolStripStatusLabel3.Spring = true;
             this.toolStripStatusLabel3.Text = "Plain Text";
             // 
             // textZoomFactor
             // 
             this.textZoomFactor.Name = "textZoomFactor";
-            this.textZoomFactor.Size = new System.Drawing.Size(130, 17);
+            this.textZoomFactor.Size = new System.Drawing.Size(137, 17);
             this.textZoomFactor.Spring = true;
             this.textZoomFactor.Text = "100%";
             // 
             // fileTextEncoding
             // 
             this.fileTextEncoding.Name = "fileTextEncoding";
-            this.fileTextEncoding.Size = new System.Drawing.Size(130, 17);
+            this.fileTextEncoding.Size = new System.Drawing.Size(137, 17);
             this.fileTextEncoding.Spring = true;
             this.fileTextEncoding.Text = "UTF-8";
             // 
@@ -962,6 +966,29 @@ namespace Texty
             this.copyToolStripMenuItem2.Size = new System.Drawing.Size(102, 22);
             this.copyToolStripMenuItem2.Text = "Copy";
             this.copyToolStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
+            // 
+            // dateConvertorToolStripMenuItem
+            // 
+            this.dateConvertorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gregorianToSolarHijriToolStripMenuItem,
+            this.solarHijriToGregorianToolStripMenuItem});
+            this.dateConvertorToolStripMenuItem.Name = "dateConvertorToolStripMenuItem";
+            this.dateConvertorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dateConvertorToolStripMenuItem.Text = "Date Convertor";
+            // 
+            // gregorianToSolarHijriToolStripMenuItem
+            // 
+            this.gregorianToSolarHijriToolStripMenuItem.Name = "gregorianToSolarHijriToolStripMenuItem";
+            this.gregorianToSolarHijriToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.gregorianToSolarHijriToolStripMenuItem.Text = "Gregorian To Solar Hijri";
+            this.gregorianToSolarHijriToolStripMenuItem.Click += new System.EventHandler(this.gregorianToSolarHijriToolStripMenuItem_Click);
+            // 
+            // solarHijriToGregorianToolStripMenuItem
+            // 
+            this.solarHijriToGregorianToolStripMenuItem.Name = "solarHijriToGregorianToolStripMenuItem";
+            this.solarHijriToGregorianToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.solarHijriToGregorianToolStripMenuItem.Text = "Solar Hijri To Gregorian";
+            this.solarHijriToGregorianToolStripMenuItem.Click += new System.EventHandler(this.solarHijriToGregorianToolStripMenuItem_Click);
             // 
             // TextyForm
             // 
@@ -1104,5 +1131,8 @@ namespace Texty
         private System.Windows.Forms.ToolStripMenuItem convertDigitsToASCIIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeNonPersianLettersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clipboardWatcherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dateConvertorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gregorianToSolarHijriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem solarHijriToGregorianToolStripMenuItem;
     }
 }

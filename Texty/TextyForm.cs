@@ -22,6 +22,7 @@ using Texty.Utilities.StringCaseConvertor;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Texty.File;
+using Texty.Tools.Date_Convertor;
 
 namespace Texty
 {
@@ -372,27 +373,16 @@ namespace Texty
 
         private void timeDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string GetPersianDate(DateTime dateTime)
-            {
-                PersianCalendar persianCalendar = new PersianCalendar();
-
-                string persianYear = persianCalendar.GetYear(dateTime).ToString("0000");
-                string persianMonth = persianCalendar.GetMonth(dateTime).ToString("00");
-                string persianDayOfMonth = persianCalendar.GetDayOfMonth(dateTime).ToString("00");
-
-                return $"{persianYear}/{persianMonth}/{persianDayOfMonth}";
-            }
-
             DateTime systemDateTime = DateTime.Now;
-
+            PersianDate persianDate = DateConvertor.GetPersianDate(systemDateTime);
+            
             string gregorianDate = $"{systemDateTime.Year:0000}/{systemDateTime.Month:00}/{systemDateTime.Day:00}";
-            string solarHijriDate = GetPersianDate(systemDateTime);
+            string solarHijriDate = $"{persianDate.Year:0000}/{persianDate.Month:00}/{persianDate.Day:00}";
 
             string value = $"\r\n{solarHijriDate}\r\n{gregorianDate}";
-            int selectionLen = richTextBox1.SelectionStart + value.Replace("\r\n", "x").Length;
 
             richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, value);
-            richTextBox1.SelectionStart = selectionLen;
+            richTextBox1.SelectionStart = richTextBox1.SelectionStart + value.Replace("\r\n", "\n").Length;
         }
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
@@ -459,6 +449,18 @@ namespace Texty
         private void clipboardWatcherToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClipboardWatcherForm form = new ClipboardWatcherForm();
+            form.Show();
+        }
+
+        private void gregorianToSolarHijriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GregorianToSolarHijriForm form = new GregorianToSolarHijriForm();
+            form.Show();
+        }
+
+        private void solarHijriToGregorianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SolarHijriToGregorianForm form = new SolarHijriToGregorianForm();
             form.Show();
         }
         #endregion
@@ -986,8 +988,10 @@ namespace Texty
 
 
 
+
+
         #endregion
 
-
+        
     }
 }
