@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texty", "Texty\Texty.csproj
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Texty Installer", "Texty Installer\Texty Installer.vdproj", "{D1174E7B-0BAC-7D4C-2F13-3539C3FE44D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texty.Registery", "Texty.Registery\Texty.Registery.csproj", "{374FAC92-9D4C-45C7-8D1B-4AE933A35152}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{7E44FBFC-7066-4A7B-9800-C22AA9D49F7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1174E7B-0BAC-7D4C-2F13-3539C3FE44D3}.Debug|Any CPU.ActiveCfg = Debug
 		{D1174E7B-0BAC-7D4C-2F13-3539C3FE44D3}.Release|Any CPU.ActiveCfg = Release
+		{374FAC92-9D4C-45C7-8D1B-4AE933A35152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{374FAC92-9D4C-45C7-8D1B-4AE933A35152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{374FAC92-9D4C-45C7-8D1B-4AE933A35152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{374FAC92-9D4C-45C7-8D1B-4AE933A35152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

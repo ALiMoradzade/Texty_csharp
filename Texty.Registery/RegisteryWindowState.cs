@@ -9,16 +9,13 @@ using System.Windows.Forms;
 
 namespace Texty.Registery
 {
-    internal class RegWindowState
+    public static class RegisteryWindowState
     {
-        private static string address = RegAddress.RegWindowsState;
-        private static FormWindowState defaultState = FormWindowState.Normal;
-
         public static bool IsExisted
         {
             get
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.FormWindowState, false))
                 {
                     if (key != null) return true;
                 }
@@ -28,12 +25,12 @@ namespace Texty.Registery
 
         public static void Write()
         {
-            Write(defaultState);
+            Write(RegisteryDefaultValues.FormWindowState);
         }
 
         public static void Write(FormWindowState state)
         {
-            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(address))
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(RegisteryAddress.FormWindowState))
             {
                 key.SetValue("State", (int)state, RegistryValueKind.DWord);
             }
@@ -41,7 +38,7 @@ namespace Texty.Registery
 
         public static FormWindowState Read()
         {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.FormWindowState, false))
             {
                 if (key != null)
                 {
@@ -49,7 +46,7 @@ namespace Texty.Registery
                     return state;
                 }
             }
-            return defaultState;
+            return RegisteryDefaultValues.FormWindowState;
         }
     }
 }

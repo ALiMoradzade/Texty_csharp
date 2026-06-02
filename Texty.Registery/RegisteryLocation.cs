@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 
 namespace Texty.Registery
 {
-    internal class RegLocation
+    public static class RegisteryLocation
     {
-        private static string address = RegAddress.RegLocation;
-        private static Point defaultLocation = new Point(442, 163);
-
         public static bool IsExisted
         {
             get
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.FormLocation, false))
                 {
                     if (key != null) return true;
                 }
@@ -27,12 +24,12 @@ namespace Texty.Registery
 
         public static void Write()
         {
-            Write(defaultLocation);
+            Write(RegisteryDefaultValues.FormLocation);
         }
 
         public static void Write(Point location)
         {
-            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(address))
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(RegisteryAddress.FormLocation))
             {
                 key.SetValue("X", location.X, RegistryValueKind.DWord);
                 key.SetValue("Y", location.Y, RegistryValueKind.DWord);
@@ -41,7 +38,7 @@ namespace Texty.Registery
 
         public static Point Read()
         {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.FormLocation, false))
             {
                 if (key != null)
                 {
@@ -52,7 +49,7 @@ namespace Texty.Registery
                     return location;
                 }
             }
-            return defaultLocation;
+            return RegisteryDefaultValues.FormLocation;
         }
     }
 }

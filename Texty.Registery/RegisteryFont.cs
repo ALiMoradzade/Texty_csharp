@@ -5,20 +5,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Texty.Registery;
 
-namespace Texty
+namespace Texty.Registery
 {
-    internal class RegFont
+    public static class RegisteryFont
     {
-        private static string address = RegAddress.RegFont;
-        private static Font defaultFont = new Font("Comic Sans MS", 12, FontStyle.Regular);
-
         public static bool IsExisted
         {
             get
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.Font, false))
                 {
                    if (key != null) return true;
                 }
@@ -28,12 +24,12 @@ namespace Texty
 
         public static void Write()
         {
-            Write(defaultFont);
+            Write(RegisteryDefaultValues.Font);
         }
 
         public static void Write(Font font)
         {
-            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(address))
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(RegisteryAddress.Font))
             {
                 key.SetValue("Name", font.Name, RegistryValueKind.String);
                 key.SetValue("Size", font.Size, RegistryValueKind.DWord);
@@ -43,7 +39,7 @@ namespace Texty
 
         public static Font Read()
         {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.Font, false))
             {
                 if (key != null)
                 {
@@ -55,7 +51,7 @@ namespace Texty
                     return font;
                 }
             }
-            return defaultFont;
+            return RegisteryDefaultValues.Font;
         }
     }
 }

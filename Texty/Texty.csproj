@@ -106,11 +106,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registery\RegAddress.cs" />
-    <Compile Include="Registery\RegFont.cs" />
-    <Compile Include="Registery\RegLocation.cs" />
-    <Compile Include="Registery\RegSize.cs" />
-    <Compile Include="Registery\RegWindowState.cs" />
     <Compile Include="TextyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +165,11 @@
   <ItemGroup>
     <Content Include="Picture2 icon256.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Texty.Registery\Texty.Registery.csproj">
+      <Project>{374fac92-9d4c-45c7-8d1b-4ae933a35152}</Project>
+      <Name>Texty.Registery</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

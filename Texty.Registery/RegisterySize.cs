@@ -5,20 +5,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Texty.Registery;
 
-namespace Texty
+namespace Texty.Registery
 {
-    internal class RegSize
+    public static class RegisterySize
     {
-        private static string address = RegAddress.RegSize;
-        private static Size defaultSize = new Size(716, 525);
-
         public static bool IsExisted
         {
             get
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.FormSize, false))
                 {
                     if (key != null) return true;
                 }
@@ -28,12 +24,12 @@ namespace Texty
 
         public static void Write()
         {
-            Write(defaultSize);
+            Write(RegisteryDefaultValues.FormSize);
         }
 
         public static void Write(Size size)
         {
-            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(address))
+            using (RegistryKey key = Registry.CurrentUser.CreateSubKey(RegisteryAddress.FormSize))
             {
                 key.SetValue("Width", size.Width, RegistryValueKind.DWord);
                 key.SetValue("Height", size.Height, RegistryValueKind.DWord);
@@ -42,7 +38,7 @@ namespace Texty
 
         public static Size Read()
         {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(address, false))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(RegisteryAddress.FormSize, false))
             {
                 if (key != null)
                 {
@@ -53,7 +49,7 @@ namespace Texty
                     return size;
                 }
             }
-            return defaultSize;
+            return RegisteryDefaultValues.FormSize;
         }
     }
 }

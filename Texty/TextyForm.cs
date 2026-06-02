@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Texty.Registery;
+using Texty;
 using Texty.Edit.Clipboard_Manager;
 using Texty.Tools.Directory_Manager;
 using Texty.Tools.Encoding;
@@ -21,6 +21,7 @@ using Texty.Utilities.String_Normalizer;
 using Texty.Utilities.StringCaseConvertor;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Texty.Registery;
 using Texty.File;
 using Texty.Tools.Date_Convertor;
 
@@ -60,18 +61,17 @@ namespace Texty
         #region Form Events
         private void TextyForm_Load(object sender, EventArgs e)
         {
-            if (!RegFont.IsExisted) RegFont.Write();
-            richTextBox1.Font = fontDialog1.Font = RegFont.Read();
+            if (!RegisteryFont.IsExisted) RegisteryFont.Write();
+            richTextBox1.Font = fontDialog1.Font = RegisteryFont.Read();
 
-            if (!RegFont.IsExisted) RegFont.Write();
-            Size = RegSize.Read();
+            if (!RegisterySize.IsExisted) RegisterySize.Write();
+            Size = RegisterySize.Read();
 
-            if (!RegWindowState.IsExisted) RegWindowState.Write();
-            WindowState = RegWindowState.Read();
+            if (!RegisteryWindowState.IsExisted) RegisteryWindowState.Write();
+            WindowState = RegisteryWindowState.Read();
 
-            if (!RegLocation.IsExisted) RegLocation.Write();
-            Location = RegLocation.Read();
-
+            if (!RegisteryLocation.IsExisted) RegisteryLocation.Write();
+            Location = RegisteryLocation.Read();
         }
 
         private void TextyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,12 +92,12 @@ namespace Texty
 
         private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            RegFont.Write(fontDialog1.Font);
+            RegisteryFont.Write(fontDialog1.Font);
             if (WindowState == FormWindowState.Normal)
             {
-                RegSize.Write(Size);
-                RegWindowState.Write(WindowState);
-                RegLocation.Write(Location);
+                RegisterySize.Write(Size);
+                RegisteryWindowState.Write(WindowState);
+                RegisteryLocation.Write(Location);
             }
         }
         #endregion
