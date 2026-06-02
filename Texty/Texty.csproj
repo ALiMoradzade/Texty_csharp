@@ -36,6 +36,9 @@
     <ApplicationIcon>Picture2 icon256.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RegistrySettings">
+      <HintPath>.\RegistrySettings.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -164,12 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Picture2 icon256.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Texty.Registery\Texty.Registery.csproj">
-      <Project>{374fac92-9d4c-45c7-8d1b-4ae933a35152}</Project>
-      <Name>Texty.Registery</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,9 +19,7 @@ using Texty.Tools.Directory_Manager;
 using Texty.Tools.Encoding;
 using Texty.Utilities.String_Normalizer;
 using Texty.Utilities.StringCaseConvertor;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Texty.Registery;
+using RegistrySettings;
 using Texty.File;
 using Texty.Tools.Date_Convertor;
 
@@ -61,17 +59,31 @@ namespace Texty
         #region Form Events
         private void TextyForm_Load(object sender, EventArgs e)
         {
-            if (!RegisteryFont.IsExisted) RegisteryFont.Write();
-            richTextBox1.Font = fontDialog1.Font = RegisteryFont.Read();
+            RegistryForm formSettings = new RegistryForm(Application.ProductName);
 
-            if (!RegisterySize.IsExisted) RegisterySize.Write();
-            Size = RegisterySize.Read();
+            if (!formSettings.IsExisted)
+            {
+                formSettings.FormSize = new Size(716, 525);
+                formSettings.FormLocation = new Point(442, 163);
+                formSettings.FormWindowState = FormWindowState.Normal;
+                formSettings.Write();
+            }
 
-            if (!RegisteryWindowState.IsExisted) RegisteryWindowState.Write();
-            WindowState = RegisteryWindowState.Read();
+            formSettings.Read();
+            Size = formSettings.FormSize;
+            Location = formSettings.FormLocation;
+            WindowState = formSettings.FormWindowState;
 
-            if (!RegisteryLocation.IsExisted) RegisteryLocation.Write();
-            Location = RegisteryLocation.Read();
+
+            RegistryFont registryFont = new RegistryFont(Application.ProductName);
+            if (!registryFont.IsExisted)
+            {
+                registryFont.Font = new Font("Comic Sans MS", 12, FontStyle.Regular);
+                registryFont.Write();
+            }
+
+            registryFont.Read();
+            richTextBox1.Font = fontDialog1.Font = registryFont.Font;
         }
 
         private void TextyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,13 +104,18 @@ namespace Texty
 
         private void TextyForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            RegisteryFont.Write(fontDialog1.Font);
             if (WindowState == FormWindowState.Normal)
             {
-                RegisterySize.Write(Size);
-                RegisteryWindowState.Write(WindowState);
-                RegisteryLocation.Write(Location);
+                RegistryForm formSettings = new RegistryForm(Application.ProductName);
+                formSettings.FormSize = Size;
+                formSettings.FormLocation = Location;
+                formSettings.FormWindowState = WindowState;
+                formSettings.Write();
             }
+
+            RegistryFont registryFont = new RegistryFont(Application.ProductName);
+            registryFont.Font = Font;
+            registryFont.Write();
         }
         #endregion
 
