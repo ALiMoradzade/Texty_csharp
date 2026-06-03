@@ -87,7 +87,7 @@ namespace Texty
 
         private void TextyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if ((IsFileLoaded() && IsFileEdited()) || (!IsFileLoaded() && !IsTextEmpty()))
+            if ((IsFileLoaded() && IsFileEdited()) || (!IsFileLoaded() && !IsAllTextWhiteSpace()))
             {
                 var r = MessageBoxSaveChoice();
                 if (r == DialogResult.Yes)
@@ -220,9 +220,14 @@ namespace Texty
         #endregion
 
         #region File Status Methods
-        public bool IsTextEmpty()
+        public bool IsAllTextWhiteSpace()
         {
             return richTextBox1.Text.All(character => char.IsWhiteSpace(character));
+        }
+
+        public bool IsTextEmpty()
+        {
+            return richTextBox1.Text.Length == 0;
         }
 
         public bool IsFileEdited()
@@ -308,7 +313,7 @@ namespace Texty
         #region File Tab
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!IsTextEmpty())
+            if (!IsAllTextWhiteSpace())
             {
                 if (MessageBoxOverWriteFileChoice() == DialogResult.No)
                 {
@@ -385,6 +390,16 @@ namespace Texty
         private void selectAllToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SelectAll();
+        }
+
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void timeDateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -558,7 +573,7 @@ namespace Texty
                return;
             }
 
-            if (!IsTextEmpty())
+            if (!IsAllTextWhiteSpace())
             {
                 if (MessageBoxOverWriteFileChoice() == DialogResult.No)
                 {
@@ -578,9 +593,16 @@ namespace Texty
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            if (flagEnableTextChange && !IsFileEdited())
+            if (flagEnableTextChange)
             {
-                FileIsEditedState(true);
+                if (IsTextEmpty())
+                {
+                    FileIsEditedState(false);
+                }
+                else if (!IsFileEdited())
+                {
+                    FileIsEditedState(true);
+                }
             }
         }
 
@@ -1008,8 +1030,9 @@ namespace Texty
 
 
 
+
         #endregion
 
-        
+       
     }
 }
