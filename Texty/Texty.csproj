@@ -51,62 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Edit\Clipboard Manager\ClipboardManager.cs" />
-    <Compile Include="Edit\Clipboard Manager\ClipboardWatcherForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Edit\Clipboard Manager\ClipboardWatcherForm.Designer.cs">
-      <DependentUpon>ClipboardWatcherForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="File\FileManager.cs" />
-    <Compile Include="Tools\Date Convertor\SolarHijriToGregorianForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\Date Convertor\SolarHijriToGregorianForm.Designer.cs">
-      <DependentUpon>SolarHijriToGregorianForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Date Convertor\DateConvertor.cs" />
-    <Compile Include="Tools\Date Convertor\GregorianToSolarHijriForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\Date Convertor\GregorianToSolarHijriForm.Designer.cs">
-      <DependentUpon>GregorianToSolarHijriForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Date Convertor\PersianDate.cs" />
-    <Compile Include="Utilities\String Case Convertor\StringCaseConvertor.cs" />
-    <Compile Include="Tools\Encoding\CharacterDecoderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\Encoding\CharacterDecoderForm.Designer.cs">
-      <DependentUpon>CharacterDecoderForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Encoding\CharacterEncodingConverter.cs" />
-    <Compile Include="Tools\Encoding\TextDecoderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\Encoding\TextDecoderForm.Designer.cs">
-      <DependentUpon>TextDecoderForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Encoding\TextEncodingConverter.cs" />
-    <Compile Include="Tools\Directory Manager\DirectoryManagerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\Directory Manager\DirectoryManagerForm.Designer.cs">
-      <DependentUpon>DirectoryManagerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Directory Manager\DirectoryRename.cs" />
-    <Compile Include="Tools\Directory Manager\NewFoldersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\Directory Manager\NewFoldersForm.Designer.cs">
-      <DependentUpon>NewFoldersForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Directory Manager\RenameFolderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools\Directory Manager\RenameFolderForm.Designer.cs">
-      <DependentUpon>RenameFolderForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextyForm.cs">
@@ -115,31 +60,6 @@
     <Compile Include="TextyForm.Designer.cs">
       <DependentUpon>TextyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\String Normalizer\StringNormalizer.cs" />
-    <EmbeddedResource Include="Edit\Clipboard Manager\ClipboardWatcherForm.resx">
-      <DependentUpon>ClipboardWatcherForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\Date Convertor\GregorianToSolarHijriForm.resx">
-      <DependentUpon>GregorianToSolarHijriForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\Date Convertor\SolarHijriToGregorianForm.resx">
-      <DependentUpon>SolarHijriToGregorianForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\Encoding\CharacterDecoderForm.resx">
-      <DependentUpon>CharacterDecoderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\Encoding\TextDecoderForm.resx">
-      <DependentUpon>TextDecoderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\Directory Manager\DirectoryManagerForm.resx">
-      <DependentUpon>DirectoryManagerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\Directory Manager\NewFoldersForm.resx">
-      <DependentUpon>NewFoldersForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tools\Directory Manager\RenameFolderForm.resx">
-      <DependentUpon>RenameFolderForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -167,6 +87,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Picture2 icon256.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clipboard Manager\Clipboard Manager.csproj">
+      <Project>{91feab57-9fb6-4444-aa1d-214391c3629e}</Project>
+      <Name>Clipboard Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Date Converter\Date Converter.csproj">
+      <Project>{9222fc21-5d97-4a4c-aaaf-58129e92a151}</Project>
+      <Name>Date Converter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Directory Manager\Directory Manager.csproj">
+      <Project>{17216d76-e886-444b-b91b-985c384afc85}</Project>
+      <Name>Directory Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Encoding Converter\Encoding Converter.csproj">
+      <Project>{8cec5581-aa18-49de-ad59-76224f2365f4}</Project>
+      <Name>Encoding Converter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{85911a21-383e-4ad4-8d77-d70b7d87ddbf}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

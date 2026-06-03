@@ -14,14 +14,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Texty;
-using Texty.Edit.Clipboard_Manager;
-using Texty.Tools.Directory_Manager;
-using Texty.Tools.Encoding;
-using Texty.Utilities.String_Normalizer;
-using Texty.Utilities.StringCaseConvertor;
+using Texty.Clipboard_Manager;
+using Texty.Directory_Manager;
+using Texty.Encoding_Converter;
+using Texty.Utilities;
 using RegistrySettings;
 using Texty.File;
-using Texty.Tools.Date_Convertor;
+using Texty.Date_Converter;
 
 namespace Texty
 {
@@ -391,7 +390,7 @@ namespace Texty
         private void timeDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateTime systemDateTime = DateTime.Now;
-            PersianDate persianDate = DateConvertor.GetPersianDate(systemDateTime);
+            PersianDate persianDate = DateConverter.GetPersianDate(systemDateTime);
             
             string gregorianDate = $"{systemDateTime.Year:0000}/{systemDateTime.Month:00}/{systemDateTime.Day:00}";
             string solarHijriDate = $"{persianDate.Year:0000}/{persianDate.Month:00}/{persianDate.Day:00}";

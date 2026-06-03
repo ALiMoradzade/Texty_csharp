@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texty", "Texty\Texty.csproj
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Texty Installer", "Texty Installer\Texty Installer.vdproj", "{D1174E7B-0BAC-7D4C-2F13-3539C3FE44D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{85911A21-383E-4AD4-8D77-D70B7D87DDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Directory Manager", "Directory Manager\Directory Manager.csproj", "{17216D76-E886-444B-B91B-985C384AFC85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encoding Converter", "Encoding Converter\Encoding Converter.csproj", "{8CEC5581-AA18-49DE-AD59-76224F2365F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clipboard Manager", "Clipboard Manager\Clipboard Manager.csproj", "{91FEAB57-9FB6-4444-AA1D-214391C3629E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Date Converter", "Date Converter\Date Converter.csproj", "{9222FC21-5D97-4A4C-AAAF-58129E92A151}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +29,26 @@ Global
 		{7E44FBFC-7066-4A7B-9800-C22AA9D49F7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1174E7B-0BAC-7D4C-2F13-3539C3FE44D3}.Debug|Any CPU.ActiveCfg = Debug
 		{D1174E7B-0BAC-7D4C-2F13-3539C3FE44D3}.Release|Any CPU.ActiveCfg = Release
+		{85911A21-383E-4AD4-8D77-D70B7D87DDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85911A21-383E-4AD4-8D77-D70B7D87DDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85911A21-383E-4AD4-8D77-D70B7D87DDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85911A21-383E-4AD4-8D77-D70B7D87DDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17216D76-E886-444B-B91B-985C384AFC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17216D76-E886-444B-B91B-985C384AFC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17216D76-E886-444B-B91B-985C384AFC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17216D76-E886-444B-B91B-985C384AFC85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CEC5581-AA18-49DE-AD59-76224F2365F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEC5581-AA18-49DE-AD59-76224F2365F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEC5581-AA18-49DE-AD59-76224F2365F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEC5581-AA18-49DE-AD59-76224F2365F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91FEAB57-9FB6-4444-AA1D-214391C3629E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91FEAB57-9FB6-4444-AA1D-214391C3629E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91FEAB57-9FB6-4444-AA1D-214391C3629E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91FEAB57-9FB6-4444-AA1D-214391C3629E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9222FC21-5D97-4A4C-AAAF-58129E92A151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9222FC21-5D97-4A4C-AAAF-58129E92A151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9222FC21-5D97-4A4C-AAAF-58129E92A151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9222FC21-5D97-4A4C-AAAF-58129E92A151}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
