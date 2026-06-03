@@ -29,6 +29,7 @@ namespace Texty.Directory_Manager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RenameFolderForm));
             this.textBoxOldName = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.convertCaseToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,12 +57,12 @@ namespace Texty.Directory_Manager
             this.sCREAMINGSNAKECASEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sCREAMINGDOTCASEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uPPERSPACECASEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.iNVERTCASEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxNewName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.iNVERTCASEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@ namespace Texty.Directory_Manager
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.convertCaseToToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
             // 
             // convertCaseToToolStripMenuItem
             // 
@@ -112,7 +113,7 @@ namespace Texty.Directory_Manager
             this.toolStripSeparator5,
             this.iNVERTCASEToolStripMenuItem});
             this.convertCaseToToolStripMenuItem.Name = "convertCaseToToolStripMenuItem";
-            this.convertCaseToToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.convertCaseToToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.convertCaseToToolStripMenuItem.Text = "Convert Case To";
             // 
             // lazecaseToolStripMenuItem
@@ -275,6 +276,18 @@ namespace Texty.Directory_Manager
             this.uPPERSPACECASEToolStripMenuItem.Text = "UPPER SPACE CASE";
             this.uPPERSPACECASEToolStripMenuItem.Click += new System.EventHandler(this.uPPERSPACECASEToolStripMenuItem_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(211, 6);
+            // 
+            // iNVERTCASEToolStripMenuItem
+            // 
+            this.iNVERTCASEToolStripMenuItem.Name = "iNVERTCASEToolStripMenuItem";
+            this.iNVERTCASEToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.iNVERTCASEToolStripMenuItem.Text = "iNVERT cASE";
+            this.iNVERTCASEToolStripMenuItem.Click += new System.EventHandler(this.iNVERTCASEToolStripMenuItem_Click);
+            // 
             // textBoxNewName
             // 
             this.textBoxNewName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -314,18 +327,6 @@ namespace Texty.Directory_Manager
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
-            // iNVERTCASEToolStripMenuItem
-            // 
-            this.iNVERTCASEToolStripMenuItem.Name = "iNVERTCASEToolStripMenuItem";
-            this.iNVERTCASEToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.iNVERTCASEToolStripMenuItem.Text = "iNVERT cASE";
-            this.iNVERTCASEToolStripMenuItem.Click += new System.EventHandler(this.iNVERTCASEToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(211, 6);
-            // 
             // RenameFolderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,9 +338,9 @@ namespace Texty.Directory_Manager
             this.Controls.Add(this.textBoxNewName);
             this.Controls.Add(this.textBoxOldName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "RenameFolderForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rename Folder";
             this.contextMenuStrip1.ResumeLayout(false);

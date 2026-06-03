@@ -28,10 +28,10 @@ namespace Texty.Directory_Manager
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoryManagerForm));
             this.buttonLoad = new System.Windows.Forms.Button();
             this.listViewCurrentDirectories = new System.Windows.Forms.ListView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.undoDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +41,9 @@ namespace Texty.Directory_Manager
             this.label3 = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
             this.listViewRenamedDirectories = new System.Windows.Forms.ListView();
-            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip();
             this.undoRenameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listViewNewDirectories = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
@@ -248,9 +248,9 @@ namespace Texty.Directory_Manager
             this.Controls.Add(this.listViewCurrentDirectories);
             this.Controls.Add(this.buttonLoad);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "DirectoryManagerForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Directory Manager";
             this.contextMenuStrip1.ResumeLayout(false);

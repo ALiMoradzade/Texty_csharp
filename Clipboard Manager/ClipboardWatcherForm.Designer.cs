@@ -28,15 +28,15 @@ namespace Texty.Clipboard_Manager
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClipboardWatcherForm));
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.rightToLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,25 +51,6 @@ namespace Texty.Clipboard_Manager
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(160, 160);
             this.textBox1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Copied Texts:";
-            // 
-            // buttonOK
-            // 
-            this.buttonOK.Location = new System.Drawing.Point(172, 178);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 2;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // contextMenuStrip1
             // 
@@ -95,9 +76,28 @@ namespace Texty.Clipboard_Manager
             // rightToLeftToolStripMenuItem
             // 
             this.rightToLeftToolStripMenuItem.Name = "rightToLeftToolStripMenuItem";
-            this.rightToLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rightToLeftToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.rightToLeftToolStripMenuItem.Text = "Right To Left";
             this.rightToLeftToolStripMenuItem.Click += new System.EventHandler(this.rightToLeftToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Copied Texts:";
+            // 
+            // buttonOK
+            // 
+            this.buttonOK.Location = new System.Drawing.Point(172, 178);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.TabIndex = 2;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // timer1
             // 
@@ -112,9 +112,9 @@ namespace Texty.Clipboard_Manager
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ClipboardWatcherForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clipboard Watcher";
             this.Load += new System.EventHandler(this.ClipboardWatcherForm_Load);
