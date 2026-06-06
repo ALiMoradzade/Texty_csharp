@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Texty.Utilities
@@ -90,6 +91,17 @@ namespace Texty.Utilities
             string persianText = string.Concat(text.Where(c => persianAplphabet.Contains(c)));
             return persianText;
         }
-        
+
+        public static string RemoveNonEnglishLetters(string text)
+        {
+            string englishText = string.Concat
+            (
+                text.Where
+                (
+                    c => !char.IsLetter(c) || Regex.IsMatch(c.ToString(), "[a-zA-Z]{1}")
+                )
+            );
+            return englishText;
+        }
     }
 }

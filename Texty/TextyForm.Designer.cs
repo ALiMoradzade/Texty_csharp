@@ -45,7 +45,6 @@ namespace Texty
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.normalizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertDigitsToASCIIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeNonPersianLettersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertCaseToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lazecaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kebabcaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,9 +132,9 @@ namespace Texty
             this.toolStripStatusLabelUTF32 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateConvertorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gregorianToSolarHijriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.solarHijriToGregorianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeLettersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nonPersianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nonEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -256,7 +255,7 @@ namespace Texty
             // 
             this.normalizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.convertDigitsToASCIIToolStripMenuItem,
-            this.removeNonPersianLettersToolStripMenuItem});
+            this.removeLettersToolStripMenuItem});
             this.normalizeToolStripMenuItem.Enabled = false;
             this.normalizeToolStripMenuItem.Name = "normalizeToolStripMenuItem";
             this.normalizeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
@@ -268,13 +267,6 @@ namespace Texty
             this.convertDigitsToASCIIToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.convertDigitsToASCIIToolStripMenuItem.Text = "Convert Digits To ASCII";
             this.convertDigitsToASCIIToolStripMenuItem.Click += new System.EventHandler(this.convertDigitsToASCIIToolStripMenuItem_Click);
-            // 
-            // removeNonPersianLettersToolStripMenuItem
-            // 
-            this.removeNonPersianLettersToolStripMenuItem.Name = "removeNonPersianLettersToolStripMenuItem";
-            this.removeNonPersianLettersToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.removeNonPersianLettersToolStripMenuItem.Text = "Remove Non-Persian Letters";
-            this.removeNonPersianLettersToolStripMenuItem.Click += new System.EventHandler(this.removeNonPersianLettersToolStripMenuItem_Click);
             // 
             // convertCaseToToolStripMenuItem
             // 
@@ -789,6 +781,29 @@ namespace Texty
             this.clipboardWatcherToolStripMenuItem.Text = "Clipboard Watcher";
             this.clipboardWatcherToolStripMenuItem.Click += new System.EventHandler(this.clipboardWatcherToolStripMenuItem_Click);
             // 
+            // dateConvertorToolStripMenuItem
+            // 
+            this.dateConvertorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gregorianToSolarHijriToolStripMenuItem,
+            this.solarHijriToGregorianToolStripMenuItem});
+            this.dateConvertorToolStripMenuItem.Name = "dateConvertorToolStripMenuItem";
+            this.dateConvertorToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.dateConvertorToolStripMenuItem.Text = "Date Convertor";
+            // 
+            // gregorianToSolarHijriToolStripMenuItem
+            // 
+            this.gregorianToSolarHijriToolStripMenuItem.Name = "gregorianToSolarHijriToolStripMenuItem";
+            this.gregorianToSolarHijriToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.gregorianToSolarHijriToolStripMenuItem.Text = "Gregorian To Solar Hijri";
+            this.gregorianToSolarHijriToolStripMenuItem.Click += new System.EventHandler(this.gregorianToSolarHijriToolStripMenuItem_Click);
+            // 
+            // solarHijriToGregorianToolStripMenuItem
+            // 
+            this.solarHijriToGregorianToolStripMenuItem.Name = "solarHijriToGregorianToolStripMenuItem";
+            this.solarHijriToGregorianToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.solarHijriToGregorianToolStripMenuItem.Text = "Solar Hijri To Gregorian";
+            this.solarHijriToGregorianToolStripMenuItem.Click += new System.EventHandler(this.solarHijriToGregorianToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -967,28 +982,28 @@ namespace Texty
             this.copyToolStripMenuItem2.Text = "Copy";
             this.copyToolStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
             // 
-            // dateConvertorToolStripMenuItem
+            // removeLettersToolStripMenuItem
             // 
-            this.dateConvertorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gregorianToSolarHijriToolStripMenuItem,
-            this.solarHijriToGregorianToolStripMenuItem});
-            this.dateConvertorToolStripMenuItem.Name = "dateConvertorToolStripMenuItem";
-            this.dateConvertorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dateConvertorToolStripMenuItem.Text = "Date Convertor";
+            this.removeLettersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nonPersianToolStripMenuItem,
+            this.nonEnglishToolStripMenuItem});
+            this.removeLettersToolStripMenuItem.Name = "removeLettersToolStripMenuItem";
+            this.removeLettersToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.removeLettersToolStripMenuItem.Text = "Remove Letters";
             // 
-            // gregorianToSolarHijriToolStripMenuItem
+            // nonPersianToolStripMenuItem
             // 
-            this.gregorianToSolarHijriToolStripMenuItem.Name = "gregorianToSolarHijriToolStripMenuItem";
-            this.gregorianToSolarHijriToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.gregorianToSolarHijriToolStripMenuItem.Text = "Gregorian To Solar Hijri";
-            this.gregorianToSolarHijriToolStripMenuItem.Click += new System.EventHandler(this.gregorianToSolarHijriToolStripMenuItem_Click);
+            this.nonPersianToolStripMenuItem.Name = "nonPersianToolStripMenuItem";
+            this.nonPersianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nonPersianToolStripMenuItem.Text = "Non-Persian";
+            this.nonPersianToolStripMenuItem.Click += new System.EventHandler(this.nonPersianToolStripMenuItem_Click);
             // 
-            // solarHijriToGregorianToolStripMenuItem
+            // nonEnglishToolStripMenuItem
             // 
-            this.solarHijriToGregorianToolStripMenuItem.Name = "solarHijriToGregorianToolStripMenuItem";
-            this.solarHijriToGregorianToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.solarHijriToGregorianToolStripMenuItem.Text = "Solar Hijri To Gregorian";
-            this.solarHijriToGregorianToolStripMenuItem.Click += new System.EventHandler(this.solarHijriToGregorianToolStripMenuItem_Click);
+            this.nonEnglishToolStripMenuItem.Name = "nonEnglishToolStripMenuItem";
+            this.nonEnglishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nonEnglishToolStripMenuItem.Text = "Non-English";
+            this.nonEnglishToolStripMenuItem.Click += new System.EventHandler(this.nonEnglishToolStripMenuItem_Click);
             // 
             // TextyForm
             // 

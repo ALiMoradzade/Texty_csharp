@@ -752,10 +752,16 @@ namespace Texty
             richTextBox1.SelectedText = StringNormalizer.ConvertToAsciiDigits(digits);
         }
 
-        private void removeNonPersianLettersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void nonPersianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string text = richTextBox1.SelectedText;
             richTextBox1.SelectedText = StringNormalizer.RemoveNonPersianLetters(text);
+        }
+
+        private void nonEnglishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = richTextBox1.SelectedText;
+            richTextBox1.SelectedText = StringNormalizer.RemoveNonEnglishLetters(text);
         }
 
         #region Convert Case To
