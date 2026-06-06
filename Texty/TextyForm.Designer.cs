@@ -94,7 +94,7 @@ namespace Texty
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.dateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +109,9 @@ namespace Texty
             this.characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clipboardWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateConvertorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gregorianToSolarHijriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.solarHijriToGregorianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textySourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -264,7 +267,7 @@ namespace Texty
             // convertDigitsToASCIIToolStripMenuItem
             // 
             this.convertDigitsToASCIIToolStripMenuItem.Name = "convertDigitsToASCIIToolStripMenuItem";
-            this.convertDigitsToASCIIToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.convertDigitsToASCIIToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.convertDigitsToASCIIToolStripMenuItem.Text = "Convert Digits To ASCII";
             this.convertDigitsToASCIIToolStripMenuItem.Click += new System.EventHandler(this.convertDigitsToASCIIToolStripMenuItem_Click);
             // 
@@ -568,7 +571,7 @@ namespace Texty
             this.findToolStripMenuItem,
             this.replaceToolStripMenuItem,
             this.toolStripSeparator6,
-            this.dateToolStripMenuItem,
+            this.dateTimeToolStripMenuItem,
             this.toolStripSeparator7,
             this.fontToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -579,21 +582,21 @@ namespace Texty
             // 
             this.undoToolStripMenuItem1.Name = "undoToolStripMenuItem1";
             this.undoToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+Z";
-            this.undoToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.undoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.undoToolStripMenuItem1.Text = "Undo";
             this.undoToolStripMenuItem1.Click += new System.EventHandler(this.undoToolStripMenuItem1_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // cutToolStripMenuItem1
             // 
             this.cutToolStripMenuItem1.Enabled = false;
             this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
             this.cutToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+X";
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cutToolStripMenuItem1.Text = "Cut";
             this.cutToolStripMenuItem1.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
             // 
@@ -602,7 +605,7 @@ namespace Texty
             this.copyToolStripMenuItem1.Enabled = false;
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+C";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.copyToolStripMenuItem1.Text = "Copy";
             this.copyToolStripMenuItem1.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
             // 
@@ -610,7 +613,7 @@ namespace Texty
             // 
             this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
             this.pasteToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+V";
-            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.pasteToolStripMenuItem1.Text = "Paste";
             this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
             // 
@@ -619,64 +622,66 @@ namespace Texty
             this.deleteToolStripMenuItem1.Enabled = false;
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
             this.deleteToolStripMenuItem1.ShortcutKeyDisplayString = "Del";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem1.Text = "Delete";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // selectAllToolStripMenuItem1
             // 
             this.selectAllToolStripMenuItem1.Name = "selectAllToolStripMenuItem1";
             this.selectAllToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+A";
-            this.selectAllToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.selectAllToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.selectAllToolStripMenuItem1.Text = "Select All";
             this.selectAllToolStripMenuItem1.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // findToolStripMenuItem
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
             this.findToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+F";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.findToolStripMenuItem.Text = "Find";
+            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
             this.replaceToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+H";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.replaceToolStripMenuItem.Text = "Replace";
+            this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
-            // dateToolStripMenuItem
+            // dateTimeToolStripMenuItem
             // 
-            this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
-            this.dateToolStripMenuItem.ShortcutKeyDisplayString = "F5";
-            this.dateToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.dateToolStripMenuItem.Text = "Date";
-            this.dateToolStripMenuItem.Click += new System.EventHandler(this.timeDateToolStripMenuItem_Click);
+            this.dateTimeToolStripMenuItem.Name = "dateTimeToolStripMenuItem";
+            this.dateTimeToolStripMenuItem.ShortcutKeyDisplayString = "F5";
+            this.dateTimeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dateTimeToolStripMenuItem.Text = "Date/Time";
+            this.dateTimeToolStripMenuItem.Click += new System.EventHandler(this.dateTimeToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
@@ -750,7 +755,7 @@ namespace Texty
             this.textToolStripMenuItem,
             this.characterToolStripMenuItem});
             this.decodeToolStripMenuItem.Name = "decodeToolStripMenuItem";
-            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.decodeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.decodeToolStripMenuItem.Text = "Decode";
             // 
             // textToolStripMenuItem
@@ -770,14 +775,14 @@ namespace Texty
             // directoryManagerToolStripMenuItem
             // 
             this.directoryManagerToolStripMenuItem.Name = "directoryManagerToolStripMenuItem";
-            this.directoryManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.directoryManagerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.directoryManagerToolStripMenuItem.Text = "Directory Manager";
             this.directoryManagerToolStripMenuItem.Click += new System.EventHandler(this.directoryManagerToolStripMenuItem_Click);
             // 
             // clipboardWatcherToolStripMenuItem
             // 
             this.clipboardWatcherToolStripMenuItem.Name = "clipboardWatcherToolStripMenuItem";
-            this.clipboardWatcherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clipboardWatcherToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.clipboardWatcherToolStripMenuItem.Text = "Clipboard Watcher";
             this.clipboardWatcherToolStripMenuItem.Click += new System.EventHandler(this.clipboardWatcherToolStripMenuItem_Click);
             // 
@@ -1071,7 +1076,7 @@ namespace Texty
         private System.Windows.Forms.ToolStripMenuItem textySourceCodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeOpenedFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel textZoomFactor;
-        private System.Windows.Forms.ToolStripMenuItem dateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dateTimeToolStripMenuItem;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
@@ -1144,10 +1149,12 @@ namespace Texty
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem convertDigitsToASCIIToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeNonPersianLettersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clipboardWatcherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dateConvertorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gregorianToSolarHijriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solarHijriToGregorianToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeLettersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nonPersianToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nonEnglishToolStripMenuItem;
     }
 }

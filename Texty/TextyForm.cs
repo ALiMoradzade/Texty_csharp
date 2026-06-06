@@ -402,18 +402,17 @@ namespace Texty
 
         }
 
-        private void timeDateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dateTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DateTime systemDateTime = DateTime.Now;
-            PersianDate persianDate = DateConverter.GetPersianDate(systemDateTime);
+            int selectionStart = richTextBox1.SelectionStart;
+            string dateTime = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
             
-            string gregorianDate = $"{systemDateTime.Year:0000}/{systemDateTime.Month:00}/{systemDateTime.Day:00}";
-            string solarHijriDate = $"{persianDate.Year:0000}/{persianDate.Month:00}/{persianDate.Day:00}";
-
-            string value = $"\r\n{solarHijriDate}\r\n{gregorianDate}";
-
-            richTextBox1.Text = richTextBox1.Text.Insert(richTextBox1.SelectionStart, value);
-            richTextBox1.SelectionStart = richTextBox1.SelectionStart + value.Replace("\r\n", "\n").Length;
+            richTextBox1.Text = richTextBox1.Text.Insert
+            (
+                selectionStart,
+                dateTime
+            );
+            richTextBox1.SelectionStart = selectionStart + dateTime.Length;
         }
 
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
@@ -688,7 +687,7 @@ namespace Texty
             {
                 if (e.KeyCode == Keys.F5) // Edit > Date
                 {
-                    dateToolStripMenuItem.PerformClick();
+                    dateTimeToolStripMenuItem.PerformClick();
                 }
             }
             else if (e.Modifiers == (Keys.Shift | Keys.Control))
@@ -1037,8 +1036,10 @@ namespace Texty
 
 
 
+
+
         #endregion
 
-       
+        
     }
 }
