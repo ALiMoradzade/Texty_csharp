@@ -36,8 +36,8 @@
     <ApplicationIcon>Picture2 icon256.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RegistrySettings">
-      <HintPath>.\RegistrySettings.dll</HintPath>
+    <Reference Include="Registry Manager">
+      <HintPath>..\..\..\Library\Registry Manager\Registry Manager\bin\Release\Registry Manager.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Edit\FindReplaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit\FindReplaceForm.Designer.cs">
+      <DependentUpon>FindReplaceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="File\FileManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +66,9 @@
     <Compile Include="TextyForm.Designer.cs">
       <DependentUpon>TextyForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Edit\FindReplaceForm.resx">
+      <DependentUpon>FindReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -89,9 +98,9 @@
     <Content Include="Picture2 icon256.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Clipboard Manager\Clipboard Manager.csproj">
+    <ProjectReference Include="..\Clipboard Manager\Clipboard Watcher.csproj">
       <Project>{91feab57-9fb6-4444-aa1d-214391c3629e}</Project>
-      <Name>Clipboard Manager</Name>
+      <Name>Clipboard Watcher</Name>
     </ProjectReference>
     <ProjectReference Include="..\Date Converter\Date Converter.csproj">
       <Project>{9222fc21-5d97-4a4c-aaaf-58129e92a151}</Project>
@@ -109,6 +118,9 @@
       <Project>{85911a21-383e-4ad4-8d77-d70b7d87ddbf}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\Library\Clipboard Manager\Clipboard Manager\bin\Release\Clipboard Manager.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

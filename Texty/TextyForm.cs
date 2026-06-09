@@ -20,6 +20,7 @@ using Texty.Encoding_Converter;
 using Texty.Utilities;
 using RegistrySettings;
 using Texty.File;
+using Registry_Manager;
 using Texty.Date_Converter;
 
 namespace Texty
@@ -60,7 +61,7 @@ namespace Texty
         {
             RegistryForm formSettings = new RegistryForm(Application.ProductName);
 
-            if (!formSettings.IsExisted)
+            if (!formSettings.Exists)
             {
                 formSettings.FormSize = new Size(716, 525);
                 formSettings.FormLocation = new Point(442, 163);
@@ -75,7 +76,7 @@ namespace Texty
 
 
             RegistryFont registryFont = new RegistryFont(Application.ProductName);
-            if (!registryFont.IsExisted)
+            if (!registryFont.Exists)
             {
                 registryFont.Font = new Font("Comic Sans MS", 12, FontStyle.Regular);
                 registryFont.Write();
