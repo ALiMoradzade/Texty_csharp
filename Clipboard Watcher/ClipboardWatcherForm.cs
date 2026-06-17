@@ -41,7 +41,7 @@ namespace Texty.Clipboard_Watcher
         {
             try
             {
-                string clipboardText = Clipboard.GetText(TextDataFormat.UnicodeText);
+                string clipboardText = ClipboardManager.PasteFromClipboard();
                 
                 if (!string.IsNullOrEmpty(clipboardText))
                 {
