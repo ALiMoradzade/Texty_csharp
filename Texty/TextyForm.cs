@@ -1,3 +1,4 @@
+using Clipboard_Manager;
 using Microsoft.Win32;
 using Registry_Manager;
 using System;
@@ -10,25 +11,27 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Texty;
 using Texty.Clipboard_Watcher;
-using Clipboard_Manager;
 using Texty.Date_Converter;
 using Texty.Directory_Manager;
+using Texty.Edit;
 using Texty.Encoding_Converter;
 using Texty.File;
 using Texty.Utilities;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Texty
 {
     public partial class TextyForm : Form
     {
-        bool flagEnableTextChange = true;
+        private bool enableTextChangeFlag = true;
+        private bool enableTextReplaceChangeFlag = true;
+        public bool isTextChangesAppliedToFind = false;
 
         public TextyForm()
         {
@@ -271,9 +274,9 @@ namespace Texty
 
         private async void LoadFile(string fileAddress, string fileName)
         {
-            flagEnableTextChange = false;
+            enableTextChangeFlag = false;
             richTextBox1.Text = await FileManager.Read(fileAddress);
-            flagEnableTextChange = true;
+            enableTextChangeFlag = true;
 
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             FileIsLoadedState(true, fileName);
@@ -306,9 +309,9 @@ namespace Texty
         private void CloseFile()
         {
             FileIsLoadedState(false, "");
-            flagEnableTextChange = false;
+            enableTextChangeFlag = false;
             richTextBox1.Clear();
-            flagEnableTextChange = true;
+            enableTextChangeFlag = true;
         }
         #endregion
 
@@ -394,14 +397,53 @@ namespace Texty
             SelectAll();
         }
 
+        public void ShowFoundText(int startIndex, int textLength)
+        {
+            richTextBox1.SelectionStart = startIndex;
+            richTextBox1.SelectionLength = textLength;
+            richTextBox1.ScrollToCaret();
+            richTextBox1.Focus();
+        }
+        public List<int> FindText(string text)
+        {
+            List<int> foundIndexes = new List<int>();
+
+            int startIndex = 0;
+            while (startIndex < richTextBox1.Text.Length)
+            {
+                int foundIndex = richTextBox1.Text.IndexOf(text, startIndex, StringComparison.OrdinalIgnoreCase);
+                if (foundIndex > 0)
+                {
+                    foundIndexes.Add(foundIndex);
+                    startIndex += foundIndex + text.Length;
+                }
+                else break;
+            }
+
+           return foundIndexes;
+        }
+        public void ReplaceText(int startIndex, string oldText, string newText)
+        {
+            enableTextReplaceChangeFlag = false;
+            richTextBox1.SelectionStart = startIndex;
+            richTextBox1.SelectionLength = oldText.Length;
+            richTextBox1.SelectedText = newText;
+            enableTextReplaceChangeFlag = true;
+        }
+        public void ReplaceAllText(string oldText, string newText)
+        {
+            richTextBox1.Text = richTextBox1.Text.Replace(oldText, newText);
+        }
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FindForm form = new FindForm(this);
+            form.Show(this);
         }
 
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ReplaceForm form = new ReplaceForm(this);
+            form.Show(this);
         }
 
         private void dateTimeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -594,7 +636,7 @@ namespace Texty
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            if (flagEnableTextChange)
+            if (enableTextChangeFlag)
             {
                 if (IsTextEmpty())
                 {
@@ -605,6 +647,8 @@ namespace Texty
                     FileIsEditedState(true);
                 }
             }
+
+            if (enableTextReplaceChangeFlag) isTextChangesAppliedToFind = true;
         }
 
         private void richTextBox1_SelectionChanged(object sender, EventArgs e)
