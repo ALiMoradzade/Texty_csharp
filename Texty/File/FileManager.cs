@@ -20,12 +20,9 @@ namespace Texty.File
             return text;
         }
 
-        public static async Task Write(string path, string text)
+        public static void Write(string path, string text)
         {
-            using (StreamWriter streamWriter = new StreamWriter(path))
-            {
-                await streamWriter.WriteLineAsync(text);
-            }
+            System.IO.File.WriteAllText(path, text);
         }
     }
 }
