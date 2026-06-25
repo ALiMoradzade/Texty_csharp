@@ -127,6 +127,10 @@
       <Project>{8cec5581-aa18-49de-ad59-76224f2365f4}</Project>
       <Name>Encoding Converter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Json Editor\Json Editor.csproj">
+      <Project>{525d0209-aedc-40ab-b065-bb98b477092d}</Project>
+      <Name>Json Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{85911a21-383e-4ad4-8d77-d70b7d87ddbf}</Project>
       <Name>Utilities</Name>

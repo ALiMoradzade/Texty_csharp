@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clipboard Watcher", "Clipbo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Date Converter", "Date Converter\Date Converter.csproj", "{9222FC21-5D97-4A4C-AAAF-58129E92A151}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json Editor", "Json Editor\Json Editor.csproj", "{525D0209-AEDC-40AB-B065-BB98B477092D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{9222FC21-5D97-4A4C-AAAF-58129E92A151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9222FC21-5D97-4A4C-AAAF-58129E92A151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9222FC21-5D97-4A4C-AAAF-58129E92A151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525D0209-AEDC-40AB-B065-BB98B477092D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525D0209-AEDC-40AB-B065-BB98B477092D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525D0209-AEDC-40AB-B065-BB98B477092D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525D0209-AEDC-40AB-B065-BB98B477092D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

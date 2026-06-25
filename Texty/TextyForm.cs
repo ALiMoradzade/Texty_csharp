@@ -1,4 +1,5 @@
 using Clipboard_Manager;
+using Json_Editor;
 using Microsoft.Win32;
 using Registry_Manager;
 using System;
@@ -290,17 +291,17 @@ namespace Texty
             }
         }
 
-        private async void SaveFile()
+        private void SaveFile()
         {
-            await FileManager.Write(openFileDialog1.FileName, richTextBox1.Text);
+            FileManager.Write(openFileDialog1.FileName, richTextBox1.Text);
             FileIsEditedState(false);
         }
 
-        private async void SaveAsFile()
+        private void SaveAsFile()
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                await FileManager.Write(saveFileDialog1.FileName, richTextBox1.Text);
+                FileManager.Write(saveFileDialog1.FileName, richTextBox1.Text);
                 openFileDialog1.FileName = saveFileDialog1.FileName;
                 FileIsLoadedState(true, Path.GetFileName(saveFileDialog1.FileName));
             }
@@ -535,6 +536,12 @@ namespace Texty
         private void solarHijriToGregorianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SolarHijriToGregorianForm form = new SolarHijriToGregorianForm();
+            form.Show();
+        }
+
+        private void jSONReaderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            JsonEditorForm form = new JsonEditorForm();
             form.Show();
         }
         #endregion
@@ -1066,6 +1073,7 @@ namespace Texty
 
             ClipboardManager.CopyToClipboard(filteredText);
         }
+
         #endregion
 
         
