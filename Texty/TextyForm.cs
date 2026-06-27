@@ -413,19 +413,24 @@ namespace Texty
         }
         public List<int> FindText(string text)
         {
-            List<int> foundIndexes = new List<int>();
+            List<int> foundIndexes1 = new List<int>();
 
-            int startIndex = 0;
-            while (startIndex < richTextBox1.Text.Length)
-            {
-                int foundIndex = richTextBox1.Text.IndexOf(text, startIndex, StringComparison.OrdinalIgnoreCase);
-                if (foundIndex == -1) break;
-             
-                foundIndexes.Add(foundIndex);
-                startIndex = foundIndex + text.Length;
-            }
+            foundIndexes1.AddRange
+            (
+                richTextBox1.Lines.Select((value, index) => new { index, value })
+                .Select(line =>
+                {
+                    int foundIndex = line.value.IndexOf(text, StringComparison.OrdinalIgnoreCase);
+                    if (foundIndex > -1)
+                    {
+                        foundIndex += richTextBox1.GetFirstCharIndexFromLine(line.index);
+                        return foundIndex;
+                    }
+                    return -1;
+                }).Where(found => found != -1)
+            );
 
-           return foundIndexes;
+            return foundIndexes1;
         }
         public void ReplaceText(int startIndex, string oldText, string newText)
         {
