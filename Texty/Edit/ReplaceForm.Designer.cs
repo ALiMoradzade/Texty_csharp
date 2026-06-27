@@ -96,7 +96,7 @@ namespace Texty.Edit
             // 
             // textBoxNew
             // 
-            this.textBoxNew.ContextMenuStrip = this.contextMenuStrip1;
+            this.textBoxNew.ContextMenuStrip = this.contextMenuStrip2;
             this.textBoxNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNew.Location = new System.Drawing.Point(80, 40);
             this.textBoxNew.Name = "textBoxNew";

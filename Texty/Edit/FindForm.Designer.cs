@@ -114,15 +114,15 @@ namespace Texty.Edit
             this.label2.TabIndex = 63;
             this.label2.Text = "Text: ";
             // 
-            // textBoxProvider
+            // textBox
             // 
             this.textBox.BackColor = System.Drawing.Color.White;
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox.ForeColor = System.Drawing.Color.Black;
             this.textBox.Location = new System.Drawing.Point(52, 12);
-            this.textBox.MaxLength = 3;
-            this.textBox.Name = "textBoxProvider";
+            this.textBox.MaxLength = 24;
+            this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(174, 22);
             this.textBox.TabIndex = 58;
             this.textBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);

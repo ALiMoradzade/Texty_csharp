@@ -55,7 +55,7 @@ namespace Texty.Edit
 
         private void ResultNotFound()
         {
-            labelResult.Text = "DNS Not Found";
+            labelResult.Text = "Text Not Found";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

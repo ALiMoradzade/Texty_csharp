@@ -52,6 +52,8 @@ namespace Texty
             cutToolStripMenuItem1.Enabled = state;
             copyToolStripMenuItem1.Enabled = state;
             deleteToolStripMenuItem1.Enabled = state;
+            findToolStripMenuItem.Enabled = state;
+            replaceToolStripMenuItem.Enabled= state;
 
             // Context menu strip
             cutToolStripMenuItem.Enabled = state;
