@@ -112,9 +112,10 @@ namespace Texty
             this.characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clipboardWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateConvertorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gregorianToSolarHijriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solarHijriToGregorianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jSONEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textySourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -138,7 +139,6 @@ namespace Texty
             this.toolStripStatusLabelUTF32 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.jSONEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -768,7 +768,7 @@ namespace Texty
             this.decodeToolStripMenuItem,
             this.directoryManagerToolStripMenuItem,
             this.clipboardWatcherToolStripMenuItem,
-            this.dateConvertorToolStripMenuItem,
+            this.dateConverterToolStripMenuItem,
             this.jSONEditorToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
@@ -811,14 +811,14 @@ namespace Texty
             this.clipboardWatcherToolStripMenuItem.Text = "Clipboard Watcher";
             this.clipboardWatcherToolStripMenuItem.Click += new System.EventHandler(this.clipboardWatcherToolStripMenuItem_Click);
             // 
-            // dateConvertorToolStripMenuItem
+            // dateConverterToolStripMenuItem
             // 
-            this.dateConvertorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dateConverterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gregorianToSolarHijriToolStripMenuItem,
             this.solarHijriToGregorianToolStripMenuItem});
-            this.dateConvertorToolStripMenuItem.Name = "dateConvertorToolStripMenuItem";
-            this.dateConvertorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dateConvertorToolStripMenuItem.Text = "Date Convertor";
+            this.dateConverterToolStripMenuItem.Name = "dateConverterToolStripMenuItem";
+            this.dateConverterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dateConverterToolStripMenuItem.Text = "Date Convertor";
             // 
             // gregorianToSolarHijriToolStripMenuItem
             // 
@@ -833,6 +833,13 @@ namespace Texty
             this.solarHijriToGregorianToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.solarHijriToGregorianToolStripMenuItem.Text = "Solar Hijri To Gregorian";
             this.solarHijriToGregorianToolStripMenuItem.Click += new System.EventHandler(this.solarHijriToGregorianToolStripMenuItem_Click);
+            // 
+            // jSONEditorToolStripMenuItem
+            // 
+            this.jSONEditorToolStripMenuItem.Name = "jSONEditorToolStripMenuItem";
+            this.jSONEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jSONEditorToolStripMenuItem.Text = "JSON Editor";
+            this.jSONEditorToolStripMenuItem.Click += new System.EventHandler(this.jSONReaderToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -1012,13 +1019,6 @@ namespace Texty
             this.copyToolStripMenuItem2.Text = "Copy";
             this.copyToolStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem2_Click);
             // 
-            // jSONEditorToolStripMenuItem
-            // 
-            this.jSONEditorToolStripMenuItem.Name = "jSONEditorToolStripMenuItem";
-            this.jSONEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.jSONEditorToolStripMenuItem.Text = "JSON Editor";
-            this.jSONEditorToolStripMenuItem.Click += new System.EventHandler(this.jSONReaderToolStripMenuItem_Click);
-            // 
             // TextyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1159,7 +1159,7 @@ namespace Texty
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem convertDigitsToASCIIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clipboardWatcherToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dateConvertorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dateConverterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gregorianToSolarHijriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solarHijriToGregorianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeLettersToolStripMenuItem;
