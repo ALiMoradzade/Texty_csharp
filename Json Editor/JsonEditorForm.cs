@@ -1,3 +1,4 @@
+using Json_Editor.Filter;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -16,9 +17,13 @@ namespace Json_Editor
 {
     public partial class JsonEditorForm : Form
     {
+        Formatting JsonFormatting;
+
         public JsonEditorForm()
         {
             InitializeComponent();
+
+            JsonFormatting = Formatting.None;
         }
 
         private void JsonEditorForm_Resize(object sender, EventArgs e)
@@ -31,7 +36,38 @@ namespace Json_Editor
             }
         }
 
+        private Formatting JsonFormatChecker(string json)
+        {
+            JToken token = JToken.Parse(json);
+
+            if (json == token.ToString(Formatting.Indented)) return Formatting.Indented;
+            else if (json == token.ToString(Formatting.None)) return Formatting.None;
+            return Formatting.None;
+        }
+
+        private bool IsValidJson(string json)
+        {
+            try
+            {
+                JToken.Parse(json);
+                return true;
+            }
+            catch (JsonReaderException)
+            {
+                return false;
+            }
+        }
+
         #region Message Box
+        private static DialogResult MessageBoxInvalidJsonText()
+        {
+            var r = MessageBox.Show("The provided text is not valid JSON",
+                                    "Invalid JSON",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+            return r;
+        }
+
         private static DialogResult MessageBoxPropertyDoesntFound(string property)
         {
             var r = MessageBox.Show($"The JSON property \"{property}\" could not be found",
@@ -114,6 +150,24 @@ namespace Json_Editor
                                     MessageBoxIcon.Information);
             return r;
         }
+
+        private static DialogResult MessageBoxInvalidJsonArray(string json)
+        {
+            var r = MessageBox.Show($"The selected node is a {json}.\r\nPlease, select a JArray to apply a filter",
+                                    "Cannot Filter",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Exclamation);
+            return r;
+        }
+
+        private static DialogResult MessageBoxJsonArrayReplaceSuccessful()
+        {
+            var r = MessageBox.Show("The JSON array was filtered successfully",
+                                    "Filter Applied",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+            return r;
+        }
         #endregion
 
         #region File Tab
@@ -123,13 +177,16 @@ namespace Json_Editor
             {
                 using (StreamReader streamReader = new StreamReader(openFileDialog1.FileName))
                 {
-                    textBox1.Text = await streamReader.ReadToEndAsync();
+                    string json = await streamReader.ReadToEndAsync();
+                    if (!IsValidJson(json))
+                    {
+                        MessageBoxInvalidJsonText();
+                        return;
+                    }
+
+                    textBox1.Text = json;
+                    JsonFormatting = JsonFormatChecker(json);
                 }
-
-                JsonTreeConverter jsonTreeConverter = new JsonTreeConverter(textBox1.Text);
-
-                treeView1.Nodes.Clear();
-                treeView1.Nodes.Add(jsonTreeConverter.Result);
             }
         }
 
@@ -152,16 +209,14 @@ namespace Json_Editor
         {
             if (string.IsNullOrEmpty(textBox1.Text)) return;
 
-            JToken token = JToken.Parse(textBox1.Text);
-            string beautified = token.ToString(Formatting.Indented);
-
-            if (textBox1.Text == beautified)
+            if (JsonFormatChecker(textBox1.Text) == Formatting.Indented)
             {
                 MessageBoxJsonAlreadyBeautifyied();
                 return;
             }
 
-            textBox1.Text = beautified;
+            textBox1.Text = JToken.Parse(textBox1.Text).ToString(Formatting.Indented);
+            JsonFormatting = Formatting.Indented;
             MessageBoxJsonBeautifiedSuccessful();
         }
 
@@ -169,16 +224,14 @@ namespace Json_Editor
         {
             if (string.IsNullOrEmpty(textBox1.Text)) return;
 
-            JToken token = JToken.Parse(textBox1.Text);
-            string minified = token.ToString(Formatting.None);
-
-            if (textBox1.Text == minified)
+            if (JsonFormatChecker(textBox1.Text) == Formatting.None)
             {
-                MessageBoxJsonAlreadyMinified();
+                MessageBoxJsonAlreadyBeautifyied();
                 return;
             }
 
-            textBox1.Text = minified;
+            textBox1.Text = JToken.Parse(textBox1.Text).ToString(Formatting.None);
+            JsonFormatting = Formatting.None;
             MessageBoxJsonMinifiedSuccessful();
         }
 
@@ -232,15 +285,7 @@ namespace Json_Editor
         }
         #endregion
 
-        #region Right Click TextBox
-        private void reloadJSONTextToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            JsonTreeConverter jsonTreeConverter = new JsonTreeConverter(textBox1.Text);
-
-            treeView1.Nodes.Clear();
-            treeView1.Nodes.Add(jsonTreeConverter.Result);
-        }
-
+        #region Right Click TreeView
         private void collapseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             treeView1.CollapseAll();
@@ -250,7 +295,56 @@ namespace Json_Editor
         {
             treeView1.ExpandAll();
         }
+
+        private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
+        {
+            TreeNode node = treeView1.SelectedNode;
+
+            filterSelectedJArrayToolStripMenuItem.Enabled = !(node is null);
+        }
+
+        private void filterSelectedJArrayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TreeNode node = treeView1.SelectedNode;
+            JToken jToken = JToken.Parse(textBox1.Text);
+
+            string[] properties = node.FullPath.Split('\\').Skip(1).ToArray();
+            foreach (string property in properties)
+            {
+                if (int.TryParse(property, out int index)) jToken = jToken[index];
+                else jToken = jToken[property];
+            }
+
+            if (!(jToken is JArray jArray))
+            {
+                MessageBoxInvalidJsonArray(jToken.GetType().Name);
+                return;
+            }
+
+            JsonArrayFilterForm form = new JsonArrayFilterForm(jArray);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                JToken root = JToken.Parse(textBox1.Text);
+
+                JArray servers = (JArray)root.SelectToken($"$.{string.Join(".", properties)}");
+                servers.ReplaceAll(form.FilteredJArray);
+
+                textBox1.Text = root.ToString(JsonFormatting);
+
+                MessageBoxJsonArrayReplaceSuccessful();
+            }
+        }
         #endregion
 
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text)) return;
+
+            JsonTreeConverter jsonTreeConverter = new JsonTreeConverter(textBox1.Text);
+
+            treeView1.Nodes.Clear();
+            treeView1.Nodes.Add(jsonTreeConverter.Result);
+        }
     }
 }

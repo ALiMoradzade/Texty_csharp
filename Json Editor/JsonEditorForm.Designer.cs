@@ -51,8 +51,8 @@ namespace Json_Editor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.collapseAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadJSONTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.filterSelectedJArrayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -71,6 +71,7 @@ namespace Json_Editor
             this.textBox1.ShortcutsEnabled = false;
             this.textBox1.Size = new System.Drawing.Size(400, 426);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // contextMenuStrip1
             // 
@@ -159,33 +160,33 @@ namespace Json_Editor
             // beautifyJSONToolStripMenuItem
             // 
             this.beautifyJSONToolStripMenuItem.Name = "beautifyJSONToolStripMenuItem";
-            this.beautifyJSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.beautifyJSONToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.beautifyJSONToolStripMenuItem.Text = "Beautify JSON";
             this.beautifyJSONToolStripMenuItem.Click += new System.EventHandler(this.beautifyJSONToolStripMenuItem_Click);
             // 
             // minifyJSONToolStripMenuItem
             // 
             this.minifyJSONToolStripMenuItem.Name = "minifyJSONToolStripMenuItem";
-            this.minifyJSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.minifyJSONToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.minifyJSONToolStripMenuItem.Text = "Minify JSON";
             this.minifyJSONToolStripMenuItem.Click += new System.EventHandler(this.minifyJSONToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
             // 
             // renamePropertyToolStripMenuItem
             // 
             this.renamePropertyToolStripMenuItem.Name = "renamePropertyToolStripMenuItem";
-            this.renamePropertyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.renamePropertyToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.renamePropertyToolStripMenuItem.Text = "Rename Property";
             this.renamePropertyToolStripMenuItem.Click += new System.EventHandler(this.renamePropertyToolStripMenuItem_Click);
             // 
             // removePropertyToolStripMenuItem
             // 
             this.removePropertyToolStripMenuItem.Name = "removePropertyToolStripMenuItem";
-            this.removePropertyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removePropertyToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.removePropertyToolStripMenuItem.Text = "Remove Property";
             this.removePropertyToolStripMenuItem.Click += new System.EventHandler(this.removePropertyToolStripMenuItem_Click);
             // 
@@ -212,38 +213,39 @@ namespace Json_Editor
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reloadJSONTextToolStripMenuItem,
-            this.toolStripSeparator4,
             this.collapseAllToolStripMenuItem,
-            this.expandAllToolStripMenuItem});
+            this.expandAllToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.filterSelectedJArrayToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(166, 76);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(183, 98);
+            this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
             // 
             // collapseAllToolStripMenuItem
             // 
             this.collapseAllToolStripMenuItem.Name = "collapseAllToolStripMenuItem";
-            this.collapseAllToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.collapseAllToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.collapseAllToolStripMenuItem.Text = "Collapse All";
             this.collapseAllToolStripMenuItem.Click += new System.EventHandler(this.collapseAllToolStripMenuItem_Click);
             // 
             // expandAllToolStripMenuItem
             // 
             this.expandAllToolStripMenuItem.Name = "expandAllToolStripMenuItem";
-            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.expandAllToolStripMenuItem.Text = "Expand All";
             this.expandAllToolStripMenuItem.Click += new System.EventHandler(this.expandAllToolStripMenuItem_Click);
-            // 
-            // reloadJSONTextToolStripMenuItem
-            // 
-            this.reloadJSONTextToolStripMenuItem.Name = "reloadJSONTextToolStripMenuItem";
-            this.reloadJSONTextToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.reloadJSONTextToolStripMenuItem.Text = "Reload JSON Text";
-            this.reloadJSONTextToolStripMenuItem.Click += new System.EventHandler(this.reloadJSONTextToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(179, 6);
+            // 
+            // filterSelectedJArrayToolStripMenuItem
+            // 
+            this.filterSelectedJArrayToolStripMenuItem.Name = "filterSelectedJArrayToolStripMenuItem";
+            this.filterSelectedJArrayToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.filterSelectedJArrayToolStripMenuItem.Text = "Filter Selected JArray";
+            this.filterSelectedJArrayToolStripMenuItem.Click += new System.EventHandler(this.filterSelectedJArrayToolStripMenuItem_Click);
             // 
             // JsonEditorForm
             // 
@@ -292,7 +294,7 @@ namespace Json_Editor
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reloadJSONTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem filterSelectedJArrayToolStripMenuItem;
     }
 }

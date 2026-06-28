@@ -37,7 +37,7 @@ namespace Json_Editor
                 case JArray jArray:
                     for (int i = 0; i < jArray.Count; i++)
                     {
-                        TreeNode child = ConvertToTreeNode($"[{i}]", jArray[i]);
+                        TreeNode child = ConvertToTreeNode(i.ToString(), jArray[i]);
                         root.Nodes.Add(child);
                     }
                     return root;

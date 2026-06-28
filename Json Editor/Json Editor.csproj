@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filter\JsonArrayFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filter\JsonArrayFilterForm.Designer.cs">
+      <DependentUpon>JsonArrayFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="JsonTreeConverter.cs" />
     <Compile Include="RemovePropertyForm.cs">
       <SubType>Form</SubType>
@@ -66,6 +72,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Filter\JsonArrayFilterForm.resx">
+      <DependentUpon>JsonArrayFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RemovePropertyForm.resx">
       <DependentUpon>RemovePropertyForm.cs</DependentUpon>
     </EmbeddedResource>
