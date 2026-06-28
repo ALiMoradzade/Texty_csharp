@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Encoding Converter")]
-[assembly: AssemblyCopyright("Copyright ©  2026 Ali Moradzadeh")]
+[assembly: AssemblyCopyright("Copyright ©  2026 – Ali Moradzadeh")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
